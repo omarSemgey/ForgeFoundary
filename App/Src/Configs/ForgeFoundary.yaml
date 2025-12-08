@@ -1,0 +1,26 @@
+# ==============================================
+# Forge Foundary Configuration (v1.0)
+# ==============================================
+
+# ----------------------------------------------
+# Base YAML Variables
+# Raw variables used as global defaults and references.
+# ----------------------------------------------
+
+modes_path_variable: &modes_path_variable Modes
+mode_variable: &mode_variable laravel-ddd
+
+# ----------------------------------------------
+# Default Values
+# Fallbacks when no CLI flags are passed.
+# ----------------------------------------------
+modes_path: *modes_path_variable
+mode: *mode_variable
+
+# ----------------------------------------------
+# CLI Flags
+# Allows overriding key variables via command-line options.
+# ----------------------------------------------
+cli_flags:
+ modes_path: *modes_path_variable
+ mode: *mode_variable

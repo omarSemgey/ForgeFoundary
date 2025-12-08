@@ -1,0 +1,180 @@
+# ==============================================
+# Forge Foundare Mode Template
+# ==============================================
+
+# ----------------------------------------------
+# Mode Metadata
+# See docs at: //comingSoon.com/ModeMetadata
+# ----------------------------------------------
+mode_metadata: 
+  name: 
+  version: 
+  description: >
+    
+  language: 
+  author: 
+
+# ----------------------------------------------
+# Base YAML Mutators
+# Canonical values for config keys that can be "mutated" via CLI flags.
+# Use YAML anchors (e.g., &mutator) to define them and aliases (*mutator)
+# to link these values to default keys or CLI overrides.
+# ----------------------------------------------
+# --- Component Mutators ---
+component_path_mutator: &component_path_mutator 
+component_name_mutator: &component_name_mutator 
+
+# --- Template Mutators ---
+templates_path_mutator: &templates_path_mutator 
+template_file_extension_mutator: &template_file_extension_mutator 
+templates_enabled_mutator: &templates_enabled_mutator
+
+# --- Directories Mutators ---
+directories_enabled_mutator: &directories_enabled_mutator
+
+# --- Units Mutators ---
+units_map_mode: &units_map_mode_mutator 
+units_created_by_default_mutators: &units_created_by_default_mutators false
+units_enabled_mutator: &units_enabled_mutator
+
+# --- Naming Convention Mutators ---
+naming_convention_enabled_mutator: &naming_convention_enabled_mutator
+
+# --- Commands Mutators ---
+commands_enabled_mutator: &commands_enabled_mutator
+
+# --- Cli Flags Mutators ---
+cli_flags_enabled_mutator: &cli_flags_enabled_mutator
+
+# --- PSR-4 base Mutators ---
+psr-4_base_mutator: &psr-4_base_mutator   # PSR-4 root namespace
+
+# ----------------------------------------------
+# CLI Flags
+# Links mutators to command-line options.
+# Any key referencing a mutator can be overridden via CLI.
+# ----------------------------------------------
+cli_flags_enabled: *cli_flags_enabled_mutator
+cli_flags: 
+  # --- Component Cli Flags ---
+  component_path: *component_path_mutator
+  component_name: *component_name_mutator
+
+  # --- Directory Cli Flags ---
+  directories_enabled: *directories_enabled_mutator
+  
+  # --- Templates Cli Flags ---
+  template_file_extension: *template_file_extension_mutator
+  templates_path: *templates_path_mutator
+  templates_enabled: *templates_enabled_mutator
+
+  # --- Units Cli Flags ---
+  units_map_mode: *units_map_mode_mutator
+  units_created_by_default: *units_created_by_default_mutators
+  units_enabled: *units_enabled_mutator
+
+  # --- Commands Cli Flags ---
+  commands_enabled: *commands_enabled_mutator
+
+  # --- Naming Convention Cli Flags ---
+  naming_convention_enabled: *naming_convention_enabled_mutator
+
+  # --- PSR-4 base Cli Flags ---
+  psr-4_base: *psr-4_base_mutator
+
+# ----------------------------------------------
+# Commands
+# Project-specific tasks run before or after scaffolding.
+# See docs at: //comingSoon.com/Commands
+# ----------------------------------------------
+commands_enabled: *commands_enabled_mutator
+commands: 
+  # Pre-scaffold hooks
+  before: []   
+  # Post-scaffold hooks
+  after: []
+
+# ----------------------------------------------
+# Component
+# The main folder containing all generated archeticture.
+# See docs at: //comingSoon.com/Directories
+# ----------------------------------------------
+component_path: *component_path_mutator # Relative path to where you are executing the scaffolder
+component_name: *component_name_mutator
+
+# ----------------------------------------------
+# Directories
+# Default domain substructure to generate for each component.
+# See docs at: //comingSoon.com/Directories
+# ----------------------------------------------
+directories_enabled: *directories_enabled_mutator
+directories: []
+
+# ----------------------------------------------
+# Templates
+# Defines default template behavior and per-template overrides.
+# NOTE: the code currenlty only supports mustache and twig templating engines
+# See docs at: //comingSoon.com/Templates
+# ----------------------------------------------
+templates_path: *templates_path_mutator # Relative path to the scaffolder base directory
+templates_enabled: *templates_enabled_mutator
+template_engine_extensions: []
+
+templates:
+  defaults: {}
+
+  overrides: {}
+
+# ----------------------------------------------
+# Units
+# Fundamental scaffolding units (e.g., Crud, Auth).
+# See docs at: //comingSoon.com/Units
+# ----------------------------------------------
+units_enabled: *units_enabled_mutator
+units: []
+
+# ----------------------------------------------
+# Units Map
+# Defines which directories or units are linked to which units.
+# mode 'directories': map each directory to units that use it | directories → units
+# mode 'units': map each unit to directories it touches | units → directories
+# See docs at: //comingSoon.com/UnitsMap
+# ----------------------------------------------
+units_map:
+  mode: *units_map_mode_mutator
+
+  directories:
+    units_created_by_default: *units_created_by_default_mutators
+    overrides: {}
+
+  units: 
+    units_created_by_default: *units_created_by_default_mutators
+    overrides: {}
+
+# ----------------------------------------------
+# Naming Convention
+# Applies styles (camelCase, PascalCase, etc.) to components, directories, units, templates and templates metadata.
+# Use 'defaults' for global rules and 'overrides' for exceptions.
+# 'overrides' lets you apply exceptions to global rules.
+# See docs at: //comingSoon.com/NamingConvention
+# ----------------------------------------------
+naming_convention_enabled: *naming_convention_enabled_mutator
+naming_convention:
+  camel_case:
+    component: true
+    directories:
+      units_created_by_default: *units_created_by_default_mutators
+      defaults: false
+      overrides: []
+
+    units:
+      units_created_by_default: *units_created_by_default_mutators
+      defaults: true
+      overrides: []
+
+    templates:
+      defaults: []
+      overrides: {}
+
+# -- PSR-4 base value
+psr-4_base: *psr-4_base_mutator # PSR-4 root namespace

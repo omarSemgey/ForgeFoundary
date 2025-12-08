@@ -1,0 +1,21 @@
+---
+file_name: DTO
+file_paths:
+    - DTOs
+file_extension: ts
+---
+
+<?php
+
+
+class {{ file_name }}
+{
+    public function __construct(
+    ) {}
+
+    public static function fromArray(array $data): self
+    {
+        return new self(
+        );
+    }
+}

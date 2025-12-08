@@ -1,0 +1,26 @@
+#!/usr/bin/env php
+<?php
+
+use Illuminate\Console\Application as ArtisanApplication;
+
+require __DIR__ . '/vendor/autoload.php';
+
+require_once __DIR__ . '/App/Src/Core/Aliases/Aliases.php';
+
+// Bootstrap app
+$app = require __DIR__ . '/bootstrap/app.php';
+
+// Create Artisan app
+$artisan = new ArtisanApplication($app, $app['events'],  '1.0.0');
+
+// Register commands
+$commandPath = __DIR__ . '/App/Src/Commands';
+foreach (glob($commandPath . '/*.php') as $file) {
+    $class = 'App\\Src\\Commands\\' . basename($file, '.php');
+    if (class_exists($class)) {
+        $artisan->add($app->make($class));
+    }
+}
+
+// Run CLI
+$artisan->run();
