@@ -1,10 +1,25 @@
 <?php
 
 namespace App\Src\Core\NamingConventions\Helpers;
+
 use Illuminate\Support\Str;
 
-
-class StyleManager{
+// ===============================================
+// Class: StyleManager
+// Purpose: Handles application of various naming conventions/styles to strings.
+//          Central utility for formatting component names, directories, files, etc.
+// Functions:
+//   - applyStyle(): main entry point, applies a chosen style to a string
+//   - camelCase(), pascalCase(), snakeCase(), kebabCase(), upperSnakeCase(), dotCase(),
+//     studlyCase(), titleCase(), sentenceCase(), screamingKebabCase(), slashCase(),
+//     backslashCase(), dotKebabCase(), flatCase(), trainCase(): implement individual style transformations
+// ===============================================
+class StyleManager
+{
+    // ===============================================
+    // Constant: STYLES
+    // Purpose: Maps canonical style keys to their handler method names
+    // ===============================================
     private const STYLES = [
         "camel_case"        => "camelCase",
         "pascal_case"       => "pascalCase",
@@ -22,8 +37,29 @@ class StyleManager{
         "flat_case"            => "flatCase",
         "train_case"           => "trainCase",
     ];
-    
-    public function applyStyle($style, $value):string{
+
+    // ===============================================
+    // Function: applyStyle
+    // Inputs:
+    //   - $style: string key representing the desired naming convention
+    //   - $value: string to which the style should be applied
+    // Outputs:
+    //   - string: transformed value according to the selected style
+    // Purpose: Main entry point for applying a naming convention
+    // Logic Walkthrough:
+    //   1. Validates that the provided style exists
+    //   2. Normalizes the input string by trimming and converting separators to spaces
+    //   3. Looks up the handler method for the chosen style
+    //   4. Logs info via Debugger
+    //   5. Calls the appropriate style handler method dynamically
+    // External Functions/Helpers Used:
+    //   - Debugger()->error()
+    //   - Debugger()->info()
+    // Side Effects:
+    //   - Logs to the debugger
+    // ===============================================
+    public function applyStyle($style, $value): string
+    {
         if (!isset(self::STYLES[$style])) {
             Debugger()->error("Unsupported naming convention: '{$style}'");
             return $value;
@@ -40,9 +76,10 @@ class StyleManager{
         return $this->$styleHandler($value);
     }
 
-    // ---------------------------------------------------------
-    // Naming convention handlers
-    // ---------------------------------------------------------
+    // ======================================================
+    // Naming convention handler methods
+    // Each implements one style transformation using Str helper or native functions
+    // ======================================================
 
     private function camelCase(string $value): string
     {

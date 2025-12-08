@@ -11,6 +11,21 @@ use App\Src\Core\Helpers\PathManager;
 use Str;
 use Symfony\Component\Yaml\Yaml;
 
+// ===============================================
+// Class: ConfigResolver
+// Purpose: Resolves both the main configuration and the currently selected mode configuration
+//          for ForgeFoundary. Handles CLI overrides, defaults, YAML loading, and paths normalization.
+// Functions:
+//   - __construct(): injects ConfigManager and PathManager
+//   - resolveConfigsContext(): orchestrates loading main + mode configs and returns a DTO
+//   - resolveMainConfigName(): determines main config filename
+//   - resolveMainConfigPath(): determines main config path
+//   - resolveMainConfigValue(): loads main config YAML
+//   - resolveModeConfigName(): determines mode config filename
+//   - resolveModesConfigPath(): determines path where mode configs are located
+//   - resolveModeConfigValue(): loads mode config YAML
+//   - findMode(): searches for mode YAML in modes subdirectories
+// ===============================================
 class ConfigResolver
 {
     private string $mainConfigName;
@@ -20,27 +35,50 @@ class ConfigResolver
     private string $modeConfigName;
     private string $modesConfigPath;
     private array $modeConfigValue;
+
     private CliInputContextDTO $cliInputContextDTO;
+
+    // Default values for main config when not provided by user
     private const DEFAULT_MAIN_CONFIG_VALUES = [
         "name" => "ForgeFoundary",
         "path" => "Configs",
     ];
 
+    // Key mapping for main config entries
     private const CONFIG_CONFIG_KEYS = [
         "modes_path" => "modes_path",
         "mode" => "mode",
     ];
-    
+
     public function __construct(
         private ConfigManager $configManager,
         private PathManager $pathManager,
     ) {}
 
+    // ===============================================
+    // Private: loadContexts
+    // Purpose: retrieve CLI input context from the ContextBus
+    // Side Effects:
+    //   - sets $this->cliInputContextDTO
+    //   - logs info via Debugger
+    // ===============================================
     private function loadContexts(){
         $this->cliInputContextDTO = ContextBus()->get(CliInputContextDTO::class);
         Debugger()->info("Loaded context: 'CliInputContextDTO' from the context bus");
     }
 
+    // ===============================================
+    // Public: resolveConfigsContext
+    // Inputs: none (uses injected helpers and context)
+    // Outputs: ConfigContextDTO containing main and mode configs
+    // Purpose: orchestrates resolution of main config + mode config
+    // Logic:
+    //   1. Load CLI input context
+    //   2. Resolve main config: name, path, values
+    //   3. Resolve mode config: name, path, values
+    //   4. Return a DTO encapsulating both configs
+    // Side Effects: loads config into ConfigManager
+    // ===============================================
     public function resolveConfigsContext(): ConfigContextDTO
     {
         $this->loadContexts();
@@ -64,6 +102,11 @@ class ConfigResolver
         );
     }
 
+    // ===============================================
+    // Private: resolveMainConfigName
+    // Purpose: determine main config filename from CLI or fallback to default
+    // Side Effects: sets $this->mainConfigName and logs info/warnings
+    // ===============================================
     private function resolveMainConfigName(): void{
         $customMainConfigName = $this->cliInputContextDTO->getOption('custom-config-name');
 
@@ -77,6 +120,11 @@ class ConfigResolver
         Debugger()->warning("No custom main config name provided; using default: '{$this->mainConfigName}'");
     }
 
+    // ===============================================
+    // Private: resolveMainConfigPath
+    // Purpose: determine main config path from CLI or default
+    // Side Effects: sets $this->mainConfigPath and logs info/warnings
+    // ===============================================
     private function resolveMainConfigPath(): void{
         $customMainConfigPath = $this->cliInputContextDTO->getOption('custom-config-path');
 
@@ -92,6 +140,17 @@ class ConfigResolver
         Debugger()->warning("No custom config path provided. Using default: {$this->mainConfigPath}" );
     }
 
+    // ===============================================
+    // Private: resolveMainConfigValue
+    // Purpose: load main config YAML file
+    // Logic:
+    //   1. Determine .yaml or .yml path
+    //   2. Parse YAML using Symfony Yaml parser
+    //   3. Load config into ConfigManager
+    // Side Effects:
+    //   - sets $this->mainConfigValue
+    //   - may throw RuntimeException if no file found
+    // ===============================================
     private function resolveMainConfigValue(): void{
         Debugger()->info("Attempting to load main config '{$this->mainConfigName}' from path: '{$this->mainConfigPath}'");
         $yamlPath = $this->pathManager->normalizeSlashes($this->mainConfigPath . '/' . $this->mainConfigName . '.yaml');
@@ -114,6 +173,11 @@ class ConfigResolver
         Debugger()->info("Main config: '{$this->mainConfigName}' loaded successfully");
     }
 
+    // ===============================================
+    // Private: resolveModesConfigPath
+    // Purpose: determine folder path where mode configs reside
+    // Side Effects: sets $this->modesConfigPath and logs info
+    // ===============================================
     private function resolveModesConfigPath(): void
     {
         $customModesPath = $this->cliInputContextDTO->getOption('modes-path');
@@ -129,6 +193,11 @@ class ConfigResolver
         Debugger()->info("Modes path: '{$this->modesConfigPath}'");
     }
 
+    // ===============================================
+    // Private: resolveModeConfigName
+    // Purpose: determine which mode to load based on CLI or main config default
+    // Side Effects: sets $this->modeConfigName and logs info
+    // ===============================================
     private function resolveModeConfigName(): void{
         $customModeConfigName = $this->cliInputContextDTO->getOption('mode');
 
@@ -142,6 +211,17 @@ class ConfigResolver
         Debugger()->info("Loaded mode name: '{$this->modeConfigName}'" );
     }
 
+    // ===============================================
+    // Private: resolveModeConfigValue
+    // Purpose: parse YAML mode config file
+    // Logic:
+    //   1. Search mode file using findMode()
+    //   2. Parse YAML
+    //   3. Load into ConfigManager
+    // Side Effects:
+    //   - sets $this->modeConfigValue
+    //   - logs info
+    // ===============================================
     private function resolveModeConfigValue(): void
     {
         Debugger()->info("Attempting to load mode config '{$this->modeConfigName}' from path: '{$this->modesConfigPath}'");
@@ -155,6 +235,16 @@ class ConfigResolver
         Debugger()->info("Mode '{$this->modeConfigName}' loaded successfully");
     }
 
+    // ===============================================
+    // Private: findMode
+    // Purpose: locate YAML file for the given mode inside all subdirectories
+    // Outputs: string path to the mode YAML file
+    // Logic:
+    //   1. Iterate over subdirectories of $this->modesConfigPath
+    //   2. Check for {$mode}.yaml or {$mode}.yml in each subdir
+    //   3. Return path if found, else throw RuntimeException
+    // Side Effects: none
+    // ===============================================
     private function findMode(): string{
 
         $foundPath = null;
