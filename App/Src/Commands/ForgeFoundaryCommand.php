@@ -15,7 +15,7 @@ use App\Src\Core\Helpers\TreeManager;
 
 class ForgeFoundaryCommand extends Command
 {
-    protected $signature = 'ForgeFoundary:scaffold {--mode=} {--modes-path=} {--tree-view} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'scaffold {--mode=} {--modes-path=} {--tree-view} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
     protected $description = 'Run ForgeFoundary command';
 
     public function __construct(

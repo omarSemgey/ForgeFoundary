@@ -1,14 +1,13 @@
 {
-    "name": "yourname/forgefoundary",
+    "name": "omarsemgey/forgefoundary",
+    "description": "A general programming scaffolder with pluggable modes.",
+    "type": "project",
     "require": {
         "php": "^8.2",
-        "illuminate/console": "^12.0",
-        "illuminate/filesystem": "^12.0",
         "illuminate/support": "^12.0",
         "symfony/yaml": "^6.0",
         "mustache/mustache": "^3.0",
         "twig/twig": "^3.22",
-        "illuminate/config": "^12.40",
         "eftec/bladeone": "^4.19"
     },
     "autoload": {
@@ -16,5 +15,5 @@
             "App\\Src\\": "App/Src/"
         }
     },
-    "bin": ["artisan"]
+    "bin": ["ForgeFoundary"]
 }

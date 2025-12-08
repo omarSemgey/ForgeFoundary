@@ -15,7 +15,7 @@ use App\Src\Core\Helpers\PathManager;
 
 class DryRunCommand extends Command
 {
-    protected $signature = 'ForgeFoundary:dry-run {--mode=} {--modes-path=} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'dry-run {--mode=} {--modes-path=} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
     protected $description = 'Dry run the ForgeFoundary command';
 
     public function __construct(

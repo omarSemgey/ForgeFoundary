@@ -10,7 +10,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class DumbModesCommand extends Command
 {
-    protected $signature = 'ForgeFoundary:dumb-modes {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'dumb-modes {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
     protected $description = 'Dump all the modes available for the ForgeFoundry command';
     private ConfigContextDTO $configContextDTO;
     private const DUMB_MODES_COMMAND_CONFIG_KEYS = [

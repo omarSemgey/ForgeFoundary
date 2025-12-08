@@ -11,7 +11,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class DumbModeCommand extends Command
 {
-    protected $signature = 'ForgeFoundary:dumb-mode {--mode=} {--modes-path=} {--raw-yaml} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'dumb-mode {--mode=} {--modes-path=} {--raw-yaml} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
     protected $description = 'Dump the configuration values for the ForgeFoundry command selected mode';
     private ConfigContextDTO $configContextDTO;
     private CliInputContextDTO $cliInputContextDTO;

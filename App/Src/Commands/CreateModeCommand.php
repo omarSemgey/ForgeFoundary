@@ -13,7 +13,7 @@ use Illuminate\Filesystem\Filesystem;
 
 class CreateModeCommand extends Command
 {
-    protected $signature = 'ForgeFoundary:create-mode {--mode-name=} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'create-mode {--mode-name=} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
     protected $description = 'Create a new mode for the ForgeFoundary command';
 
     public function __construct(
