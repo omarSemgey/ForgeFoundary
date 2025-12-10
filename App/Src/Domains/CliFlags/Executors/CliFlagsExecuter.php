@@ -10,42 +10,40 @@ use Symfony\Component\Yaml\Yaml;
 
 // ===============================================
 // Class: CliFlagsExecuter
-// Purpose: Applies CLI flag overrides to the configuration values
-//          and updates the mode configuration context accordingly.
-// Functions:
-//   - __construct(): injects the ConfigLoader dependency
-//   - loadContexts(): loads ConfigContextDTO and CliFlagsContextDTO from the ContextBus
-//   - executeCliFlags(): executes the process of overriding config values with CLI flags
+// Purpose: Applies CLI flag overrides to the mode configuration.
+//          It reads the CLI flags provided by the user, normalizes their values,
+//          and updates the corresponding configuration keys recursively.
 // ===============================================
 class CliFlagsExecuter
 {
-    // Holds configuration context retrieved from ContextBus
+    // Holds the current mode configuration loaded from the context bus
     private ConfigContextDTO $configContextDTO;
 
-    // Holds CLI flags context retrieved from ContextBus
+    // Holds the CLI flags context, including provided flags and which config keys they can mutate
     private CliFlagsContextDTO $cliFlagsContextDTO;
 
+    // Config loader helper used to reload configuration after mutations
     public function __construct(protected ConfigLoader $configLoader){}
 
     // ===============================================
     // Function: loadContexts
     // Inputs: none
-    // Outputs: void
-    // Purpose: Loads necessary contexts from ContextBus for execution
-    // Logic Walkthrough:
-    //   1. Retrieves ConfigContextDTO from ContextBus
-    //   2. Logs info about loading config context
-    //   3. Retrieves CliFlagsContextDTO from ContextBus
-    //   4. Logs info about loading CLI flags context
-    // External Functions/Helpers Used:
-    //   - ContextBus()->get()
+    // Outputs: none
+    // Purpose: Loads required contexts from the ContextBus singleton
+    // Logic:
+    //   1. Retrieve ConfigContextDTO from the context bus
+    //   2. Retrieve CliFlagsContextDTO from the context bus
+    //   3. Logs debug info about loaded contexts
+    // External Functions/Helpers:
+    //   - ContextBus()
     //   - Debugger()->info()
     // Side Effects:
-    //   - Initializes $configContextDTO and $cliFlagsContextDTO properties
+    //   - Initializes $this->configContextDTO and $this->cliFlagsContextDTO
     // ===============================================
     private function loadContexts(): void {
         $this->configContextDTO = ContextBus()->get(ConfigContextDTO::class);
         Debugger()->info("Loaded context: 'ConfigContextDTO' from the context bus");
+
         $this->cliFlagsContextDTO = ContextBus()->get(CliFlagsContextDTO::class);
         Debugger()->info("Loaded context: 'CliFlagsContextDTO' from the context bus");
     }
@@ -53,42 +51,90 @@ class CliFlagsExecuter
     // ===============================================
     // Function: executeCliFlags
     // Inputs: none
-    // Outputs: void
-    // Purpose: Overrides default mode configuration values using CLI flags
-    //          and updates both ContextBus and the system config loader
-    // Logic Walkthrough:
-    //   1. Loads contexts via loadContexts()
-    //   2. Converts current mode configuration to YAML string
-    //   3. Iterates over all provided CLI flags
-    //      - Splits each flag into key and value
-    //      - Retrieves default value for the key
-    //      - Logs info about overriding the default with provided value
-    //      - Replaces the default value with the provided value in the YAML string
-    //   4. Parses YAML back to PHP array
-    //   5. Mutates ContextBus mode value with updated configuration
-    //   6. Loads updated config into system via ConfigLoader
-    // External Functions/Helpers Used:
-    //   - $this->loadContexts()
-    //   - Yaml::dump()
-    //   - Yaml::parse()
+    // Outputs: none
+    // Purpose: Main entry point to apply CLI flags to the mode configuration
+    // Logic:
+    //   1. Load contexts
+    //   2. Iterate over provided CLI flags
+    //   3. Normalize the value (boolean conversion for 'true'/'false' or keep as string)
+    //   4. Apply the flag recursively to all matching configuration keys
+    //   5. Update the ContextBus and reload the configuration via ConfigLoader
+    // External Functions/Helpers:
+    //   - loadContexts()
+    //   - applyCliFlagRecursive()
     //   - ContextBus()->mutateModeValue()
-    //   - Debugger()->info()
     //   - $this->configLoader->loadConfig()
+    //   - Debugger()->info()
     // Side Effects:
-    //   - Updates configuration values in ContextBus and system
+    //   - Mutates the mode configuration stored in the context bus and in the config loader
     // ===============================================
     public function executeCliFlags(): void {
         $this->loadContexts();
-        $configValue = Yaml::dump($this->configContextDTO->modeValue);
-        
-        foreach($this->cliFlagsContextDTO->providedCliFlags as $flag){
-            [$key, $providedValue] = explode('=', $flag, 2);
-            $defaultValue = $this->cliFlagsContextDTO->definedCliFlags[$key];
-            Debugger()->info("'{$key}' cli flag overrided the default value: '{$defaultValue}' to the provided value: '{$providedValue}'");
-            $configValue = str_replace($defaultValue, $providedValue, $configValue);
+        $configValue = $this->configContextDTO->modeValue;
+        $mutatableConfigKeys = $this->cliFlagsContextDTO->mutatableConfigKeys; 
+
+        foreach ($this->cliFlagsContextDTO->providedCliFlags as $flag) {
+            [$cliFlag, $providedValue] = explode('=', $flag, 2);
+
+            if (!isset($mutatableConfigKeys[$cliFlag])) {
+                Debugger()->warning("Unknown CLI flag '{$cliFlag}', skipping.");
+                continue;
+            }
+
+            // Normalize boolean strings into actual boolean values
+            if ($providedValue === 'true' || $providedValue === '1') {
+                $normalizedValue = true;
+                Debugger()->info("'{$cliFlag}' CLI flag detected as bool TRUE");
+            } elseif ($providedValue === 'false' || $providedValue === '0') {
+                $normalizedValue = false;
+                Debugger()->info("'{$cliFlag}' CLI flag detected as bool FALSE");
+            } else {
+                $normalizedValue = $providedValue;
+            }
+
+            // Apply normalized value recursively to all config keys associated with this CLI flag
+            foreach ($mutatableConfigKeys[$cliFlag] as $configKey) {
+                $this->applyCliFlagRecursive($configValue, $configKey, $normalizedValue, $cliFlag);
+            }
         }
-        $configValue = Yaml::parse($configValue);
+
+        // Update the context bus and reload the configuration with applied CLI flags
         ContextBus()->mutateModeValue($configValue);
         $this->configLoader->loadConfig('mode_config', $configValue);
+
+        Debugger()->info("Final mode configuration after applying CLI flags:\n" . Yaml::dump($configValue));
+    }
+
+    // ===============================================
+    // Function: applyCliFlagRecursive
+    // Inputs:
+    //   - array &$config: reference to the current configuration array
+    //   - string $configKey: the key in the configuration to update
+    //   - mixed $value: the value to apply to the key
+    //   - string $cliFlag: the CLI flag being applied (for logging)
+    // Outputs: none
+    // Purpose: Recursively applies a CLI flag value to all matching keys in a nested configuration array
+    // Logic:
+    //   1. Iterate through all keys in the config array
+    //   2. If a value is an array, recurse into it
+    //   3. If the key matches the target config key, overwrite it with the new value
+    //   4. Log the change
+    // External Functions/Helpers:
+    //   - Debugger()->info()
+    // Side Effects:
+    //   - Mutates the $config array in-place
+    // ===============================================
+    private function applyCliFlagRecursive(array &$config, string $configKey, mixed $value, string $cliFlag): void {
+        foreach ($config as $key => &$val) {
+            if (is_array($val)) {
+                $this->applyCliFlagRecursive($val, $configKey, $value, $cliFlag);
+                continue;
+            }
+
+            if ($key === $configKey) {
+                Debugger()->info("CLI flag '{$cliFlag}' overwrote '{$key}' value '{$val}' with '{$value}'");
+                $val = $value;
+            }
+        }
     }
 }

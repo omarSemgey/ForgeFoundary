@@ -41,7 +41,7 @@ class NamingConventionsSystemRunner
     // Purpose: Executes the naming conventions system end-to-end
     // Logic Walkthrough:
     //   1. Prints header that system runner started
-    //   2. Checks if directories system is enabled via SystemStateManager
+    //   2. Checks if naming_conventions system is enabled via SystemStateManager
     //      - Returns early if not enabled
     //   3. Calls validate() to run validation layer
     //   4. Calls resolve() to run resolver and publish context
@@ -57,7 +57,7 @@ class NamingConventionsSystemRunner
     {
         Debugger()->header('Naming Conventions System Runner Started.', 'big');
 
-        if (!$this->systemStateManager->assertEnabled('directories', 'Directories')) {
+        if (!$this->systemStateManager->assertEnabled('naming_conventions', 'Naming Conventions')) {
             return;
         }
 

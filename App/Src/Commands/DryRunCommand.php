@@ -2,6 +2,7 @@
 
 namespace App\Src\Commands;
 
+use App\Src\Commands\Traits\HandlesUserErrors;
 use App\Src\Domains\Commands\Runners\CommandSystemRunner;
 use App\Src\Domains\Components\Runners\ComponentSystemRunner;
 use App\Src\Domains\Directories\Runners\DirectorySystemRunner;
@@ -24,8 +25,9 @@ use App\Src\Core\Helpers\PathManager;
 // ===============================================
 class DryRunCommand extends Command
 {
+    use HandlesUserErrors;
     // Signature defines all options available for this command
-    protected $signature = 'dry-run {--mode=} {--modes-path=} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'dry-run {--mode=} {--modes-path=} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
     protected $description = 'Dry run the ForgeFoundary command';
 
     // Keys used for mapping dry run config overrides
@@ -74,31 +76,33 @@ class DryRunCommand extends Command
     //   - Creates and deletes a temporary folder
     //   - Generates in-memory dry run output
     // ===============================================
-    public function handle(): void
+    public function handle(): int
     {
-        define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
-
-        $tempPath = sys_get_temp_dir() . '/forge_dry_run_' . uniqid();
-        File::makeDirectory($tempPath, 0755, true);
-
-        $this->overrideComponentPath($tempPath);
+        return $this->runWithUserFriendlyErrors(function() {
+            define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
     
-        $this->bootstrapper->boot($this);
-     
-        Debugger()->header('Forge Foundary Command Started.', 'huge');
-
-        $this->componentSystemRunner->run();
-        $this->directorySystemRunner->run();
-        $this->unitSystemRunner->run();
-        $this->templateSystemRunner->run();
-        $this->commandSystemRunner->execute(false);
-
-        $this->treeManager->renderTree($this);
-
-        Debugger()->header('Forge Foundary Command Finished.', 'huge');
+            $tempPath = sys_get_temp_dir() . '/forge_dry_run_' . uniqid();
+            File::makeDirectory($tempPath, 0755, true);
+    
+            $this->overrideComponentPath($tempPath);
         
-        Debugger()->header('Debugger Finished.', 'huge');
-        File::deleteDirectory($tempPath);
+            $this->bootstrapper->boot($this);
+         
+            Debugger()->header('Forge Foundary Command Started.', 'huge');
+    
+            $this->componentSystemRunner->run();
+            $this->directorySystemRunner->run();
+            $this->unitSystemRunner->run();
+            $this->templateSystemRunner->run();
+            $this->commandSystemRunner->execute(false);
+    
+            $this->treeManager->renderTree($this);
+    
+            Debugger()->header('Forge Foundary Command Finished.', 'huge');
+            
+            Debugger()->header('Debugger Finished.', 'huge');
+            File::deleteDirectory($tempPath);
+        });
     }
 
     // ===============================================

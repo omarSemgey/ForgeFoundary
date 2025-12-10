@@ -103,7 +103,7 @@ class UnitResolver
     // ===============================================
     private function resolveUnitsMapDefaults(): void{
         $defaults =  Config()->get("mode_config." . self::UNTIT_CONFIG_KEYS['map'] . "." . $this->unitsMapMode . "." . self::UNTIT_CONFIG_KEYS['defaults']);
-        
+        Debugger()->info("Units created by default config value: " . var_export($defaults, true));
         if(!$defaults) {
             Debugger()->warning("Units map defaults not provided; defaulting to false");
             $defaults = false;

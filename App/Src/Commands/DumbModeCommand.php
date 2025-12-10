@@ -2,6 +2,7 @@
 
 namespace App\Src\Commands;
 
+use App\Src\Commands\Traits\HandlesUserErrors;
 use App\Src\Domains\Configs\DTOs\ConfigContextDTO;
 use Illuminate\Console\Command;
 use App\Src\Core\Bootstrappers\Bootstrapper;
@@ -22,21 +23,9 @@ use Symfony\Component\Yaml\Yaml;
 // ===============================================
 class DumbModeCommand extends Command
 {
-    // ===============================================
-    // Laravel CLI signature
-    // Options:
-    //   --mode
-    //   --modes-path
-    //   --raw-yaml
-    //   --config-name
-    //   --config-path
-    //   --custom
-    //   --cli-log
-    //   --file-log
-    //   --log-file-name
-    //   --log-file-path
-    // ===============================================
-    protected $signature = 'dumb-mode {--mode=} {--modes-path=} {--raw-yaml} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    use HandlesUserErrors;
+    // Signature defines all options available for this command
+    protected $signature = 'dumb-mode {--mode=} {--modes-path=} {--raw-yaml} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
     protected $description = 'Dump the configuration values for the ForgeFoundary command selected mode';
     
     private ConfigContextDTO $configContextDTO;
@@ -72,7 +61,7 @@ class DumbModeCommand extends Command
 
     // ===============================================
     // Function: handle
-    // Inputs: none (entry point for Laravel command)
+    // Inputs: none (entry point for command)
     // Outputs: void
     // Purpose: Main execution function for dumb-mode command
     // Logic Walkthrough:
@@ -90,18 +79,20 @@ class DumbModeCommand extends Command
     //   - dumbMode()
     // Side Effects: boots core systems, outputs configuration to console
     // ===============================================
-    public function handle(): void
+    public function handle(): int
     {
-        define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
-        $this->bootstrapper->boot($this);
-        $this->loadContext();
-
-        Debugger()->header('Forge Foundary Dumb Mode Command Started.', 'huge');
-        $this->dumbMode($this->configContextDTO->modeValue, $this->configContextDTO->modeName);
-     
-        Debugger()->header('Forge Foundary Dumb Mode Command Finished.', 'huge');
-        
-        Debugger()->header('Debugger Finished.', 'huge');
+        return $this->runWithUserFriendlyErrors(function() {
+            define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
+            $this->bootstrapper->boot($this);
+            $this->loadContext();
+    
+            Debugger()->header('Forge Foundary Dumb Mode Command Started.', 'huge');
+            $this->dumbMode($this->configContextDTO->modeValue, $this->configContextDTO->modeName);
+         
+            Debugger()->header('Forge Foundary Dumb Mode Command Finished.', 'huge');
+            
+            Debugger()->header('Debugger Finished.', 'huge');
+        });
     }
 
     // ===============================================

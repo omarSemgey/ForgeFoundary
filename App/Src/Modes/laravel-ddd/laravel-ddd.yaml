@@ -36,8 +36,8 @@ templates_enabled_mutator: &templates_enabled_mutator true
 directories_enabled_mutator: &directories_enabled_mutator true
 
 # --- Units Mutators ---
+units_created_by_default_mutators: &units_created_by_default_mutators true
 units_map_mode: &units_map_mode_mutator directories
-units_created_by_default_mutators: &units_created_by_default_mutators false
 units_enabled_mutator: &units_enabled_mutator true
 
 # --- Naming Convention Mutators ---
@@ -70,8 +70,8 @@ cli_flags:
   templates_enabled: *templates_enabled_mutator
 
   # --- Units Cli Flags ---
-  units_map_mode: *units_map_mode_mutator
   units_created_by_default: *units_created_by_default_mutators
+  units_map_mode: *units_map_mode_mutator
   units_enabled: *units_enabled_mutator
 
   # --- Commands Cli Flags ---
@@ -124,6 +124,7 @@ directories:
   - Tests/Unit
   - Seeders
   - Factories
+  - Hello
 
 # ----------------------------------------------
 # Templates
@@ -131,9 +132,9 @@ directories:
 # NOTE: the code currenlty only supports mustache and twig templating engines
 # See docs at: //comingSoon.com/Templates
 # ----------------------------------------------
-templates_path: *templates_path_mutator # Relative path to the scaffolder base directory
+templates_path: *templates_path_mutator # Relative path to the scaffolder App/Src
 templates_enabled: *templates_enabled_mutator
-templates_require_existing_dirs: *templates_require_existing_dirs_mutator
+templates_require_existing_dirs: *templates_require_existing_dirs_mutator # If true, only templates for existing directories will be processed.
 template_engine_extensions: 
   - mustache
   - twig
@@ -158,6 +159,15 @@ units:
   - Crud
   - Auth
   - Logic
+
+units_map:
+  mode: units
+
+  units: 
+    units_created_by_default: true
+    overrides: 
+      Crud: []
+      Logic: [] 
 
 # ----------------------------------------------
 # Units Map

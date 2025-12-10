@@ -4,11 +4,9 @@ namespace App\Src\Domains\Configs\Resolvers;
 
 use App\Src\Domains\Configs\DTOs\ConfigContextDTO;
 use App\Src\Domains\Configs\Helpers\ConfigManager;
-use Log;
 use RuntimeException;
 use App\Src\Core\DTOs\CliInputContextDTO;
 use App\Src\Core\Helpers\PathManager;
-use Str;
 use Symfony\Component\Yaml\Yaml;
 
 // ===============================================
@@ -35,6 +33,7 @@ class ConfigResolver
     private string $modeConfigName;
     private string $modesConfigPath;
     private array $modeConfigValue;
+    private string $modeAbsolutePath;
 
     private CliInputContextDTO $cliInputContextDTO;
 
@@ -89,6 +88,7 @@ class ConfigResolver
         $this->resolveModeConfigName();
         $this->resolveModesConfigPath();
         $this->resolveModeConfigValue();
+        $this->resolveModeAbsolutePath();
 
         return new ConfigContextDTO(
             // Main Config
@@ -99,6 +99,7 @@ class ConfigResolver
             $this->modeConfigName,
             $this->modesConfigPath,
             $this->modeConfigValue,
+            $this->modeAbsolutePath,
         );
     }
 
@@ -233,6 +234,13 @@ class ConfigResolver
 
         Debugger()->info("Loaded mode config file: '{$modePath}'");
         Debugger()->info("Mode '{$this->modeConfigName}' loaded successfully");
+    }
+
+    private function resolveModeAbsolutePath(): void{
+        $modePath = $this->findMode();
+
+        $this->modeAbsolutePath = $modePath;
+        Debugger()->info("Absolute Mode Path: '{$this->modeAbsolutePath}'");
     }
 
     // ===============================================

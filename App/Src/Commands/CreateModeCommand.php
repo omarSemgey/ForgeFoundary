@@ -2,6 +2,7 @@
 
 namespace App\Src\Commands;
 
+use App\Src\Commands\Traits\HandlesUserErrors;
 use App\Src\Domains\Configs\DTOs\ConfigContextDTO;
 use Illuminate\Console\Command;
 use RuntimeException;
@@ -25,12 +26,13 @@ use Illuminate\Filesystem\Filesystem;
 // ==================================================
 class CreateModeCommand extends Command
 {
+    use HandlesUserErrors;
     // ===============================================
     // Command signature and description
     // signature: command name and CLI options
     // description: short summary displayed in artisan list
     // ===============================================
-    protected $signature = 'create-mode {--mode-name=} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'create-mode {--mode-name=} {--cli-log} {--file-log';
     protected $description = 'Create a new mode for the ForgeFoundary command';
 
     public function __construct(
@@ -88,19 +90,21 @@ class CreateModeCommand extends Command
     //   - generateMode()
     // Side Effects: initializes context and runs bootstrapping logic
     // ===============================================
-    public function handle(): void
+    public function handle(): int
     {
-        define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
-        $this->bootstrapper->boot($this);
-        $this->loadContext();
-
-        Debugger()->header('Forge Foundary Create Mode Command Started.', 'huge');
-
-        $this->generateMode();
-     
-        Debugger()->header('Forge Foundary Create Mode Command Finished.', 'huge');
-        
-        Debugger()->header('Debugger Finished.', 'huge');
+        return $this->runWithUserFriendlyErrors(function() {
+            define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
+            $this->bootstrapper->boot($this);
+            $this->loadContext();
+    
+            Debugger()->header('Forge Foundary Create Mode Command Started.', 'huge');
+    
+            $this->generateMode();
+         
+            Debugger()->header('Forge Foundary Create Mode Command Finished.', 'huge');
+            
+            Debugger()->header('Debugger Finished.', 'huge');
+        });
     }
 
     // ===============================================

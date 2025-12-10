@@ -2,6 +2,7 @@
 
 namespace App\Src\Commands;
 
+use App\Src\Commands\Traits\HandlesUserErrors;
 use App\Src\Domains\Commands\Runners\CommandSystemRunner;
 use App\Src\Domains\Components\Runners\ComponentSystemRunner;
 use App\Src\Domains\Directories\Runners\DirectorySystemRunner;
@@ -14,7 +15,7 @@ use App\Src\Core\Helpers\PathManager;
 use App\Src\Core\Helpers\TreeManager;
 
 // ===============================================
-// Class: ForgeFoundaryCommand
+// Class: ScaffoldCommand
 // Purpose: Entry point for executing ForgeFoundary from the CLI.
 //          Initializes the tool, runs all system runners in order, 
 //          manages CLI contexts, and outputs reports/logs.
@@ -23,11 +24,12 @@ use App\Src\Core\Helpers\TreeManager;
 //   - loadContexts(): loads CLI input context from ContextBus
 //   - handle(): main command handler, executes all system runners and debugging/reporting
 // ===============================================
-class ForgeFoundaryCommand extends Command
+class ScaffoldCommand extends Command
 {
+    use HandlesUserErrors;
     // CLI command signature and options
-    protected $signature = 'scaffold {--mode=} {--modes-path=} {--tree-view} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
-    protected $description = 'Run ForgeFoundary command';
+    protected $signature = 'scaffold {--mode=} {--modes-path=} {--tree-view} {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
+    protected $description = 'Scaffold a project structure based on the specified mode.';
 
     public function __construct(
         private Bootstrapper $bootstrapper,
@@ -98,27 +100,29 @@ class ForgeFoundaryCommand extends Command
     //   - Modifies tool state by running all scaffolding systems
     //   - Outputs logs and reports
     // ===============================================
-    public function handle(): void
+    public function handle(): int
     {
-        define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
-        $this->bootstrapper->boot($this);
-     
-        Debugger()->header('Forge Foundary Command Started.', 'huge');
-
-        $this->loadContexts();
-        $this->componentSystemRunner->run();
-        $this->directorySystemRunner->run();
-        $this->unitSystemRunner->run();
-        $this->templateSystemRunner->run();
-        $this->commandSystemRunner->execute(false);
-
-        Debugger()->header('Forge Foundary Command Finished.', 'huge');
-        
-        Debugger()->header('Debugger Finished.', 'huge');
-        
-        Reporter()->report($this->components);
-        if($this->cliInputContextDTO->getOption("tree-view")){
-            $this->treeManager->renderTree($this);
-        }
+        return $this->runWithUserFriendlyErrors(function() {
+            define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
+            $this->bootstrapper->boot($this);
+         
+            Debugger()->header('Forge Foundary Command Started.', 'huge');
+    
+            $this->loadContexts();
+            $this->componentSystemRunner->run();
+            $this->directorySystemRunner->run();
+            $this->unitSystemRunner->run();
+            $this->templateSystemRunner->run();
+            $this->commandSystemRunner->execute(false);
+    
+            Debugger()->header('Forge Foundary Command Finished.', 'huge');
+            
+            Debugger()->header('Debugger Finished.', 'huge');
+            
+            Reporter()->report($this->components);
+            if($this->cliInputContextDTO->getOption("tree-view")){
+                $this->treeManager->renderTree($this);
+            }
+        });
     }
 }

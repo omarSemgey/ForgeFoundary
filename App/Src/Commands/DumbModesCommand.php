@@ -2,6 +2,7 @@
 
 namespace App\Src\Commands;
 
+use App\Src\Commands\Traits\HandlesUserErrors;
 use App\Src\Domains\Configs\DTOs\ConfigContextDTO;
 use Illuminate\Console\Command;
 use App\Src\Core\Bootstrappers\Bootstrapper;
@@ -23,8 +24,9 @@ use Symfony\Component\Yaml\Yaml;
 // ===============================================
 class DumbModesCommand extends Command
 {
+    use HandlesUserErrors;
     // Command signature and description
-    protected $signature = 'dumb-modes {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log} {--log-file-name=} {--log-file-path=}';
+    protected $signature = 'dumb-modes {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
     protected $description = 'Dump all the modes available for the ForgeFoundry command';
 
     // Config context loaded from ContextBus
@@ -68,7 +70,7 @@ class DumbModesCommand extends Command
 
     // ===============================================
     // Function: handle
-    // Inputs: none (executed by Laravel command runner)
+    // Inputs: none (executed by command runner)
     // Outputs: void
     // Purpose: Main execution of dumb-modes command
     // Logic Walkthrough:
@@ -90,22 +92,24 @@ class DumbModesCommand extends Command
     //   - Boots all core systems
     //   - Sets $resolvedModes
     // ===============================================
-    public function handle(): void
+    public function handle(): int
     {
-        define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
-        $this->bootstrapper->boot($this);
-
-        $this->loadContext();
-
-        Debugger()->header('Forge Foundary Dumb Modes Command Started.', 'huge');
-        
-        $this->resolveModes();
-
-        $this->printModes();
-     
-        Debugger()->header('Forge Foundary Dumb Modes Command Finished.', 'huge');
-        
-        Debugger()->header('Debugger Finished.', 'huge');
+        return $this->runWithUserFriendlyErrors(function() {
+            define('TOOL_BASE_PATH', $this->pathManager->resolveToolPath(__DIR__));
+            $this->bootstrapper->boot($this);
+    
+            $this->loadContext();
+    
+            Debugger()->header('Forge Foundary Dumb Modes Command Started.', 'huge');
+            
+            $this->resolveModes();
+    
+            $this->printModes();
+         
+            Debugger()->header('Forge Foundary Dumb Modes Command Finished.', 'huge');
+            
+            Debugger()->header('Debugger Finished.', 'huge');
+        });
     }
 
     // ===============================================

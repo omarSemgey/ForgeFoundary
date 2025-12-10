@@ -8,12 +8,12 @@ namespace App\Src\Domains\CliFlags\DTOs;
 //          Holds both the CLI flags that are defined in the system and
 //          the flags actually provided by the user at runtime.
 // Functions:
-//   - __construct(): Initializes the DTO with defined and provided flags
+//   - __construct(): Initializes the DTO with mutatable config keys and provided flags
 // ===============================================
 final class CliFlagsContextDTO
 {
     public function __construct(
-        public array $definedCliFlags,
         public array $providedCliFlags,
+        public array $mutatableConfigKeys,
     ) {}
 }

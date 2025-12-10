@@ -34,20 +34,17 @@ directories_enabled_mutator: &directories_enabled_mutator
 
 # --- Units Mutators ---
 units_map_mode: &units_map_mode_mutator 
-units_created_by_default_mutators: &units_created_by_default_mutators false
+units_created_by_default_mutators: &units_created_by_default_mutators 
 units_enabled_mutator: &units_enabled_mutator
 
 # --- Naming Convention Mutators ---
-naming_convention_enabled_mutator: &naming_convention_enabled_mutator
+naming_convention_enabled_mutator: &naming_conventions_enabled_mutator
 
 # --- Commands Mutators ---
 commands_enabled_mutator: &commands_enabled_mutator
 
 # --- Cli Flags Mutators ---
 cli_flags_enabled_mutator: &cli_flags_enabled_mutator
-
-# --- PSR-4 base Mutators ---
-psr-4_base_mutator: &psr-4_base_mutator   # PSR-4 root namespace
 
 # ----------------------------------------------
 # CLI Flags
@@ -57,8 +54,8 @@ psr-4_base_mutator: &psr-4_base_mutator   # PSR-4 root namespace
 cli_flags_enabled: *cli_flags_enabled_mutator
 cli_flags: 
   # --- Component Cli Flags ---
-  component_path: *component_path_mutator
   component_name: *component_name_mutator
+  component_path: *component_path_mutator
 
   # --- Directory Cli Flags ---
   directories_enabled: *directories_enabled_mutator
@@ -77,10 +74,7 @@ cli_flags:
   commands_enabled: *commands_enabled_mutator
 
   # --- Naming Convention Cli Flags ---
-  naming_convention_enabled: *naming_convention_enabled_mutator
-
-  # --- PSR-4 base Cli Flags ---
-  psr-4_base: *psr-4_base_mutator
+  naming_conventions_enabled: *naming_convention_enabled_mutator
 
 # ----------------------------------------------
 # Commands
@@ -99,7 +93,7 @@ commands:
 # The main folder containing all generated archeticture.
 # See docs at: //comingSoon.com/Directories
 # ----------------------------------------------
-component_path: *component_path_mutator # Relative path to where you are executing the scaffolder
+component_path: *component_path_mutator # Absolute value or relative to where you run the tool
 component_name: *component_name_mutator
 
 # ----------------------------------------------
@@ -113,11 +107,12 @@ directories: []
 # ----------------------------------------------
 # Templates
 # Defines default template behavior and per-template overrides.
-# NOTE: the code currenlty only supports mustache and twig templating engines
+# NOTE: the code currenlty only supports mustache, twig and blade templating engines
 # See docs at: //comingSoon.com/Templates
 # ----------------------------------------------
-templates_path: *templates_path_mutator # Relative path to the scaffolder base directory
-templates_enabled: *templates_enabled_mutator
+templates_path:  # Relative path to the scaffolder App/Src.
+templates_enabled: 
+templates_require_existing_dirs: # If true, only templates for existing directories will be processed.
 template_engine_extensions: []
 
 templates:
@@ -158,23 +153,49 @@ units_map:
 # 'overrides' lets you apply exceptions to global rules.
 # See docs at: //comingSoon.com/NamingConvention
 # ----------------------------------------------
-naming_convention_enabled: *naming_convention_enabled_mutator
-naming_convention:
+naming_conventions_enabled: *naming_conventions_enabled_mutator
+naming_conventions:
   camel_case:
     component: true
     directories:
-      units_created_by_default: *units_created_by_default_mutators
-      defaults: false
+      defaults: true
       overrides: []
 
     units:
-      units_created_by_default: *units_created_by_default_mutators
       defaults: true
       overrides: []
 
     templates:
-      defaults: []
-      overrides: {}
+      defaults: true
+      overrides: []
 
-# -- PSR-4 base value
-psr-4_base: *psr-4_base_mutator # PSR-4 root namespace
+
+naming_conventions:
+  camel_case:
+    component: true
+    directories:
+      defaults: false
+      overrides: 
+        - Controllers
+
+    units:
+      defaults: false
+      overrides: []
+
+    templates:
+      defaults: true
+      overrides: []
+
+  pascal_case:
+    component: false
+    directories:
+      defaults: true
+      overrides: 
+        - Services
+    units:
+      defaults: false
+      overrides: []
+    templates:
+      defaults: false 
+      overrides: 
+        - Template.mustache
