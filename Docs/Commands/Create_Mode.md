@@ -54,9 +54,9 @@ After creating a mode:
 
 1. Navigate to your new mode folder:
 
-   ```bash
+```bash
    cd Modes/MyCustomMode
-   ```
+```
 
 2. Edit the YAML file to define your **directories, templates, units, components, commands, CLI flags, and naming conventions**.
 
@@ -64,9 +64,6 @@ After creating a mode:
 
 4. Run the mode using:
 
-   ```bash
+```bash
    ForgeFoundary scaffold --mode=MyCustomMode
-   ```
-
-> For more advanced usage and to explore all mode sections, see the [Creating Modes](Docs/Creating_Modes).
-> You can also learn about using **Mutators** for sharing data across multiple configuration keys in [Mutators.md](Docs/ModeSections/Mutators.md).
+```

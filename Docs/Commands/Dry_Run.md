@@ -77,5 +77,3 @@ After reviewing a dry run:
 ```bash
 ForgeFoundary scaffold --mode=MyCustomMode
 ```
-
-> For more information on creating modes and customizing your scaffolding, see [Creating Modes](../Creating_Modes.md) and the sections under `Docs/ModeSections/`.

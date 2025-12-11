@@ -61,5 +61,3 @@ ForgeFoundary dry-run --mode=MyCustomMode
 ```bash
 ForgeFoundary scaffold --mode=MyCustomMode
 ```
-
-> For more information on creating or customizing modes, see [Creating Modes](../Creating_Modes.md) and the sections under `Docs/ModeSections/`.

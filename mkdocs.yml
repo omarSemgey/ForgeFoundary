@@ -1,0 +1,42 @@
+site_name: ForgeFoundary Docs
+docs_dir: Docs
+site_url: https://omarSemgey.github.io/ForgeFoundary/
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - Manual: Manual.md
+  - Getting Started: Getting_Started.md
+  - Installation: Installation.md
+  - Commands:
+      - Commands Reference: Commands/Commands.md
+      - Create Mode: Commands/Create_Mode.md
+      - Scaffold: Commands/Scaffold.md
+      - Dumb Modes: Commands/Dumb_Modes.md
+      - Dumb Mode: Commands/Dumb_Mode.md
+      - Dry Run: Commands/Dry_Run.md
+  - Mode Sections:
+      - Creating Modes: Modes/Creating_Modes.md
+      - Mode Metadata: Modes/ModeSections/Mode_Metadata.md
+      - Component: Modes/ModeSections/Component.md
+      - CLI Flags: Modes/ModeSections/CLI_Flags.md
+      - Directories: Modes/ModeSections/Directories.md
+      - Mutators: Modes/ModeSections/Mutators.md
+      - Commands: Modes/ModeSections/Commands.md
+      - Templates: Modes/ModeSections/Templates.md
+      - Units: Modes/ModeSections/Units.md
+      - Naming Conventions: Modes/ModeSections/Naming_Conventions.md

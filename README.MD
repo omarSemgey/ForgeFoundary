@@ -27,4 +27,4 @@ ForgeFoundary is designed for developers who value automation, consistency, and 
 
 ## Further Instructions
 
-For detailed instructions, examples, and a map of available documentation, refer to [Docs/Docs.md](Docs/Docs.md). This file provides an organized overview of all other documentation files included with ForgeFoundary.
+For detailed instructions, examples, and a map of available documentation, refer to [Docs/Manual](Docs/Manual.md). This file provides an organized overview of all other documentation files included with ForgeFoundary.

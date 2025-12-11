@@ -65,5 +65,3 @@ After reviewing a mode with `dumb-mode`:
 
 * Use `dry-run` to simulate scaffolding with this mode.
 * Use `scaffold` to apply the mode and generate project files.
-
-> For more information on **creating or customizing modes**, see [Creating Modes](Creating_Modes.md) and explore the sections under `Docs/ModeSections/`.

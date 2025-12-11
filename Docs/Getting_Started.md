@@ -23,17 +23,17 @@ Once you’ve followed the instructions in [Installation Instructions](Installat
 
 1. Verify the installation:
 
-   ```bash
+```bash
    ForgeFoundary list
-   ```
+```
 
    This will display available commands and options.
 
 2. Test a scaffold run using the dry-run command:
 
-   ```bash
+```bash
    ForgeFoundary dry-run
-   ```
+```
 
    This simulates scaffolding without creating files, letting you preview your setup.
 
@@ -45,9 +45,9 @@ Once you’ve followed the instructions in [Installation Instructions](Installat
 
 1. Generate a new mode skeleton:
 
-   ```bash
+```bash
    ForgeFoundary create-mode MyCustomMode
-   ```
+```
 
    This creates a folder in `Modes/` with all necessary files ready for configuration.
 
@@ -58,12 +58,8 @@ Once you’ve followed the instructions in [Installation Instructions](Installat
 
 3. Run your mode:
 
-   ```bash
+```bash
    ForgeFoundary scaffold --mode=MyCustomMode
-   ```
+```
 
    This will scaffold the structure based on your configuration.
-
----
-
-For further instructions, mode documentation, and advanced usage, refer to [Docs/Docs.md](Docs/Docs.md).

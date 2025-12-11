@@ -72,5 +72,3 @@ After installation, you can run the tool using:
 ```bash
 ForgeFoundary dry-run
 ```
-
-For further instructions, mode documentation, and advanced usage, refer to [Docs/Docs.md](Docs/Docs.md).

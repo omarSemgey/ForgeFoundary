@@ -53,7 +53,3 @@ ForgeFoundary scaffold
 # Run a custom mode and render tree view
 ForgeFoundary scaffold --mode=MyCustomMode --tree-view
 ```
-
----
-
-For more information on **creating modes** and configuring your scaffolding structure, see [Creating Modes](Creating_Modes.md) and explore the sections under `Docs/ModeSections/`.
