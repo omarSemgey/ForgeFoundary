@@ -529,10 +529,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Examples
       
     </span>
   </a>
@@ -1089,10 +1089,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#examples" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Examples
       
     </span>
   </a>
@@ -1130,14 +1130,22 @@
 <h1 id="create-mode-command">Create Mode Command</h1>
 <h2 id="overview">Overview</h2>
 <p>The <code>create-mode</code> command allows you to <strong>quickly generate a new mode skeleton</strong> in ForgeFoundary. A mode defines how your project should be scaffolded, including directories, templates, units, components, commands, CLI flags, and naming conventions.</p>
+<p>With the latest update, you can now <strong>choose from four mode types</strong> that provide different levels of detail for your new mode:</p>
+<ul>
+<li><strong>Minimal</strong> – Only mode metadata, component path &amp; name, empty directories array, and basic template paths.</li>
+<li><strong>Moderate</strong> – Metadata, component, templates, units sections included, but without nested keys.</li>
+<li><strong>Extended</strong> – Includes metadata, component, templates, units, commands, CLI flags, and naming conventions with mutators.</li>
+<li><strong>Full</strong> – All keys, including nested keys and mutators; the most complete starting template.</li>
+</ul>
 <p>This command is the <strong>starting point</strong> for building custom scaffolding logic that suits your workflow.</p>
 <hr />
 <h2 id="usage">Usage</h2>
-<pre><code class="language-bash">ForgeFoundary create-mode --mode-name=MyCustomMode [options]
+<pre><code class="language-bash">ForgeFoundary create-mode --mode-name=MyCustomMode --mode-type=[minimal|moderate|extended|full] [options]
 </code></pre>
 <h3 id="options">Options</h3>
 <ul>
-<li><code>--mode-name=</code> – Required. The name of the new mode you want to create.</li>
+<li><code>--mode-name=</code> – <strong>Required.</strong> The name of the new mode you want to create.</li>
+<li><code>--mode-type=</code> – <strong>Optional.</strong> The type of mode template to use (<code>minimal</code>, <code>moderate</code>, <code>extended</code>, <code>full</code>). Defaults to <code>full</code> if not specified.</li>
 <li><code>--cli-log</code> – Enable logging output directly in the terminal while generating the mode.</li>
 <li><code>--file-log</code> – Save logs to a file while generating the mode.</li>
 </ul>
@@ -1147,20 +1155,24 @@
 <ol>
 <li>Loads your <strong>tool configuration</strong> and CLI context.</li>
 <li>Resolves paths for the new mode folder and its YAML configuration.</li>
+<li>Determines which <strong>mode template</strong> to use (<code>minimal</code>, <code>moderate</code>, <code>extended</code>, or <code>full</code>).</li>
 <li>Creates the <strong>mode directory</strong> and a <strong>Templates folder</strong> inside it.</li>
-<li>Copies a <strong>default YAML template</strong> into the new mode folder, ready to be edited.</li>
+<li>Copies the selected <strong>YAML template</strong> into the new mode folder, ready to be edited.</li>
 <li>Logs messages confirming the creation of the mode.</li>
 </ol>
 <blockquote>
 <p>Think of this command as the scaffolding for your scaffolding—everything else you define in the mode will be based on this initial setup.</p>
 </blockquote>
 <hr />
-<h2 id="example">Example</h2>
-<pre><code class="language-bash"># Create a new mode called &quot;LaravelDDDSkeleton&quot;
-ForgeFoundary create-mode --mode-name=LaravelDDDSkeleton
+<h2 id="examples">Examples</h2>
+<pre><code class="language-bash"># Create a new minimal mode
+ForgeFoundary create-mode --mode-name=SimpleMode --mode-type=minimal
 
-# Create a new mode with CLI logging enabled
-ForgeFoundary create-mode --mode-name=PythonAPI --cli-log
+# Create a full-featured mode with CLI logging enabled
+ForgeFoundary create-mode --mode-name=AdvancedMode --mode-type=full --cli-log
+
+# Create a moderate mode
+ForgeFoundary create-mode --mode-name=ModerateMode
 </code></pre>
 <hr />
 <h2 id="next-steps">Next Steps</h2>
@@ -1168,11 +1180,11 @@ ForgeFoundary create-mode --mode-name=PythonAPI --cli-log
 <ol>
 <li>Navigate to your new mode folder:</li>
 </ol>
-<pre><code class="language-bash">   cd Modes/MyCustomMode
+<pre><code class="language-bash">cd Modes/MyCustomMode
 </code></pre>
 <ol>
 <li>
-<p>Edit the YAML file to define your <strong>directories, templates, units, components, commands, CLI flags, and naming conventions</strong>.</p>
+<p>Edit the YAML file to define your <strong>directories, templates, units, components, commands, CLI flags, and naming conventions</strong> according to your workflow.</p>
 </li>
 <li>
 <p>Add or customize templates in the <code>Templates/</code> folder.</p>
@@ -1181,7 +1193,7 @@ ForgeFoundary create-mode --mode-name=PythonAPI --cli-log
 <p>Run the mode using:</p>
 </li>
 </ol>
-<pre><code class="language-bash">   ForgeFoundary scaffold --mode=MyCustomMode
+<pre><code class="language-bash">ForgeFoundary scaffold --mode=MyCustomMode
 </code></pre>
 
 
