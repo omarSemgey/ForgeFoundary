@@ -1,0 +1,2616 @@
+[===== Debugger Started =====]
+[==== Configs System Runner Started. ====]
+[=== Configs Resolver Finished. ===]
+⟶  [16:45:27] [ConfigResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:27] [ConfigResolver.php::resolveMainConfigName - warning]
+   No custom main config name provided; using default: 'ForgeFoundary'
+⟶  [16:45:27] [ConfigResolver.php::resolveMainConfigPath - warning]
+   No custom config path provided. Using default:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs
+⟶  [16:45:27] [ConfigResolver.php::resolveMainConfigValue - info]
+   Attempting to load main config 'ForgeFoundary' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs'
+⟶  [16:45:27] [ConfigResolver.php::resolveMainConfigValue - info]
+   Loaded YAML config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs/ForgeFoundary.yaml'
+⟶  [16:45:27] [ConfigResolver.php::resolveMainConfigValue - info]
+   Main config: 'ForgeFoundary' loaded successfully
+⟶  [16:45:27] [ConfigResolver.php::resolveModeConfigName - info]
+   Loaded mode name: 'laravel-ddd'
+⟶  [16:45:27] [ConfigResolver.php::resolveModesConfigPath - info]
+   Modes path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:27] [ConfigResolver.php::resolveModeConfigValue - info]
+   Attempting to load mode config 'laravel-ddd' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:27] [ConfigResolver.php::resolveModeConfigValue - info]
+   Loaded mode config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+⟶  [16:45:27] [ConfigResolver.php::resolveModeConfigValue - info]
+   Mode 'laravel-ddd' loaded successfully
+⟶  [16:45:27] [ConfigResolver.php::resolveModeAbsolutePath - info]
+   Absolute Mode Path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+[=== Configs Context Publisher Finished. ===]
+⟶  [16:45:27] [ConfigSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Configs\DTOs\ConfigContextDTO' to the global context bus
+[=== Configs Context Publisher Finished. ===]
+[=== Configs Resolver Finished. ===]
+[==== Configs System Runner Finished. ====]
+[==== Cli Flags System Runner Started. ====]
+[=== Cli Flags Resolver Started. ===]
+⟶  [16:45:27] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:27] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:27] [CliFlagsResolver.php::resolveProvidedCliFlags - info]
+   Provided CLI flags: '[component_name=balls, component_path=/tmp/forge_dry_run_693af527880ed]'
+⟶  [16:45:27] [CliFlagsResolver.php::resolveMutatableConfigKeys - info]
+   Linked CLI flags to config keys using them:
+   {"component_path":["component_path"],"component_name":["component_name","domain_name"],"directories_enabled":["directories_enabled"],"template_file_extension":["file_extension"],"templates_path":["templates_path"],"templates_enabled":["templates_enabled"],"commands_enabled":["commands_enabled"],"naming_conventions_enabled":["naming_conventions_enabled"]}
+[=== Cli Flags Context Publisher Started. ===]
+⟶  [16:45:27] [CliFlagsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\CliFlags\DTOs\CliFlagsContextDTO' to the global context bus
+[=== Cli Flags Context Publisher Finished. ===]
+[=== Cli Flags Resolver Finished. ===]
+[=== Cli Flags Executer Started. ===]
+⟶  [16:45:27] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:27] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'CliFlagsContextDTO' from the context bus
+⟶  [16:45:27] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:27] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:27] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'domain_name' value 'Hello' with 'balls'
+⟶  [16:45:27] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af527880ed'
+⟶  [16:45:27] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af527880ed'
+[=== Cli Flags Executer Finished. ===]
+[==== Cli Flags System Runner Finished. ====]
+[==== Commands System Runner Started. ====]
+[=== Commands Resolver Started. ===]
+⟶  [16:45:27] [CommandResolver.php::resolveBeforeCommands - info]
+   No pre-scaffolding commands were provided
+⟶  [16:45:27] [CommandResolver.php::resolveAfterCommands - info]
+   Post-scaffolding commands provided: '[composer dump-autoload, php artisan migrate, php artisan
+   route:clear]'
+[=== Commands Context Publisher Started. ===]
+⟶  [16:45:27] [CommandSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Commands\DTOs\CommandsContextDTO' to the global context bus
+[=== Commands Context Publisher Finished. ===]
+[=== Commands Resolver Finished. ===]
+[=== Commands Executer Started. ===]
+⟶  [16:45:27] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   Executing pre-scaffolding commands...
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   All pre-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+[==== Commands System Runner Finished. ====]
+[==== Naming Conventions System Runner Started. ====]
+[=== Naming Conventions Resolver Started. ===]
+[=== Naming Conventions Context Publisher Started. ===]
+⟶  [16:45:27] [NamingConventionsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Core\NamingConventions\DTOs\NamingConventionsContextDTO' to the global
+   context bus
+[=== Naming Conventions Context Publisher Finished. ===]
+[=== Naming Conventions Resolver Finished. ===]
+[==== Naming Conventions System Runner Finished. ====]
+[===== Forge Foundary Command Started. =====]
+[==== Component System Runner Started. ====]
+[=== Component Resolver Started. ===]
+⟶  [16:45:27] [NamingConventionsExecuter.php::loadContexts - info]
+   Loaded context: 'NamingConventionsContextDTO' from the context bus
+⟶  [16:45:27] [ComponentResolver.php::resolveComponentName - info]
+   Component name: 'balls'
+⟶  [16:45:27] [ComponentResolver.php::resolveComponentPath - info]
+   Component path: '/tmp/forge_dry_run_693af527880ed/balls'
+[=== Component Context Publisher Started. ===]
+⟶  [16:45:27] [ComponentSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Components\DTOs\ComponentContextDTO' to the global context bus
+[=== Component Context Publishing Finished. ===]
+[=== Component Resolving Finished. ===]
+[=== Component Generator Started. ===]
+⟶  [16:45:27] [ComponentGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [ComponentSystemRunner.php::generateComponent - info]
+   Generated component: '/tmp/forge_dry_run_693af527880ed/balls'
+[=== Component Generating Finished. ===]
+[==== Component System Runner Finished. ====]
+[==== Directories System Runner Started. ====]
+[=== Directories Resolver Started. ===]
+⟶  [16:45:27] [DirectoryResolver.php::resolvedirectories - info]
+   Provided directories: '[Migrations, Models, Policies, Providers, Controllers, DTOs, Requests,
+   Services, Repositories, Routes/Api, Tests/Feature, Tests/Unit, Seeders, Factories]'
+[=== Directories Context Publisher Started. ===]
+⟶  [16:45:27] [DirectorySystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Directories\DTOs\DirectoryContextDTO' to the global context bus
+[=== Directories Context Publisher Finished. ===]
+[=== Directories Resolver Finished. ===]
+[=== Directories Generator Started. ===]
+⟶  [16:45:27] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Migrations'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Migrations'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Models'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Models'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Policies'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Policies'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Providers'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Providers'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Controllers'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Controllers'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'DTOs'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/DTOs'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Requests'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Requests'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Services'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Services'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Repositories'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Repositories'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Routes/Api'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Routes/Api'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Feature'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Tests/Feature'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Unit'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Tests/Unit'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Seeders'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Seeders'
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Factories'
+⟶  [16:45:27] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af527880ed/balls/Factories'
+[=== Directories Generator Finished. ===]
+[==== Directories System Runner Finished. ====]
+[==== Unit System Runner Started ====]
+[=== Unit Resolver Started ===]
+⟶  [16:45:27] [UnitResolver.php::resolveUnits - info]
+   No units provided
+⟶  [16:45:27] [UnitResolver.php::resolveUnitsMapMode - info]
+   Units map mode: 'directories'
+⟶  [16:45:27] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units created by default config value: NULL
+⟶  [16:45:27] [UnitResolver.php::resolveUnitsMapDefaults - warning]
+   Units map defaults not provided; defaulting to false
+⟶  [16:45:27] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units will not be created by default.
+⟶  [16:45:27] [UnitResolver.php::logOverrides - info]
+   No 'Directory' overrides defined
+[=== Unit Context Publisher Started ===]
+⟶  [16:45:27] [UnitSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Units\DTOs\UnitContextDTO' to the global context bus
+[=== Unit Context Publisher Finished ===]
+[=== Unit Resolver Finished ===]
+[=== Unit Generator Started ===]
+⟶  [16:45:27] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'UnitContextDTO' from the context bus
+⟶  [16:45:27] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:27] [UnitSystemRunner.php::generateUnits - info]
+   No units specified, skipping unit generation
+[=== Unit Generator Finished ===]
+[==== Unit System Runner Finished ====]
+[==== Templates System Runner Started. ====]
+[=== Templates system Resolvers Started. ===]
+[=== Template Context Resolver Started. ===]
+⟶  [16:45:27] [TemplateContextResolver.php::resolveTemplatesPath - info]
+   Templates path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates'
+⟶  [16:45:27] [TemplateContextResolver.php::resolveTemplateEngineExtensions - info]
+   Template engine extensions available: '[mustache, twig, blade.php]'
+⟶  [16:45:27] [TemplateContextResolver.php::resolveTemplates - info]
+   Provided templates:'[controller.mustache, dto.mustache, factories.mustache, model.mustache,
+   policy.mustache, repository.mustache, routes.mustache, seeders.mustache, service.mustache,
+   serviceprovider.mustache, storerequest.mustache, updaterequest.mustache]'
+⟶  [16:45:27] [TemplateContextResolver.php::logDefaults - info]
+   Resolved defaults:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_name: defaultFileName
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_extension: php
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • placeholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayRecursively - raw]
+         • domain_name: balls
+⟶  [16:45:27] [TemplateContextResolver.php::logOverrides - info]
+   No overrides defined
+⟶  [16:45:27] [TemplateContextResolver.php::resolveTemplateRequireExistingDirs - info]
+   Templates require existing directoreis to be created
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:27] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplateContextDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Template Context Resolver Finished. ===]
+[=== Templates Resolver Started. ===]
+⟶  [16:45:27] [TemplatesResolver.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+[=== Template controller.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'controller.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: controller.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/controller.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Controller"
+file_paths:
+  - Controllers
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'controller.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsController
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Controllers
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Controller
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Controllers
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template controller.mustache Resolver Finished. ===]
+[=== Template dto.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'dto.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: dto.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/dto.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}DTO"
+file_paths:
+  - DTOs
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'dto.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsDTO
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: DTOs
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}DTO
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: DTOs
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template dto.mustache Resolver Finished. ===]
+[=== Template factories.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'factories.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: factories.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/factories.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Factory"
+file_paths: 
+    - Factories
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'factories.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsFactory
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Factories
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Factory
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Factories
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template factories.mustache Resolver Finished. ===]
+[=== Template model.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'model.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: model.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/model.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}"
+file_paths:
+  - Models
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'model.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: balls
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Models
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Models
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template model.mustache Resolver Finished. ===]
+[=== Template policy.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'policy.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: policy.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/policy.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Policy"
+file_paths:
+  - Policies
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'policy.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsPolicy
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Policies
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Policy
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Policies
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template policy.mustache Resolver Finished. ===]
+[=== Template repository.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'repository.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: repository.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/repository.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Repository"
+file_paths:
+  - Repositories
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'repository.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsRepository
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Repositories
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Repository
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Repositories
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template repository.mustache Resolver Finished. ===]
+[=== Template routes.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'routes.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: routes.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/routes.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Api"
+file_paths: 
+    - Routes/api
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'routes.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsApi
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Routes/api
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Api
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Routes/api
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template routes.mustache Resolver Finished. ===]
+[=== Template seeders.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'seeders.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: seeders.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/seeders.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Seeder"
+file_paths:
+    - Seeders
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'seeders.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsSeeder
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Seeders
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Seeder
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Seeders
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template seeders.mustache Resolver Finished. ===]
+[=== Template service.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'service.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: service.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/service.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Service"
+file_paths:
+  - Services
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'service.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsService
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Services
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Service
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Services
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template service.mustache Resolver Finished. ===]
+[=== Template serviceprovider.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'serviceprovider.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: serviceprovider.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/serviceprovider.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}ServiceProvider"
+file_paths:
+  - Providers
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'serviceprovider.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsServiceProvider
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Providers
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}ServiceProvider
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Providers
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template serviceprovider.mustache Resolver Finished. ===]
+[=== Template storerequest.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'storerequest.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: storerequest.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/storerequest.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}StoreRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'storerequest.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsStoreRequest
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}StoreRequest
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template storerequest.mustache Resolver Finished. ===]
+[=== Template updaterequest.mustache Resolver Started. ===]
+⟶  [16:45:27] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'updaterequest.mustache':
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateName: updaterequest.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/updaterequest.mustache
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}UpdateRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:27] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:27] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'updaterequest.mustache':
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileName: ballsUpdateRequest
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:27] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}UpdateRequest
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:27] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template updaterequest.mustache Resolver Finished. ===]
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:27] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplatesDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Templates Resolver Finished. ===]
+[=== Templates system Resolvers Finished. ===]
+[=== Templates Generator Started. ===]
+⟶  [16:45:27] [TemplatesGenerator.php::loadContexts - info]
+   Loaded context: 'TemplatesDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsController.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsController.php' from template: 'controller.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Controllers/BallsController.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsDTO.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsDTO.php' from template: 'dto.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/DTOs/BallsDTO.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsFactory.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsFactory.php' from template: 'factories.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Factories/BallsFactory.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'balls.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'balls.php' from template: 'model.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Models/Balls.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsPolicy.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsPolicy.php' from template: 'policy.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Policies/BallsPolicy.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsRepository.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsRepository.php' from template: 'repository.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Repositories/BallsRepository.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsApi.php'
+⟶  [16:45:27] [FileGenerationManager.php::getFullFilePath - error]
+   Path '/tmp/forge_dry_run_693af527880ed/balls/Routes/api' does not exist; skipping generating file
+   'BallsApi.php' in that directory
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - error]
+   File 'ballsApi' have no valid paths; skipping
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsSeeder.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsSeeder.php' from template: 'seeders.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Seeders/BallsSeeder.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsService.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsService.php' from template: 'service.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Services/BallsService.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsServiceProvider.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsServiceProvider.php' from template: 'serviceprovider.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Providers/BallsServiceProvider.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsStoreRequest.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsStoreRequest.php' from template: 'storerequest.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Requests/BallsStoreRequest.php'
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:27] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:27] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsUpdateRequest.php'
+⟶  [16:45:27] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsUpdateRequest.php' from template: 'updaterequest.mustache' at path
+   '/tmp/forge_dry_run_693af527880ed/balls/Requests/BallsUpdateRequest.php'
+[=== Templates Generator Finished. ===]
+[==== Templates System Runner Finished. ====]
+[=== Commands Executer Started. ===]
+⟶  [16:45:27] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   Executing post-scaffolding commands...
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'composer dump-autoload'
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan migrate'
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan migrate' (exit code 1)
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan route:clear'
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan route:clear' (exit code 1)
+⟶  [16:45:27] [CommandSystemRunner.php::executeCommands - info]
+   All post-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+⟶  [16:45:27] [TreeManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+[===== Forge Foundary Command Finished. =====]
+[===== Debugger Finished. =====]
+[===== Debugger Started =====]
+[==== Configs System Runner Started. ====]
+[=== Configs Resolver Finished. ===]
+⟶  [16:45:31] [ConfigResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:31] [ConfigResolver.php::resolveMainConfigName - warning]
+   No custom main config name provided; using default: 'ForgeFoundary'
+⟶  [16:45:31] [ConfigResolver.php::resolveMainConfigPath - warning]
+   No custom config path provided. Using default:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs
+⟶  [16:45:31] [ConfigResolver.php::resolveMainConfigValue - info]
+   Attempting to load main config 'ForgeFoundary' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs'
+⟶  [16:45:31] [ConfigResolver.php::resolveMainConfigValue - info]
+   Loaded YAML config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs/ForgeFoundary.yaml'
+⟶  [16:45:31] [ConfigResolver.php::resolveMainConfigValue - info]
+   Main config: 'ForgeFoundary' loaded successfully
+⟶  [16:45:31] [ConfigResolver.php::resolveModeConfigName - info]
+   Loaded mode name: 'laravel-ddd'
+⟶  [16:45:31] [ConfigResolver.php::resolveModesConfigPath - info]
+   Modes path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:31] [ConfigResolver.php::resolveModeConfigValue - info]
+   Attempting to load mode config 'laravel-ddd' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:31] [ConfigResolver.php::resolveModeConfigValue - info]
+   Loaded mode config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+⟶  [16:45:31] [ConfigResolver.php::resolveModeConfigValue - info]
+   Mode 'laravel-ddd' loaded successfully
+⟶  [16:45:31] [ConfigResolver.php::resolveModeAbsolutePath - info]
+   Absolute Mode Path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+[=== Configs Context Publisher Finished. ===]
+⟶  [16:45:31] [ConfigSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Configs\DTOs\ConfigContextDTO' to the global context bus
+[=== Configs Context Publisher Finished. ===]
+[=== Configs Resolver Finished. ===]
+[==== Configs System Runner Finished. ====]
+[==== Cli Flags System Runner Started. ====]
+[=== Cli Flags Resolver Started. ===]
+⟶  [16:45:31] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:31] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:31] [CliFlagsResolver.php::resolveProvidedCliFlags - info]
+   Provided CLI flags: '[component_name=balls, component_path=/tmp/forge_dry_run_693af52b4f905]'
+⟶  [16:45:31] [CliFlagsResolver.php::resolveMutatableConfigKeys - info]
+   Linked CLI flags to config keys using them:
+   {"component_path":["component_path"],"component_name":["component_name","domain_name"],"directories_enabled":["directories_enabled"],"template_file_extension":["file_extension"],"templates_path":["templates_path"],"templates_enabled":["templates_enabled"],"commands_enabled":["commands_enabled"],"naming_conventions_enabled":["naming_conventions_enabled"]}
+[=== Cli Flags Context Publisher Started. ===]
+⟶  [16:45:31] [CliFlagsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\CliFlags\DTOs\CliFlagsContextDTO' to the global context bus
+[=== Cli Flags Context Publisher Finished. ===]
+[=== Cli Flags Resolver Finished. ===]
+[=== Cli Flags Executer Started. ===]
+⟶  [16:45:31] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:31] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'CliFlagsContextDTO' from the context bus
+⟶  [16:45:31] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:31] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:31] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'domain_name' value 'Hello' with 'balls'
+⟶  [16:45:31] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af52b4f905'
+⟶  [16:45:31] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af52b4f905'
+[=== Cli Flags Executer Finished. ===]
+[==== Cli Flags System Runner Finished. ====]
+[==== Commands System Runner Started. ====]
+[=== Commands Resolver Started. ===]
+⟶  [16:45:31] [CommandResolver.php::resolveBeforeCommands - info]
+   No pre-scaffolding commands were provided
+⟶  [16:45:31] [CommandResolver.php::resolveAfterCommands - info]
+   Post-scaffolding commands provided: '[composer dump-autoload, php artisan migrate, php artisan
+   route:clear]'
+[=== Commands Context Publisher Started. ===]
+⟶  [16:45:31] [CommandSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Commands\DTOs\CommandsContextDTO' to the global context bus
+[=== Commands Context Publisher Finished. ===]
+[=== Commands Resolver Finished. ===]
+[=== Commands Executer Started. ===]
+⟶  [16:45:31] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   Executing pre-scaffolding commands...
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   All pre-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+[==== Commands System Runner Finished. ====]
+[==== Naming Conventions System Runner Started. ====]
+[=== Naming Conventions Resolver Started. ===]
+[=== Naming Conventions Context Publisher Started. ===]
+⟶  [16:45:31] [NamingConventionsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Core\NamingConventions\DTOs\NamingConventionsContextDTO' to the global
+   context bus
+[=== Naming Conventions Context Publisher Finished. ===]
+[=== Naming Conventions Resolver Finished. ===]
+[==== Naming Conventions System Runner Finished. ====]
+[===== Forge Foundary Command Started. =====]
+[==== Component System Runner Started. ====]
+[=== Component Resolver Started. ===]
+⟶  [16:45:31] [NamingConventionsExecuter.php::loadContexts - info]
+   Loaded context: 'NamingConventionsContextDTO' from the context bus
+⟶  [16:45:31] [ComponentResolver.php::resolveComponentName - info]
+   Component name: 'balls'
+⟶  [16:45:31] [ComponentResolver.php::resolveComponentPath - info]
+   Component path: '/tmp/forge_dry_run_693af52b4f905/balls'
+[=== Component Context Publisher Started. ===]
+⟶  [16:45:31] [ComponentSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Components\DTOs\ComponentContextDTO' to the global context bus
+[=== Component Context Publishing Finished. ===]
+[=== Component Resolving Finished. ===]
+[=== Component Generator Started. ===]
+⟶  [16:45:31] [ComponentGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [ComponentSystemRunner.php::generateComponent - info]
+   Generated component: '/tmp/forge_dry_run_693af52b4f905/balls'
+[=== Component Generating Finished. ===]
+[==== Component System Runner Finished. ====]
+[==== Directories System Runner Started. ====]
+[=== Directories Resolver Started. ===]
+⟶  [16:45:31] [DirectoryResolver.php::resolvedirectories - info]
+   Provided directories: '[Migrations, Models, Policies, Providers, Controllers, DTOs, Requests,
+   Services, Repositories, Routes/Api, Tests/Feature, Tests/Unit, Seeders, Factories]'
+[=== Directories Context Publisher Started. ===]
+⟶  [16:45:31] [DirectorySystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Directories\DTOs\DirectoryContextDTO' to the global context bus
+[=== Directories Context Publisher Finished. ===]
+[=== Directories Resolver Finished. ===]
+[=== Directories Generator Started. ===]
+⟶  [16:45:31] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Migrations'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Migrations'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Models'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Models'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Policies'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Policies'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Providers'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Providers'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Controllers'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Controllers'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'DTOs'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/DTOs'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Requests'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Requests'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Services'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Services'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Repositories'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Repositories'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Routes/Api'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Routes/Api'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Feature'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Tests/Feature'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Unit'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Tests/Unit'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Seeders'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Seeders'
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Factories'
+⟶  [16:45:31] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af52b4f905/balls/Factories'
+[=== Directories Generator Finished. ===]
+[==== Directories System Runner Finished. ====]
+[==== Unit System Runner Started ====]
+[=== Unit Resolver Started ===]
+⟶  [16:45:31] [UnitResolver.php::resolveUnits - info]
+   No units provided
+⟶  [16:45:31] [UnitResolver.php::resolveUnitsMapMode - info]
+   Units map mode: 'directories'
+⟶  [16:45:31] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units created by default config value: NULL
+⟶  [16:45:31] [UnitResolver.php::resolveUnitsMapDefaults - warning]
+   Units map defaults not provided; defaulting to false
+⟶  [16:45:31] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units will not be created by default.
+⟶  [16:45:31] [UnitResolver.php::logOverrides - info]
+   No 'Directory' overrides defined
+[=== Unit Context Publisher Started ===]
+⟶  [16:45:31] [UnitSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Units\DTOs\UnitContextDTO' to the global context bus
+[=== Unit Context Publisher Finished ===]
+[=== Unit Resolver Finished ===]
+[=== Unit Generator Started ===]
+⟶  [16:45:31] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'UnitContextDTO' from the context bus
+⟶  [16:45:31] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:31] [UnitSystemRunner.php::generateUnits - info]
+   No units specified, skipping unit generation
+[=== Unit Generator Finished ===]
+[==== Unit System Runner Finished ====]
+[==== Templates System Runner Started. ====]
+[=== Templates system Resolvers Started. ===]
+[=== Template Context Resolver Started. ===]
+⟶  [16:45:31] [TemplateContextResolver.php::resolveTemplatesPath - info]
+   Templates path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates'
+⟶  [16:45:31] [TemplateContextResolver.php::resolveTemplateEngineExtensions - info]
+   Template engine extensions available: '[mustache, twig, blade.php]'
+⟶  [16:45:31] [TemplateContextResolver.php::resolveTemplates - info]
+   Provided templates:'[controller.mustache, dto.mustache, factories.mustache, model.mustache,
+   policy.mustache, repository.mustache, routes.mustache, seeders.mustache, service.mustache,
+   serviceprovider.mustache, storerequest.mustache, updaterequest.mustache]'
+⟶  [16:45:31] [TemplateContextResolver.php::logDefaults - info]
+   Resolved defaults:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_name: defaultFileName
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_extension: php
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • placeholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayRecursively - raw]
+         • domain_name: balls
+⟶  [16:45:31] [TemplateContextResolver.php::logOverrides - info]
+   No overrides defined
+⟶  [16:45:31] [TemplateContextResolver.php::resolveTemplateRequireExistingDirs - info]
+   Templates require existing directoreis to be created
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:31] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplateContextDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Template Context Resolver Finished. ===]
+[=== Templates Resolver Started. ===]
+⟶  [16:45:31] [TemplatesResolver.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+[=== Template controller.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'controller.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: controller.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/controller.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Controller"
+file_paths:
+  - Controllers
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'controller.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsController
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Controllers
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Controller
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Controllers
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template controller.mustache Resolver Finished. ===]
+[=== Template dto.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'dto.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: dto.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/dto.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}DTO"
+file_paths:
+  - DTOs
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'dto.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsDTO
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: DTOs
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}DTO
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: DTOs
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template dto.mustache Resolver Finished. ===]
+[=== Template factories.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'factories.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: factories.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/factories.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Factory"
+file_paths: 
+    - Factories
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'factories.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsFactory
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Factories
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Factory
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Factories
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template factories.mustache Resolver Finished. ===]
+[=== Template model.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'model.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: model.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/model.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}"
+file_paths:
+  - Models
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'model.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: balls
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Models
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Models
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template model.mustache Resolver Finished. ===]
+[=== Template policy.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'policy.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: policy.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/policy.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Policy"
+file_paths:
+  - Policies
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'policy.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsPolicy
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Policies
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Policy
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Policies
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template policy.mustache Resolver Finished. ===]
+[=== Template repository.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'repository.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: repository.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/repository.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Repository"
+file_paths:
+  - Repositories
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'repository.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsRepository
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Repositories
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Repository
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Repositories
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template repository.mustache Resolver Finished. ===]
+[=== Template routes.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'routes.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: routes.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/routes.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Api"
+file_paths: 
+    - Routes/api
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'routes.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsApi
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Routes/api
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Api
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Routes/api
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template routes.mustache Resolver Finished. ===]
+[=== Template seeders.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'seeders.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: seeders.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/seeders.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Seeder"
+file_paths:
+    - Seeders
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'seeders.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsSeeder
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Seeders
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Seeder
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Seeders
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template seeders.mustache Resolver Finished. ===]
+[=== Template service.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'service.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: service.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/service.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Service"
+file_paths:
+  - Services
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'service.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsService
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Services
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Service
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Services
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template service.mustache Resolver Finished. ===]
+[=== Template serviceprovider.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'serviceprovider.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: serviceprovider.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/serviceprovider.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}ServiceProvider"
+file_paths:
+  - Providers
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'serviceprovider.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsServiceProvider
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Providers
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}ServiceProvider
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Providers
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template serviceprovider.mustache Resolver Finished. ===]
+[=== Template storerequest.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'storerequest.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: storerequest.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/storerequest.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}StoreRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'storerequest.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsStoreRequest
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}StoreRequest
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template storerequest.mustache Resolver Finished. ===]
+[=== Template updaterequest.mustache Resolver Started. ===]
+⟶  [16:45:31] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'updaterequest.mustache':
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateName: updaterequest.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/updaterequest.mustache
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}UpdateRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:31] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:31] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'updaterequest.mustache':
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileName: ballsUpdateRequest
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:31] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}UpdateRequest
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:31] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template updaterequest.mustache Resolver Finished. ===]
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:31] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplatesDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Templates Resolver Finished. ===]
+[=== Templates system Resolvers Finished. ===]
+[=== Templates Generator Started. ===]
+⟶  [16:45:31] [TemplatesGenerator.php::loadContexts - info]
+   Loaded context: 'TemplatesDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsController.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsController.php' from template: 'controller.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Controllers/BallsController.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsDTO.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsDTO.php' from template: 'dto.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/DTOs/BallsDTO.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsFactory.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsFactory.php' from template: 'factories.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Factories/BallsFactory.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'balls.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'balls.php' from template: 'model.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Models/Balls.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsPolicy.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsPolicy.php' from template: 'policy.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Policies/BallsPolicy.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsRepository.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsRepository.php' from template: 'repository.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Repositories/BallsRepository.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsApi.php'
+⟶  [16:45:31] [FileGenerationManager.php::getFullFilePath - error]
+   Path '/tmp/forge_dry_run_693af52b4f905/balls/Routes/api' does not exist; skipping generating file
+   'BallsApi.php' in that directory
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - error]
+   File 'ballsApi' have no valid paths; skipping
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsSeeder.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsSeeder.php' from template: 'seeders.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Seeders/BallsSeeder.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsService.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsService.php' from template: 'service.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Services/BallsService.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsServiceProvider.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsServiceProvider.php' from template: 'serviceprovider.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Providers/BallsServiceProvider.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsStoreRequest.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsStoreRequest.php' from template: 'storerequest.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Requests/BallsStoreRequest.php'
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:31] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:31] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsUpdateRequest.php'
+⟶  [16:45:31] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsUpdateRequest.php' from template: 'updaterequest.mustache' at path
+   '/tmp/forge_dry_run_693af52b4f905/balls/Requests/BallsUpdateRequest.php'
+[=== Templates Generator Finished. ===]
+[==== Templates System Runner Finished. ====]
+[=== Commands Executer Started. ===]
+⟶  [16:45:31] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   Executing post-scaffolding commands...
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'composer dump-autoload'
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan migrate'
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan migrate' (exit code 1)
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan route:clear'
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan route:clear' (exit code 1)
+⟶  [16:45:31] [CommandSystemRunner.php::executeCommands - info]
+   All post-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+⟶  [16:45:31] [TreeManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+[===== Forge Foundary Command Finished. =====]
+[===== Debugger Finished. =====]
+[===== Debugger Started =====]
+[==== Configs System Runner Started. ====]
+[=== Configs Resolver Finished. ===]
+⟶  [16:45:40] [ConfigResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:40] [ConfigResolver.php::resolveMainConfigName - warning]
+   No custom main config name provided; using default: 'ForgeFoundary'
+⟶  [16:45:40] [ConfigResolver.php::resolveMainConfigPath - warning]
+   No custom config path provided. Using default:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs
+⟶  [16:45:40] [ConfigResolver.php::resolveMainConfigValue - info]
+   Attempting to load main config 'ForgeFoundary' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs'
+⟶  [16:45:40] [ConfigResolver.php::resolveMainConfigValue - info]
+   Loaded YAML config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Configs/ForgeFoundary.yaml'
+⟶  [16:45:40] [ConfigResolver.php::resolveMainConfigValue - info]
+   Main config: 'ForgeFoundary' loaded successfully
+⟶  [16:45:40] [ConfigResolver.php::resolveModeConfigName - info]
+   Loaded mode name: 'laravel-ddd'
+⟶  [16:45:40] [ConfigResolver.php::resolveModesConfigPath - info]
+   Modes path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:40] [ConfigResolver.php::resolveModeConfigValue - info]
+   Attempting to load mode config 'laravel-ddd' from path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes'
+⟶  [16:45:40] [ConfigResolver.php::resolveModeConfigValue - info]
+   Loaded mode config file:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+⟶  [16:45:40] [ConfigResolver.php::resolveModeConfigValue - info]
+   Mode 'laravel-ddd' loaded successfully
+⟶  [16:45:40] [ConfigResolver.php::resolveModeAbsolutePath - info]
+   Absolute Mode Path:
+   '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/laravel-ddd.yaml'
+[=== Configs Context Publisher Finished. ===]
+⟶  [16:45:40] [ConfigSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Configs\DTOs\ConfigContextDTO' to the global context bus
+[=== Configs Context Publisher Finished. ===]
+[=== Configs Resolver Finished. ===]
+[==== Configs System Runner Finished. ====]
+[==== Cli Flags System Runner Started. ====]
+[=== Cli Flags Resolver Started. ===]
+⟶  [16:45:40] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'CliInputContextDTO' from the context bus
+⟶  [16:45:40] [CliFlagsResolver.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:40] [CliFlagsResolver.php::resolveProvidedCliFlags - info]
+   Provided CLI flags: '[component_name=balls, component_path=/tmp/forge_dry_run_693af5340b0c2]'
+⟶  [16:45:40] [CliFlagsResolver.php::resolveMutatableConfigKeys - info]
+   Linked CLI flags to config keys using them:
+   {"component_path":["component_path"],"component_name":["component_name","domain_name"],"directories_enabled":["directories_enabled"],"template_file_extension":["file_extension"],"templates_path":["templates_path"],"templates_enabled":["templates_enabled"],"commands_enabled":["commands_enabled"],"naming_conventions_enabled":["naming_conventions_enabled"]}
+[=== Cli Flags Context Publisher Started. ===]
+⟶  [16:45:40] [CliFlagsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\CliFlags\DTOs\CliFlagsContextDTO' to the global context bus
+[=== Cli Flags Context Publisher Finished. ===]
+[=== Cli Flags Resolver Finished. ===]
+[=== Cli Flags Executer Started. ===]
+⟶  [16:45:40] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'ConfigContextDTO' from the context bus
+⟶  [16:45:40] [CliFlagsExecuter.php::loadContexts - info]
+   Loaded context: 'CliFlagsContextDTO' from the context bus
+⟶  [16:45:40] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:40] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'component_name' value 'Hello' with 'balls'
+⟶  [16:45:40] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_name' overwrote 'domain_name' value 'Hello' with 'balls'
+⟶  [16:45:40] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af5340b0c2'
+⟶  [16:45:40] [CliFlagsExecuter.php::applyCliFlagRecursive - info]
+   CLI flag 'component_path' overwrote 'component_path' value
+   '/home/Genocide/Code/projects/boardify/back-end/app/Domains' with '/tmp/forge_dry_run_693af5340b0c2'
+[=== Cli Flags Executer Finished. ===]
+[==== Cli Flags System Runner Finished. ====]
+[==== Commands System Runner Started. ====]
+[=== Commands Resolver Started. ===]
+⟶  [16:45:40] [CommandResolver.php::resolveBeforeCommands - info]
+   No pre-scaffolding commands were provided
+⟶  [16:45:40] [CommandResolver.php::resolveAfterCommands - info]
+   Post-scaffolding commands provided: '[composer dump-autoload, php artisan migrate, php artisan
+   route:clear]'
+[=== Commands Context Publisher Started. ===]
+⟶  [16:45:40] [CommandSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Commands\DTOs\CommandsContextDTO' to the global context bus
+[=== Commands Context Publisher Finished. ===]
+[=== Commands Resolver Finished. ===]
+[=== Commands Executer Started. ===]
+⟶  [16:45:40] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   Executing pre-scaffolding commands...
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   All pre-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+[==== Commands System Runner Finished. ====]
+[==== Naming Conventions System Runner Started. ====]
+[=== Naming Conventions Resolver Started. ===]
+[=== Naming Conventions Context Publisher Started. ===]
+⟶  [16:45:40] [NamingConventionsSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Core\NamingConventions\DTOs\NamingConventionsContextDTO' to the global
+   context bus
+[=== Naming Conventions Context Publisher Finished. ===]
+[=== Naming Conventions Resolver Finished. ===]
+[==== Naming Conventions System Runner Finished. ====]
+[===== Forge Foundary Command Started. =====]
+[==== Component System Runner Started. ====]
+[=== Component Resolver Started. ===]
+⟶  [16:45:40] [NamingConventionsExecuter.php::loadContexts - info]
+   Loaded context: 'NamingConventionsContextDTO' from the context bus
+⟶  [16:45:40] [ComponentResolver.php::resolveComponentName - info]
+   Component name: 'balls'
+⟶  [16:45:40] [ComponentResolver.php::resolveComponentPath - info]
+   Component path: '/tmp/forge_dry_run_693af5340b0c2/balls'
+[=== Component Context Publisher Started. ===]
+⟶  [16:45:40] [ComponentSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Components\DTOs\ComponentContextDTO' to the global context bus
+[=== Component Context Publishing Finished. ===]
+[=== Component Resolving Finished. ===]
+[=== Component Generator Started. ===]
+⟶  [16:45:40] [ComponentGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [ComponentSystemRunner.php::generateComponent - info]
+   Generated component: '/tmp/forge_dry_run_693af5340b0c2/balls'
+[=== Component Generating Finished. ===]
+[==== Component System Runner Finished. ====]
+[==== Directories System Runner Started. ====]
+[=== Directories Resolver Started. ===]
+⟶  [16:45:40] [DirectoryResolver.php::resolvedirectories - info]
+   Provided directories: '[Migrations, Models, Policies, Providers, Controllers, DTOs, Requests,
+   Services, Repositories, Routes/Api, Tests/Feature, Tests/Unit, Seeders, Factories]'
+[=== Directories Context Publisher Started. ===]
+⟶  [16:45:40] [DirectorySystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Directories\DTOs\DirectoryContextDTO' to the global context bus
+[=== Directories Context Publisher Finished. ===]
+[=== Directories Resolver Finished. ===]
+[=== Directories Generator Started. ===]
+⟶  [16:45:40] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [DirectoriesGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Migrations'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Migrations'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Models'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Models'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Policies'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Policies'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Providers'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Providers'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Controllers'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Controllers'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'DTOs'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/DTOs'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Requests'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Requests'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Services'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Services'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Repositories'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Repositories'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Routes/Api'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Routes/Api'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Feature'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Tests/Feature'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Tests/Unit'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Tests/Unit'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Seeders'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Seeders'
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'Factories'
+⟶  [16:45:40] [DirectoriesGenerator.php::createDirectory - info]
+   Creating Directory: '/tmp/forge_dry_run_693af5340b0c2/balls/Factories'
+[=== Directories Generator Finished. ===]
+[==== Directories System Runner Finished. ====]
+[==== Unit System Runner Started ====]
+[=== Unit Resolver Started ===]
+⟶  [16:45:40] [UnitResolver.php::resolveUnits - info]
+   No units provided
+⟶  [16:45:40] [UnitResolver.php::resolveUnitsMapMode - info]
+   Units map mode: 'directories'
+⟶  [16:45:40] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units created by default config value: NULL
+⟶  [16:45:40] [UnitResolver.php::resolveUnitsMapDefaults - warning]
+   Units map defaults not provided; defaulting to false
+⟶  [16:45:40] [UnitResolver.php::resolveUnitsMapDefaults - info]
+   Units will not be created by default.
+⟶  [16:45:40] [UnitResolver.php::logOverrides - info]
+   No 'Directory' overrides defined
+[=== Unit Context Publisher Started ===]
+⟶  [16:45:40] [UnitSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Units\DTOs\UnitContextDTO' to the global context bus
+[=== Unit Context Publisher Finished ===]
+[=== Unit Resolver Finished ===]
+[=== Unit Generator Started ===]
+⟶  [16:45:40] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'UnitContextDTO' from the context bus
+⟶  [16:45:40] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [UnitsGenerator.php::loadContexts - info]
+   Loaded context: 'DirectoryContextDTO' from the context bus
+⟶  [16:45:40] [UnitSystemRunner.php::generateUnits - info]
+   No units specified, skipping unit generation
+[=== Unit Generator Finished ===]
+[==== Unit System Runner Finished ====]
+[==== Templates System Runner Started. ====]
+[=== Templates system Resolvers Started. ===]
+[=== Template Context Resolver Started. ===]
+⟶  [16:45:40] [TemplateContextResolver.php::resolveTemplatesPath - info]
+   Templates path: '/home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates'
+⟶  [16:45:40] [TemplateContextResolver.php::resolveTemplateEngineExtensions - info]
+   Template engine extensions available: '[mustache, twig, blade.php]'
+⟶  [16:45:40] [TemplateContextResolver.php::resolveTemplates - info]
+   Provided templates:'[controller.mustache, dto.mustache, factories.mustache, model.mustache,
+   policy.mustache, repository.mustache, routes.mustache, seeders.mustache, service.mustache,
+   serviceprovider.mustache, storerequest.mustache, updaterequest.mustache]'
+⟶  [16:45:40] [TemplateContextResolver.php::logDefaults - info]
+   Resolved defaults:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_name: defaultFileName
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • file_extension: php
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayRecursively - raw]
+     • placeholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayRecursively - raw]
+         • domain_name: balls
+⟶  [16:45:40] [TemplateContextResolver.php::logOverrides - info]
+   No overrides defined
+⟶  [16:45:40] [TemplateContextResolver.php::resolveTemplateRequireExistingDirs - info]
+   Templates require existing directoreis to be created
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:40] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplateContextDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Template Context Resolver Finished. ===]
+[=== Templates Resolver Started. ===]
+⟶  [16:45:40] [TemplatesResolver.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+[=== Template controller.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'controller.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: controller.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/controller.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Controller"
+file_paths:
+  - Controllers
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'controller.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsController
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Controllers
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Controller
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Controllers
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template controller.mustache Resolver Finished. ===]
+[=== Template dto.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'dto.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: dto.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/dto.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}DTO"
+file_paths:
+  - DTOs
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'dto.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsDTO
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: DTOs
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}DTO
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: DTOs
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template dto.mustache Resolver Finished. ===]
+[=== Template factories.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'factories.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: factories.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/factories.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Factory"
+file_paths: 
+    - Factories
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'factories.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsFactory
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Factories
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Factory
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Factories
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template factories.mustache Resolver Finished. ===]
+[=== Template model.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'model.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: model.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/model.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}"
+file_paths:
+  - Models
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'model.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: balls
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Models
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Models
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template model.mustache Resolver Finished. ===]
+[=== Template policy.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'policy.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: policy.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/policy.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Policy"
+file_paths:
+  - Policies
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'policy.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsPolicy
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Policies
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Policy
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Policies
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template policy.mustache Resolver Finished. ===]
+[=== Template repository.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'repository.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: repository.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/repository.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Repository"
+file_paths:
+  - Repositories
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'repository.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsRepository
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Repositories
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Repository
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Repositories
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template repository.mustache Resolver Finished. ===]
+[=== Template routes.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'routes.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: routes.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/routes.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Api"
+file_paths: 
+    - Routes/api
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'routes.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsApi
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Routes/api
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Api
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Routes/api
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template routes.mustache Resolver Finished. ===]
+[=== Template seeders.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'seeders.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: seeders.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/seeders.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Seeder"
+file_paths:
+    - Seeders
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'seeders.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsSeeder
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Seeders
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Seeder
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Seeders
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template seeders.mustache Resolver Finished. ===]
+[=== Template service.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'service.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: service.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/service.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}Service"
+file_paths:
+  - Services
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'service.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsService
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Services
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}Service
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Services
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template service.mustache Resolver Finished. ===]
+[=== Template serviceprovider.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'serviceprovider.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: serviceprovider.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/serviceprovider.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}ServiceProvider"
+file_paths:
+  - Providers
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'serviceprovider.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsServiceProvider
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Providers
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}ServiceProvider
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Providers
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template serviceprovider.mustache Resolver Finished. ===]
+[=== Template storerequest.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'storerequest.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: storerequest.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/storerequest.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}StoreRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'storerequest.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsStoreRequest
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}StoreRequest
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template storerequest.mustache Resolver Finished. ===]
+[=== Template updaterequest.mustache Resolver Started. ===]
+⟶  [16:45:40] [TemplateDataResolver.php::logData - info]
+   Resolved file data for template 'updaterequest.mustache':
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateName: updaterequest.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templatePath:
+   /home/Genocide/Code/projects/ForgeFoundary/App/Src/Modes/laravel-ddd/Templates/updaterequest.mustache
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateMetaData: file_name: "{{domain_name}}UpdateRequest"
+file_paths: 
+    - Requests
+⟶  [16:45:40] [TemplateDataResolver.php::logData - raw]
+     - templateOverrides:
+⟶  [16:45:40] [FileDataResolver.php::logData - info]
+   Resolved template data for template 'updaterequest.mustache':
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileName: ballsUpdateRequest
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePaths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • 0: Requests
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileExtension: php
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - fileDisabled: 
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - templateEngine: mustache
+⟶  [16:45:40] [FileDataResolver.php::logData - raw]
+     - filePlaceholders:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_name: {{domain_name}}UpdateRequest
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • file_paths:
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+             • 0: Requests
+⟶  [16:45:40] [TemplateResolvingManager.php::logArrayIndented - raw]
+         • domain_name: balls
+[=== Template updaterequest.mustache Resolver Finished. ===]
+[=== Templates Context Publisher Started. ===]
+⟶  [16:45:40] [TemplateSystemRunner.php::publishDTO - info]
+   Published Context: 'App\Src\Domains\Templates\DTOs\TemplatesDTO' to the global context bus
+[=== Templates Context Publisher Finished. ===]
+[=== Templates Resolver Finished. ===]
+[=== Templates system Resolvers Finished. ===]
+[=== Templates Generator Started. ===]
+⟶  [16:45:40] [TemplatesGenerator.php::loadContexts - info]
+   Loaded context: 'TemplatesDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsController.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsController.php' from template: 'controller.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Controllers/BallsController.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsDTO.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsDTO.php' from template: 'dto.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/DTOs/BallsDTO.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsFactory.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsFactory.php' from template: 'factories.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Factories/BallsFactory.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'balls.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'balls.php' from template: 'model.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Models/Balls.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsPolicy.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsPolicy.php' from template: 'policy.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Policies/BallsPolicy.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsRepository.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsRepository.php' from template: 'repository.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Repositories/BallsRepository.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsApi.php'
+⟶  [16:45:40] [FileGenerationManager.php::getFullFilePath - error]
+   Path '/tmp/forge_dry_run_693af5340b0c2/balls/Routes/api' does not exist; skipping generating file
+   'BallsApi.php' in that directory
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - error]
+   File 'ballsApi' have no valid paths; skipping
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsSeeder.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsSeeder.php' from template: 'seeders.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Seeders/BallsSeeder.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsService.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsService.php' from template: 'service.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Services/BallsService.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsServiceProvider.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsServiceProvider.php' from template: 'serviceprovider.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Providers/BallsServiceProvider.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsStoreRequest.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsStoreRequest.php' from template: 'storerequest.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Requests/BallsStoreRequest.php'
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'TemplateContextDTO' from the context bus
+⟶  [16:45:40] [FileGenerationManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+⟶  [16:45:40] [NamingConventionsExecuter.php::applyStyle - info]
+   Applying naming convention: 'pascal_case' to value: 'ballsUpdateRequest.php'
+⟶  [16:45:40] [TemplatesGenerator.php::createFile - info]
+   File generated: 'ballsUpdateRequest.php' from template: 'updaterequest.mustache' at path
+   '/tmp/forge_dry_run_693af5340b0c2/balls/Requests/BallsUpdateRequest.php'
+[=== Templates Generator Finished. ===]
+[==== Templates System Runner Finished. ====]
+[=== Commands Executer Started. ===]
+⟶  [16:45:40] [CommandsExecuter.php::loadContexts - info]
+   Loaded context: 'CommandsContextDTO' from the context bus
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   Executing post-scaffolding commands...
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'composer dump-autoload'
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan migrate'
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan migrate' (exit code 1)
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   Executing: 'php artisan route:clear'
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - error]
+   Command failed: 'php artisan route:clear' (exit code 1)
+⟶  [16:45:40] [CommandSystemRunner.php::executeCommands - info]
+   All post-scaffolding commands executed
+[=== Commands Executer Finished. ===]
+⟶  [16:45:40] [TreeManager.php::loadContexts - info]
+   Loaded context: 'ComponentContextDTO' from the context bus
+[===== Forge Foundary Command Finished. =====]
+[===== Debugger Finished. =====]

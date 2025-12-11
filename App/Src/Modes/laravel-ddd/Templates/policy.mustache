@@ -1,8 +1,33 @@
+---
+file_name: "{{domain_name}}Policy"
+file_paths:
+  - Policies
+---
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Policies;
 
-class {{ filename }}
+use App\Models\User;
+
+class {{domain_name}}Policy
 {
-    //
+    public function view(User $user)
+    {
+        //
+    }
+
+    public function create(User $user)
+    {
+        //
+    }
+
+    public function update(User $user)
+    {
+        //
+    }
+
+    public function delete(User $user)
+    {
+        //
+    }
 }

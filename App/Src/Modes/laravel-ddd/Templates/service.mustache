@@ -1,8 +1,41 @@
+---
+file_name: "{{domain_name}}Service"
+file_paths:
+  - Services
+---
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Services;
 
-class {{ filename }}
+use App\Domains\{{domain_name}}\Repositories\{{domain_name}}Repository;
+
+class {{domain_name}}Service
 {
-    //
+    public function __construct(private {{domain_name}}Repository $repository)
+    {}
+
+    public function getAll()
+    {
+        return $this->repository->all();
+    }
+
+    public function get($id)
+    {
+        return $this->repository->find($id);
+    }
+
+    public function create(array $data)
+    {
+        return $this->repository->create($data);
+    }
+
+    public function update($id, array $data)
+    {
+        return $this->repository->update($id, $data);
+    }
+
+    public function delete($id)
+    {
+        return $this->repository->delete($id);
+    }
 }

@@ -1,11 +1,17 @@
+---
+file_name: "{{domain_name}}"
+file_paths:
+  - Models
+---
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class {{ filename }} extends Model
+class {{domain_name}} extends Model
 {
     protected $fillable = [
+        // fields
     ];
 }

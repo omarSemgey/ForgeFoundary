@@ -1,10 +1,38 @@
+---
+file_name: "{{domain_name}}Repository"
+file_paths:
+  - Repositories
+---
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Repositories;
 
-use {{ repositoryInterface }};
+use App\Domains\{{domain_name}}\Models\{{domain_name}};
 
-class {{ filename }} implements {{ repositoryInterface }}
+class {{domain_name}}Repository
 {
-    //
+    public function all()
+    {
+        return {{domain_name}}::all();
+    }
+
+    public function find($id)
+    {
+        return {{domain_name}}::find($id);
+    }
+
+    public function create(array $data)
+    {
+        return {{domain_name}}::create($data);
+    }
+
+    public function update($id, array $data)
+    {
+        return {{domain_name}}::find($id)->update($data);
+    }
+
+    public function delete($id)
+    {
+        return {{domain_name}}::find($id)->delete();
+    }
 }

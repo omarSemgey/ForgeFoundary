@@ -1,19 +1,31 @@
+---
+file_name: "{{domain_name}}ServiceProvider"
+file_paths:
+  - Providers
+---
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Domains\{{domain_name}}\Repositories\{{domain_name}}Repository;
+use App\Domains\{{domain_name}}\Services\{{domain_name}}Service;
 
-
-class {{ filename }} extends ServiceProvider
+class {{domain_name}}ServiceProvider extends ServiceProvider
 {
-    public function register(): void
+    public function register()
     {
-        //
+        $this->app->singleton({{domain_name}}Repository::class, function($app) {
+            return new {{domain_name}}Repository();
+        });
+
+        $this->app->singleton({{domain_name}}Service::class, function($app) {
+            return new {{domain_name}}Service($app->make({{domain_name}}Repository::class));
+        });
     }
 
-    public function boot(): void
+    public function boot()
     {
-        $this->loadMigrationsFrom(realpath(__DIR__ . '/../Migrations'));
+        //
     }
 }

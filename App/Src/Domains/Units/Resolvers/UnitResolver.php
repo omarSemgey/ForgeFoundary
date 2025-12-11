@@ -87,7 +87,7 @@ class UnitResolver
     // Uses: Config(), Debugger()
     // ===============================================
     private function resolveUnitsMapMode(): void{
-        $this->unitsMapMode = Config()->get("mode_config." . self::UNTIT_CONFIG_KEYS['map'] . "." . self::UNTIT_CONFIG_KEYS['mode']);
+        $this->unitsMapMode = Config()->get("mode_config." . self::UNTIT_CONFIG_KEYS['map'] . "." . self::UNTIT_CONFIG_KEYS['mode'], "directories");
 
         Debugger()->info("Units map mode: '{$this->unitsMapMode}'");
     }

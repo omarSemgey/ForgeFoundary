@@ -36,11 +36,6 @@ templates_enabled_mutator: &templates_enabled_mutator true
 # --- Directories Mutators ---
 directories_enabled_mutator: &directories_enabled_mutator true
 
-# --- Units Mutators ---
-units_created_by_default_mutators: &units_created_by_default_mutators true
-units_map_mode: &units_map_mode_mutator directories
-units_enabled_mutator: &units_enabled_mutator true
-
 # --- Naming Convention Mutators ---
 naming_conventions_enabled_mutator: &naming_conventions_enabled_mutator true
 
@@ -71,11 +66,6 @@ cli_flags:
   templates_path: *templates_path_mutator
   templates_enabled: *templates_enabled_mutator
 
-  # --- Units Cli Flags ---
-  units_created_by_default: *units_created_by_default_mutators
-  units_map_mode: *units_map_mode_mutator
-  units_enabled: *units_enabled_mutator
-
   # --- Commands Cli Flags ---
   commands_enabled: *commands_enabled_mutator
 
@@ -93,7 +83,10 @@ commands:
   # Pre-scaffold hooks
   before: []   
   # Post-scaffold hooks
-  after: []
+  after: 
+    - composer dump-autoload
+    - php artisan migrate
+    - php artisan route:clear
 
 # ----------------------------------------------
 # Component
@@ -118,15 +111,12 @@ directories:
   - DTOs
   - Requests
   - Services
-  - Helpers
-  - Contracts/Repositories
   - Repositories
   - Routes/Api
   - Tests/Feature
   - Tests/Unit
   - Seeders
   - Factories
-  - Hello
 
 # ----------------------------------------------
 # Templates
@@ -147,53 +137,9 @@ templates:
     file_name: defaultFileName
     file_extension: *template_file_extension_mutator
     placeholders: 
-      component_name: *component_name_mutator
-  
+      domain_name: *component_name_mutator
+
   overrides: {}
-
-# ----------------------------------------------
-# Units
-# Fundamental scaffolding units (e.g., Crud, Auth).
-# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Units/
-# ----------------------------------------------
-units_enabled: *units_enabled_mutator
-units:
-  - Crud
-  - Auth
-  - Logic
-
-units_map:
-  mode: units
-
-  units: 
-    units_created_by_default: true
-    overrides: 
-      Crud: []
-      Logic: [] 
-
-# ----------------------------------------------
-# Units Map
-# Defines which directories or units are linked to which units.
-# mode 'directories': map each directory to units that use it | directories → units
-# mode 'units': map each unit to directories it touches | units → directories
-# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Units/#units-map
-# ----------------------------------------------
-units_map:
-  mode: *units_map_mode_mutator
-
-  directories:
-    units_created_by_default: *units_created_by_default_mutators
-    overrides: 
-      Models: []
-      Policies: []
-      Seeders: []
-      Migrations: []
-      Factories: []
-      Providers: []
-
-  units: 
-    units_created_by_default: *units_created_by_default_mutators
-    overrides: {}
 
 # ----------------------------------------------
 # Naming Convention
@@ -207,6 +153,12 @@ units_map:
 # ----------------------------------------------
 naming_conventions_enabled: *naming_conventions_enabled_mutator
 naming_conventions:
+  singular:
+    templates:
+      defaults: false
+      overrides: 
+        - model.mustache
+
   pascal_case:
     component: true
     directories:
@@ -219,4 +171,5 @@ naming_conventions:
 
     templates:
       defaults: true
-      overrides: []
+      overrides: 
+        - model.mustache

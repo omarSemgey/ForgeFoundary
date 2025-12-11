@@ -21,6 +21,8 @@ class StyleManager
     // Purpose: Maps canonical style keys to their handler method names
     // ===============================================
     private const STYLES = [
+        "plural" => "plural",
+        "singular" => "singular",
         "camel_case"        => "camelCase",
         "pascal_case"       => "pascalCase",
         "snake_case"        => "snakeCase",
@@ -80,6 +82,16 @@ class StyleManager
     // Naming convention handler methods
     // Each implements one style transformation using Str helper or native functions
     // ======================================================
+
+    private function plural(string $value): string
+    {
+        return Str::plural($value);
+    } 
+
+    private function singular(string $value): string
+    {
+        return Str::singular($value);
+    }   
 
     private function camelCase(string $value): string
     {

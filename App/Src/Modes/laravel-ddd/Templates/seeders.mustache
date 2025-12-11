@@ -1,0 +1,19 @@
+---
+file_name: "{{domain_name}}Seeder"
+file_paths:
+    - Seeders
+---
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use App\Domains\{{domain_name}}\Models\{{domain_name}};
+
+class {{domain_name}}Seeder extends Seeder
+{
+    public function run(): void
+    {
+        {{domain_name}}::factory()->count(10)->create();
+    }
+}

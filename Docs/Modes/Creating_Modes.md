@@ -90,6 +90,22 @@ Maps mode configuration to command-line options, allowing flexible runtime overr
 
 ---
 
+## Config Defaults (`App/Src/ForgeFoundary.yaml`)
+
+ForgeFoundary reads a default configuration from `App/Src/ForgeFoundary.yaml`. This file lets you set:
+
+```yaml
+modes_path: path/to/modes   # Absolute path or relative to the tool
+mode: MyGoToMode            # Default mode to use when no mode is specified
+```
+
+* `modes_path` – Specifies where your modes are stored. Can be an absolute path or relative to the tool’s base directory.
+* `mode` – Sets the default mode that ForgeFoundary will use if you don’t specify a mode on the CLI.
+
+> Both values can be **overridden via CLI** on any command, giving you flexibility while still having convenient defaults.
+
+---
+
 > Each section is fully configurable via YAML, letting you create a mode that exactly fits your workflow.
 
 For a complete guide on building modes, see the section-specific docs in `Docs/ModeSections/`.

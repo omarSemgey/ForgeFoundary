@@ -1,21 +1,15 @@
 ---
-file_name: DTO
+file_name: "{{domain_name}}DTO"
 file_paths:
-    - DTOs
-file_extension: ts
+  - DTOs
 ---
-
 <?php
 
+namespace App\Domains\{{domain_name}}\DTOs;
 
-class {{ file_name }}
+class {{domain_name}}DTO
 {
     public function __construct(
+        // define properties here
     ) {}
-
-    public static function fromArray(array $data): self
-    {
-        return new self(
-        );
-    }
 }

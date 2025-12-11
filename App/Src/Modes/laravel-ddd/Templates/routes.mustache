@@ -1,0 +1,17 @@
+---
+file_name: "{{domain_name}}Api"
+file_paths: 
+    - Routes/api
+---
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Domains\{{domain_name}}\Controllers\Crud\{{domain_name}}CrudController;
+
+Route::prefix('{{domain_name}}')->group(function () {
+    Route::get('/', [{{domain_name}}CrudController::class, 'index']);
+    Route::post('/', [{{domain_name}}CrudController::class, 'store']);
+    Route::get('/{id}', [{{domain_name}}CrudController::class, 'show']);
+    Route::put('/{id}', [{{domain_name}}CrudController::class, 'update']);
+    Route::delete('/{id}', [{{domain_name}}CrudController::class, 'destroy']);
+});

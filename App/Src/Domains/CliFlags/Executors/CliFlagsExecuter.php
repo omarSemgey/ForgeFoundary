@@ -101,8 +101,6 @@ class CliFlagsExecuter
         // Update the context bus and reload the configuration with applied CLI flags
         ContextBus()->mutateModeValue($configValue);
         $this->configLoader->loadConfig('mode_config', $configValue);
-
-        Debugger()->info("Final mode configuration after applying CLI flags:\n" . Yaml::dump($configValue));
     }
 
     // ===============================================

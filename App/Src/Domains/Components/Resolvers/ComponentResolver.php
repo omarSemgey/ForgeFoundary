@@ -76,7 +76,8 @@ class ComponentResolver
     // ===============================================
     private function resolveComponentName(): void
     {
-        $this->componentName = Config()->get("mode_config." . self::COMPONENT_CONFIG_KEYS['name']);
+        $name = Config()->get("mode_config." . self::COMPONENT_CONFIG_KEYS['name']);
+        $this->componentName = NamingConventions()->apply("component", $name); 
 
         Debugger()->info("Component name: '{$this->componentName}'");
     }

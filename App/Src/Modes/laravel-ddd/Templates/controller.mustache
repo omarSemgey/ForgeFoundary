@@ -1,16 +1,43 @@
 ---
-file_name: "{{component_name}}Controller"
-file_extension: ts
-file_paths: 
+file_name: "{{domain_name}}Controller"
+file_paths:
   - Controllers
 ---
-
 <?php
 
-namespace {{ namespace }};
+namespace App\Domains\{{domain_name}}\Controllers;
 
 use App\Http\Controllers\Controller;
 
-class {{ hello }} extends Controller
+class {{domain_name}}Controller extends Controller
 {
+    public function __construct()
+    {
+        // inject services here
+    }
+
+    public function index()
+    {
+        //
+    }
+
+    public function show($id)
+    {
+        //
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    public function update($id)
+    {
+        //
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
 }

@@ -1,0 +1,48 @@
+---
+file_name: "{{domain_name}}Factory"
+file_paths: 
+    - Factories
+---
+<?php
+
+namespace App\Domains\{{domain_name}}\Factories;
+
+use App\Domains\{{domain_name}}\Models\{{domain_name}};
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * Class {{domain_name}}Factory
+ * Generates fake data for the {{domain_name}} model.
+ */
+class {{domain_name}}Factory extends Factory
+{
+    /**
+     * The name of the model that this factory corresponds to.
+     */
+    protected $model = {{domain_name}}::class;
+
+    /**
+     * Define the model's default state.
+     */
+    public function definition(): array
+    {
+        return [
+            // Add your default attributes here
+            // Example:
+            // 'name' => $this->faker->name(),
+            // 'email' => $this->faker->unique()->safeEmail(),
+        ];
+    }
+
+    /**
+     * Example state: For admin users (optional)
+     */
+    public function admin(): self
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'role' => 'admin',
+            ];
+        });
+    }
+}

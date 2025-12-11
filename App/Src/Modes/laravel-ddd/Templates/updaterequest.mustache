@@ -1,0 +1,25 @@
+---
+file_name: "{{domain_name}}UpdateRequest"
+file_paths: 
+    - Requests
+---
+<?php
+
+namespace App\Domains\{{domain_name}}\Requests\Crud;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class {{domain_name}}UpdateRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            // 'field' => 'sometimes|string',
+        ];
+    }
+}
