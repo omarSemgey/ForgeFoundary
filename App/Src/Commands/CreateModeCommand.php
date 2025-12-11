@@ -32,7 +32,7 @@ class CreateModeCommand extends Command
     // signature: command name and CLI options
     // description: short summary displayed in artisan list
     // ===============================================
-    protected $signature = 'create-mode {--mode-name=} {--cli-log} {--file-log';
+    protected $signature = 'create-mode {--mode-name=} {--mode-type} {--cli-log} {--file-log}';
     protected $description = 'Create a new mode for the ForgeFoundary command';
 
     public function __construct(
@@ -47,6 +47,13 @@ class CreateModeCommand extends Command
     // Context DTOs
     private ConfigContextDTO $configContextDTO;
     private CliInputContextDTO $cliInputContextDTO;
+
+    private const MODE_TYPES = [
+        "full" => "full", 
+        "extended" => "extended", 
+        "moderate" => "moderate", 
+        "minimum" => "minimum", 
+    ];
 
     // ===============================================
     // Function: loadContext
@@ -109,38 +116,67 @@ class CreateModeCommand extends Command
 
     // ===============================================
     // Function: generateMode
-    // Inputs: none (uses context DTOs)
-    // Outputs: void
-    // Purpose: Creates the directory structure and YAML file for a new mode
-    // Logic Walkthrough:
-    //   1. Reads "mode-name" option from CLI input context
-    //   2. Throws RuntimeException if no mode name provided
-    //   3. Resolves full paths for the mode folder, YAML file, and templates folder
-    //   4. Reads default mode template content from TOOL_BASE_PATH/Core/Templates/mode-template.yaml
-    //   5. Creates the mode directory and templates directory (0755 permissions)
-    //   6. Writes mode YAML file using File::put
-    //   7. Logs info using Debugger
-    // External Functions/Helpers Used:
-    //   - $this->pathManager->normalizeSlashes()
-    //   - file_get_contents()
-    //   - $this->files->makeDirectory()
-    //   - File::put()
-    //   - Debugger()->info()
-    // Side Effects: creates files/directories on disk
+    // Inputs:
+    //   - None explicitly (relies on $this->cliInputContextDTO and $this->configContextDTO)
+    // Outputs:
+    //   - None (void), but creates directories and files on disk
+    //
+    // Purpose:
+    //   Generates a new mode scaffold for ForgeFoundary. This includes:
+        //     1. Creating the mode directory
+        //     2. Creating a Templates subdirectory
+        //     3. Copying the selected mode template YAML into the mode directory
+        //
+        // Logic Walkthrough:
+        //   1. Retrieve the mode name from CLI input via $this->cliInputContextDTO->getOption("mode-name")
+        //   2. Retrieve the mode type from CLI input and normalize it using MODE_TYPES constant
+        //   3. Throw a RuntimeException if no mode name is provided
+        //   4. Determine the paths:
+    //        - $modesPath: base folder for all modes from config
+    //        - $modePath: normalized path for this new mode
+    //        - $modeFilePath: full path for the YAML mode file
+    //        - $modeTemplatesPath: folder for mode templates
+    //        - $modeTemplatePath: source path to the selected template file in TOOL_BASE_PATH
+    //   5. Read the content of the template file
+    //   6. Create directories:
+    //        - $modePath
+    //        - $modeTemplatesPath
+    //   7. Write the template YAML content into $modeFilePath
+    //   8. Log information that mode creation succeeded using Debugger
+    //
+    // External Functions / Helpers Used:
+    //   - $this->cliInputContextDTO->getOption(): retrieves CLI options
+    //   - $this->pathManager->normalizeSlashes(): normalizes file system paths
+    //   - $this->files->makeDirectory(): creates directories on disk
+    //   - File::put(): writes content to a file
+    //   - file_get_contents(): reads content from a file
+    //   - Debugger()->info(): logs information to the CLI
+    //
+    // Side Effects:
+    //   - Creates new directories on the filesystem
+    //   - Writes a new YAML mode file
+    //   - Logs to Debugger
     // ===============================================
     private function generateMode(): void{
         $modeName = $this->cliInputContextDTO->getOption("mode-name");
-
+        $modeType = $this->cliInputContextDTO->getOption("mode-type");
+        $modeType = self::MODE_TYPES[strtolower($modeType)];
+        Debugger()->info("Mode type selected: '{$modeType}'");
+        
         if(!$modeName){
             throw new RuntimeException("No mode name given");
         }
 
         $modesPath = $this->configContextDTO->modesPath;
         $modePath = $this->pathManager->normalizeSlashes($modesPath . "/" . $modeName);
+
         $modeFilePath = $this->pathManager->normalizeSlashes($modePath . "/" . $modeName . ".yaml");
-        $modeTemplatesPath = $this->pathManager->normalizeSlashes($modePath . "/Templates");
-        $modeTemplatePath = $this->pathManager->normalizeSlashes(TOOL_BASE_PATH . "/Core/Templates/mode-template.yaml");
-        $modeTemplateValue = file_get_contents($modeTemplatePath);
+
+        $modeTemplatesPath = $this->pathManager->normalizeSlashes($modePath . "/Templates"); 
+
+        $modeTypePath = $this->pathManager->normalizeSlashes(TOOL_BASE_PATH . "/Core/ModeTypes/{$modeType}.yaml");
+        
+        $modeTemplateValue = file_get_contents($modeTypePath);
 
         $this->files->makeDirectory($modePath, 0755, true);
         $this->files->makeDirectory($modeTemplatesPath, 0755, true);

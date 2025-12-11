@@ -1,10 +1,10 @@
 # ==============================================
-# Forge Foundare Mode Template
+# Forge Foundare Full Mode Template
 # ==============================================
 
 # ----------------------------------------------
 # Mode Metadata
-# See docs at: //comingSoon.com/ModeMetadata
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Mode_Metadata/
 # ----------------------------------------------
 mode_metadata: 
   name: 
@@ -19,6 +19,7 @@ mode_metadata:
 # Canonical values for config keys that can be "mutated" via CLI flags.
 # Use YAML anchors (e.g., &mutator) to define them and aliases (*mutator)
 # to link these values to default keys or CLI overrides.
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Mutators/
 # ----------------------------------------------
 # --- Component Mutators ---
 component_path_mutator: &component_path_mutator 
@@ -50,6 +51,7 @@ cli_flags_enabled_mutator: &cli_flags_enabled_mutator
 # CLI Flags
 # Links mutators to command-line options.
 # Any key referencing a mutator can be overridden via CLI.
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/CLI_Flags/
 # ----------------------------------------------
 cli_flags_enabled: *cli_flags_enabled_mutator
 cli_flags: 
@@ -79,7 +81,7 @@ cli_flags:
 # ----------------------------------------------
 # Commands
 # Project-specific tasks run before or after scaffolding.
-# See docs at: //comingSoon.com/Commands
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Commands/
 # ----------------------------------------------
 commands_enabled: *commands_enabled_mutator
 commands: 
@@ -91,7 +93,7 @@ commands:
 # ----------------------------------------------
 # Component
 # The main folder containing all generated archeticture.
-# See docs at: //comingSoon.com/Directories
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Component/
 # ----------------------------------------------
 component_path: *component_path_mutator # Absolute value or relative to where you run the tool
 component_name: *component_name_mutator
@@ -99,7 +101,7 @@ component_name: *component_name_mutator
 # ----------------------------------------------
 # Directories
 # Default domain substructure to generate for each component.
-# See docs at: //comingSoon.com/Directories
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Directories/
 # ----------------------------------------------
 directories_enabled: *directories_enabled_mutator
 directories: []
@@ -108,7 +110,7 @@ directories: []
 # Templates
 # Defines default template behavior and per-template overrides.
 # NOTE: the code currenlty only supports mustache, twig and blade templating engines
-# See docs at: //comingSoon.com/Templates
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Templates/
 # ----------------------------------------------
 templates_path:  # Relative path to the scaffolder App/Src.
 templates_enabled: 
@@ -123,7 +125,7 @@ templates:
 # ----------------------------------------------
 # Units
 # Fundamental scaffolding units (e.g., Crud, Auth).
-# See docs at: //comingSoon.com/Units
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Units/
 # ----------------------------------------------
 units_enabled: *units_enabled_mutator
 units: []
@@ -133,7 +135,7 @@ units: []
 # Defines which directories or units are linked to which units.
 # mode 'directories': map each directory to units that use it | directories → units
 # mode 'units': map each unit to directories it touches | units → directories
-# See docs at: //comingSoon.com/UnitsMap
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Units/#units-map
 # ----------------------------------------------
 units_map:
   mode: *units_map_mode_mutator
@@ -151,7 +153,7 @@ units_map:
 # Applies styles (camelCase, PascalCase, etc.) to components, directories, units, templates and templates metadata.
 # Use 'defaults' for global rules and 'overrides' for exceptions.
 # 'overrides' lets you apply exceptions to global rules.
-# See docs at: //comingSoon.com/NamingConvention
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Naming_Conventions/
 # ----------------------------------------------
 naming_conventions_enabled: *naming_conventions_enabled_mutator
 naming_conventions:
@@ -168,34 +170,3 @@ naming_conventions:
     templates:
       defaults: true
       overrides: []
-
-
-naming_conventions:
-  camel_case:
-    component: true
-    directories:
-      defaults: false
-      overrides: 
-        - Controllers
-
-    units:
-      defaults: false
-      overrides: []
-
-    templates:
-      defaults: true
-      overrides: []
-
-  pascal_case:
-    component: false
-    directories:
-      defaults: true
-      overrides: 
-        - Services
-    units:
-      defaults: false
-      overrides: []
-    templates:
-      defaults: false 
-      overrides: 
-        - Template.mustache

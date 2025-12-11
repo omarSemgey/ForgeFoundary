@@ -1,0 +1,47 @@
+# ==============================================
+# Forge Foundare Minimal Mode Template
+# ==============================================
+
+# ----------------------------------------------
+# Mode Metadata
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Mode_Metadata/
+# ----------------------------------------------
+mode_metadata: 
+  name: 
+  version: 
+  description: >
+    
+  language: 
+  author: 
+
+# ----------------------------------------------
+# Component
+# The main folder containing all generated archeticture.
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Component/
+# ----------------------------------------------
+component_path:  # Absolute value or relative to where you run the tool
+component_name: 
+
+# ----------------------------------------------
+# Directories
+# Default domain substructure to generate for each component.
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Directories/
+# ----------------------------------------------
+directories_enabled: 
+directories: []
+
+# ----------------------------------------------
+# Templates
+# Defines default template behavior and per-template overrides.
+# NOTE: the code currenlty only supports mustache, twig and blade templating engines
+# See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Templates/
+# ----------------------------------------------
+templates_path:  # Relative path to the scaffolder App/Src.
+templates_enabled: 
+templates_require_existing_dirs: # If true, only templates for existing directories will be processed.
+template_engine_extensions: []
+
+templates:
+  defaults: {}
+
+  overrides: {}
