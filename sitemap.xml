@@ -2,86 +2,90 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Getting_Started/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Installation/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Manual/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Commands/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Create_Mode/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Dry_Run/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Dumb_Mode/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Dumb_Modes/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Commands/Scaffold/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/Creating_Modes/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/CLI_Flags/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Commands/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Component/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Directories/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Enabling_or_Disabling_Sections/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Mode_Metadata/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Mutators/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Naming_Conventions/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Templates/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
     </url>
     <url>
          <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/ModeSections/Units/</loc>
-         <lastmod>2025-12-11</lastmod>
+         <lastmod>2025-12-12</lastmod>
+    </url>
+    <url>
+         <loc>https://omarSemgey.github.io/ForgeFoundary/Modes/PreMadeModes/laravel-ddd/</loc>
+         <lastmod>2025-12-12</lastmod>
     </url>
 </urlset>
