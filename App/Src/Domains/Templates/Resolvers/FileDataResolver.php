@@ -2,6 +2,7 @@
 
 namespace App\Src\Domains\Templates\Resolvers;
 
+use App\Src\Core\Debuggers\Debugger;
 use App\Src\Domains\Templates\DTOs\FileDataDTO;
 use App\Src\Domains\Templates\DTOs\TemplateDataDTO;
 use App\Src\Domains\Templates\Helpers\TemplateResolvingManager;
@@ -115,6 +116,7 @@ class FileDataResolver
         $this->resolveFilePlaceholders();
         $this->resolveTemplateEngine();
         $this->updateTemplateMetadata();
+        $this->applyNamingConventionsToPlaceholders();
         $this->resolveFileName();
         $this->resolveFilePaths();
         $this->resolveFileExtension();
@@ -166,6 +168,8 @@ class FileDataResolver
         // Hierarchy: Overrides > Metadata > Defaults
         $placeholders = $override + $yamlParsedTemplateMetadata + $defaults;
 
+        Debugger()->info(var_export($placeholders, true));
+
         $this->filePlaceholders = empty($placeholders) ? null : $placeholders;
     }
 
@@ -182,8 +186,29 @@ class FileDataResolver
         $mustaceEngineInstance = new \Mustache\Engine();
         $updatedMetadata = $mustaceEngineInstance->render($this->templateMetadata, $this->filePlaceholders);
         $updatedMetadata = Yaml::parse($updatedMetadata) ?? [];
+
         $this->updatedTemplateMetadata = $updatedMetadata;
     }
+
+    private function applyNamingConventionsToPlaceholders(): void
+    {
+        if (empty($this->filePlaceholders)) {
+            return;
+        }
+
+        foreach ($this->filePlaceholders as $key => $value) {
+            if(is_string($value)){
+                Debugger()->info("Applying naming conventions to placeholder '{$key}': '{$value}'");
+                $this->filePlaceholders[$key] = NamingConventions()->apply('templates_placeholders', $key, $value);
+            }else{
+                foreach ($value as $i => $v) {
+                    Debugger()->info("Applying naming conventions to placeholder '{$key}': '{$v}'");
+                    $value[$i] = NamingConventions()->apply('templates_placeholders', $key, $v);
+                }
+            }
+        }
+    }
+
 
     // =======================================================
     // Function: resolveFileName

@@ -810,6 +810,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#config-defaults-appsrcforgefoundaryyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config Defaults (App/Src/ForgeFoundary.yaml)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1242,6 +1253,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#config-defaults-appsrcforgefoundaryyaml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config Defaults (App/Src/ForgeFoundary.yaml)
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1308,6 +1330,19 @@
 <h3 id="9-cli-flags">9. CLI Flags</h3>
 <p>Maps mode configuration to command-line options, allowing flexible runtime overrides.</p>
 <p><strong>Docs:</strong> <a href="../ModeSections/CLI_Flags/">CLI Flags</a></p>
+<hr />
+<h2 id="config-defaults-appsrcforgefoundaryyaml">Config Defaults (<code>App/Src/ForgeFoundary.yaml</code>)</h2>
+<p>ForgeFoundary reads a default configuration from <code>App/Src/ForgeFoundary.yaml</code>. This file lets you set:</p>
+<pre><code class="language-yaml">modes_path: path/to/modes   # Absolute path or relative to the tool
+mode: MyGoToMode            # Default mode to use when no mode is specified
+</code></pre>
+<ul>
+<li><code>modes_path</code> – Specifies where your modes are stored. Can be an absolute path or relative to the tool’s base directory.</li>
+<li><code>mode</code> – Sets the default mode that ForgeFoundary will use if you don’t specify a mode on the CLI.</li>
+</ul>
+<blockquote>
+<p>Both values can be <strong>overridden via CLI</strong> on any command, giving you flexibility while still having convenient defaults.</p>
+</blockquote>
 <hr />
 <blockquote>
 <p>Each section is fully configurable via YAML, letting you create a mode that exactly fits your workflow.</p>

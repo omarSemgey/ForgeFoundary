@@ -2,6 +2,7 @@
 
 namespace App\Src\Core\NamingConventions\Executers;
 
+use App\Src\Core\Debuggers\Debugger;
 use App\Src\Core\NamingConventions\DTOs\NamingConventionsContextDTO;
 use App\Src\Core\NamingConventions\Helpers\StyleManager;
 
@@ -70,36 +71,70 @@ class NamingConventionsExecuter
 
     // ===============================================
     // Function: apply
-    // Inputs:
-    //   - string $system: the system/component name to identify rules
-    //   - string $value: the string to apply naming conventions to
-    // Outputs: string (the styled value according to the convention)
-    // Purpose: Applies the correct naming convention to the input value
+    // Inputs: 
+    //   - string $section: the naming convention section (e.g., "directories", "templates")
+    //   - string $key: 
+    //   - string $value: the string value to apply naming conventions to
+    // Outputs: string - the value transformed according to the naming conventions
+    // Purpose: Applies the configured naming conventions (defaults and overrides) to a given value
+    //          Handles values containing '/' by applying conventions to each segment individually
     // Logic Walkthrough:
-    //   - Ensures context is loaded
-    //   - Creates an exact key and wildcard key to lookup in DTO
-    //   - Retrieves the rule using exact key first, then wildcard
-    //   - If no rule exists or rule is disabled, returns original value
-    //   - Otherwise, applies the rule's style using StyleManager
-    // External functions/helpers used:
-    //   - loadContexts()
-    //   - NamingConventionsContextDTO->getRule()
-    //   - StyleManager->applyStyle()
-    // Side Effects: None
+    //   1. Loads naming conventions contexts via loadContexts()
+    //   2. Retrieves the defaults and overrides for the specified section
+    //   3. Checks if $value contains '/':
+    //        a. Splits $value into segments by '/'
+    //        b. Loops over each segment and applies naming conventions individually
+    //        c. Joins the segments back together with '/'
+    //   4. If no '/', applies naming conventions directly on $value
+    // Uses: loadContexts(), applyNamingConvention()
     // ===============================================
-    public function apply(string $system, string $value): string
+    public function apply(string $section,string $key, string $value): string
     {
         $this->loadContexts();
-        $exactKey = "{$system}:{$value}";
-        $wildKey  = "{$system}:*";
+        $currentNamingConventionsSection = $this->namingConventionsContextDTO->NamingConventionsSections[$section];
+        $defaults = $currentNamingConventionsSection->defaults;
+        $overrides = $currentNamingConventionsSection->overrides;
         
-        $rule = $this->namingConventionsContextDTO->getRule($exactKey)
-            ?? $this->namingConventionsContextDTO->getRule($wildKey);
-        
-        if (!$rule || !$rule->enabled) {
-            return $value;
+        if (str_contains($value, '/')) {
+            $segments = explode('/', $value);
+
+            foreach ($segments as $i => $segment) {
+                $segments[$i] = $this->applyNamingConvention($key, $segment, $defaults, $overrides);
+            }
+
+            return implode('/', $segments);
         }
+
         
-        return $this->styleManager->applyStyle($rule->style, $value);
+        return $this->applyNamingConvention($key, $value, $defaults, $overrides);
+        
+    }
+
+    // ===============================================
+    // Function: applyNamingConvention
+    // Inputs:
+    //   - string $key: 
+    //   - string $value: the string to transform
+    //   - array $defaults: default naming conventions to apply
+    //   - array $overrides: specific overrides for particular values
+    // Outputs: string - the value transformed by the specified naming conventions
+    // Purpose: Determines which naming conventions to apply and applies them in order
+    // Logic Walkthrough:
+    //   1. Checks if an override exists for $key; if not, use defaults
+    //   2. Loops through each style in the selected conventions array
+    //   3. Calls the StyleManager to apply the style
+    //   4. Returns the fully transformed value
+    // Side Effects: Uses StyleManager to apply transformations
+    // Uses: StyleManager->applyStyle()
+    // ===============================================
+    private function applyNamingConvention(string $key, string $value, array $defaults, array $overrides): string 
+    {
+        $namingConventions = $overrides[$key] ?? $defaults;
+      
+        foreach($namingConventions as $style){
+            $value = $this->styleManager->applyStyle($style, $value);
+        }
+
+        return $value;
     }
 }

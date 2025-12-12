@@ -106,7 +106,7 @@ class UnitsGenerator
         $allDirectories =$this->directoryContextDTO->directories;
 
         $directories = $this->UnitGenerationManager->getUnitDirectories($unit, $mode, $overrides, $defaults, $allDirectories);
-        $unit = NamingConventions()->apply("units", $unit);
+        $unit = NamingConventions()->apply("units", $unit, $unit);
         foreach ($directories as $directory) {
             $path = "{$this->componentContextDTO->componentPath}/{$directory}/{$unit}";
             $this->UnitGenerationManager->createUnit($path, $this->files, $unit);

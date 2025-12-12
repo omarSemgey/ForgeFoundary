@@ -76,7 +76,7 @@ class DirectoriesGenerator
         $dirs = collect($this->directoryContextDTO->directories);
 
         $dirs->each(function ($dir) {
-            $dir = NamingConventions()->apply("directories", $dir);
+            $dir = NamingConventions()->apply("directories", $dir, $dir);
             $this->createDirectory("{$this->componentContextDTO->componentPath}/{$dir}", $dir);
         });
     }

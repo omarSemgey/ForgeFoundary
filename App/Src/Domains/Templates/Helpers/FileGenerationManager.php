@@ -91,7 +91,9 @@ class FileGenerationManager
             return;
         }
 
-        $fileName = $fileData->fileName . '.' . $fileData->fileExtension;
+        $name = NamingConventions()->apply("templates", $templateData->templateName,$fileData->fileName);
+
+        $fileName = $name . '.' . $fileData->fileExtension;
 
         $fullFilePaths = $this->getFullFilePath($this->componentContextDTO->componentPath, $fileData->filePaths, $fileName);
 
@@ -124,13 +126,11 @@ class FileGenerationManager
     //       - Else, create directory recursively and log info
     //   5. Append full path + fileName to result array
     // Side Effects: may create directories
-    // Uses: File, PathManager, NamingConventions(), Debugger()
+    // Uses: File, PathManager, Debugger()
     // ===============================================
     private function getFullFilePath(string $basePath, array $filePaths, string $fileName): array
     {
         $fullFilePaths = [];
-        $fileName = NamingConventions()->apply("templates", $fileName);
-
         foreach ($filePaths as $path) {
             $fullPath = $this->pathManager->normalizeSlashes($basePath . '/' . $path);
 

@@ -25,7 +25,7 @@ mode_metadata:
 # ----------------------------------------------
 # --- Component Mutators ---
 component_path_mutator: &component_path_mutator /home/Genocide/Code/projects/boardify/back-end/app/Domains 
-component_name_mutator: &component_name_mutator Hello
+component_name_mutator: &component_name_mutator YourDomainName
 
 # --- Template Mutators ---
 templates_path_mutator: &templates_path_mutator Modes/laravel-ddd/Templates/ 
@@ -141,35 +141,26 @@ templates:
 
   overrides: {}
 
+
 # ----------------------------------------------
 # Naming Convention
 # Applies styles (camelCase, PascalCase, etc.) to components, directories, units, templates and templates metadata.
-# Use 'defaults' for global rules and 'overrides' for exceptions.
-# 'overrides' lets you apply exceptions to global rules.
-# Note: For templates use the file names not the template names
-# 'overrides' on true 'defaults' => dont apply this naming convention
-# 'overrides' on true 'defaults' => forcibly apply this naming convention
 # See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Naming_Conventions/
 # ----------------------------------------------
 naming_conventions_enabled: *naming_conventions_enabled_mutator
 naming_conventions:
-  singular:
-    templates:
-      defaults: false
-      overrides: 
-        - model.mustache
+  component:
+    defaults: [pascal_case]
 
-  pascal_case:
-    component: true
-    directories:
-      defaults: true
-      overrides: []
+  directories:
+    defaults: [pascal_case]   
 
-    units:
-      defaults: true
-      overrides: []
+  templates:
+    defaults: [singular, pascal_case]
+    overrides:
+      model.mustache: [singular, pascal_case]
+      routes.mustache: [kebab_case]
 
-    templates:
-      defaults: true
-      overrides: 
-        - model.mustache
+  templates_placeholders:
+    overrides:
+      domain_name: [snake_case]

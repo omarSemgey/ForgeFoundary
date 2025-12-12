@@ -1,95 +1,77 @@
 # Naming Conventions
 
-## Overview
+ForgeFoundary supports **automatic naming transformations** for components, directories, templates, and placeholders. Naming conventions are applied in **the order they are listed**.
 
-The **Naming Convention** section allows you to **enforce consistent naming styles** (e.g., camelCase, PascalCase) across your mode’s components, directories, units, templates, and template metadata. This helps keep your project organized and readable.
+## Structure
 
-You can define **global rules** using `defaults` and **exceptions** using `overrides`.
-
----
-
-## Keys
+Each section of the naming conventions configuration has the following structure:
 
 ```yaml
-naming_conventions_enabled: true
-naming_conventions:
-  camel_case:
-    component: true
-    directories:
-      defaults: true
-      overrides: []
-    units:
-      defaults: true
-      overrides: []
-    templates:
-      defaults: true
-      overrides: []
+section_name:
+  defaults: [array of naming conventions]
+  overrides:
+    key_to_override: [array of naming conventions]
 ```
 
-### Explanation
+* **defaults** – the naming conventions applied to all items in this section by default.
+* **overrides** – specific keys (like a template filename or a placeholder name) that use custom naming conventions instead of the defaults. The defaults **do not apply** to overridden items.
 
-* `naming_conventions_enabled` – Boolean flag to enable or disable naming convention processing.
-* `naming_conventions` – Object containing different naming styles (camel_case, pascal_case, snake_case, etc.).
-* Each style contains:
+> Naming conventions are applied sequentially, from left to right in the array.
 
-  * `component` – Whether components should follow this style.
-  * `directories` – `defaults` applies the style globally; `overrides` lists directories that differ.
-  * `units` – Same as directories but for units.
-  * `templates` – Same as directories but for templates.
-
----
-
-## How Overrides Work
-
-* **When `defaults: true`** – All items follow the naming convention except the ones listed in `overrides`.
-* **When `defaults: false`** – Items in `overrides` **do** follow the convention, while everything else ignores it.
-* The first naming convention to match an element will be applied; subsequent conventions are ignored.
-
----
-
-## Examples
+### Example Sections
 
 ```yaml
-naming_conventions:
-  camel_case:
-    component: true
-    directories:
-      defaults: false
-      overrides: 
-        - Controllers
-    units:
-      defaults: true
-      overrides: []
-    templates:
-      defaults: true
-      overrides: []
+component:
+  defaults: [pascal_case]
 
-  pascal_case:
-    component: false
-    directories:
-      defaults: true
-      overrides: []
-    units:
-      defaults: true
-      overrides: []
-    templates:
-      defaults: false 
-      overrides: 
-        - Template.mustache
+directories:
+  defaults: [pascal_case]
+
+templates:
+  defaults: [singular, pascal_case]
+  overrides:
+    model.mustache: [singular, pascal_case]
+    routes.mustache: [kebab_case]
+
+templates_placeholders:
+  overrides:
+    domain_name: [snake_case]
 ```
 
-**Interpretation:**
-
-* Components follow **camelCase**.
-* All directories follow **PascalCase** except `Controllers`, which uses camelCase.
-* Units use **defaults: true** for camelCase but are not overridden, so they remain camelCase.
-* Templates mostly follow camelCase, except `Template.mustache`, which uses PascalCase.
-* The first convention applied to an element (camelCase or PascalCase) is the one that takes effect.
+* `component` – transforms component names.
+* `directories` – transforms directory names.
+* `templates` – transforms the generated file names based on templates.
+* `templates_placeholders` – transforms placeholder values used inside templates.
 
 ---
 
-### Notes
+## How It Works
 
-* Naming conventions are optional, but they help maintain a consistent style in larger projects.
-* Overrides give precise control, allowing exceptions to global rules.
-* Units and templates can be excluded from naming conventions if desired.
+1. When generating a value (component, directory, template, or placeholder), ForgeFoundary checks for an **override** first.
+2. If an override exists, only the override’s naming conventions are applied.
+3. If no override exists, the **defaults** are applied in order.
+4. Naming conventions are applied **sequentially**; for example: `[singular, snake_case]` will first singularize, then convert to `snake_case`.
+
+---
+
+## Available Naming Conventions
+
+| Key                    | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `plural`               | Converts value to plural form.            |
+| `singular`             | Converts value to singular form.          |
+| `camel_case`           | Converts value to `camelCase`.            |
+| `pascal_case`          | Converts value to `PascalCase`.           |
+| `snake_case`           | Converts value to `snake_case`.           |
+| `kebab_case`           | Converts value to `kebab-case`.           |
+| `upper_snake_case`     | Converts value to `UPPER_SNAKE_CASE`.     |
+| `dot_case`             | Converts value to `dot.case`.             |
+| `studly_case`          | Converts value to `StudlyCase`.           |
+| `title_case`           | Converts value to `Title Case`.           |
+| `sentence_case`        | Converts value to `Sentence case`.        |
+| `screaming_kebab_case` | Converts value to `SCREAMING-KEBAB-CASE`. |
+| `slash_case`           | Converts value to `slash/case`.           |
+| `backslash_case`       | Converts value to `backslash\case`.       |
+| `dot_kebab_case`       | Converts value to `dot-kebab-case`.       |
+| `flat_case`            | Converts value to `flatcase`.             |
+| `train_case`           | Converts value to `Train-Case`.           |
