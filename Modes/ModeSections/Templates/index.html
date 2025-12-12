@@ -880,15 +880,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#keys" class="md-nav__link">
+  <a href="#templates-environment-keys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Keys
+        Templates Environment Keys
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Keys">
+    <nav class="md-nav" aria-label="Templates Environment Keys">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -976,6 +976,78 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#template-yaml-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template YAML Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template YAML Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchy-of-value-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchy of value resolution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#placeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placeholders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-file-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple File Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1089,15 +1161,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#keys" class="md-nav__link">
+  <a href="#templates-environment-keys" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Keys
+        Templates Environment Keys
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Keys">
+    <nav class="md-nav" aria-label="Templates Environment Keys">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1188,6 +1260,78 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#template-yaml-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Template YAML Metadata
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Template YAML Metadata">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchy-of-value-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchy of value resolution:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#placeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Placeholders
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-file-paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple File Paths
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1207,13 +1351,21 @@
 
 <h1 id="templates">Templates</h1>
 <h2 id="overview">Overview</h2>
-<p>The <strong>Templates</strong> section defines how your mode handles <strong>file templates</strong>. This section is optional, but it’s a core part of flexible scaffolding. It allows you to define <strong>default template behavior</strong>, <strong>per-template overrides</strong>, and the template engines you want to use.</p>
+<p>The <strong>Templates</strong> section defines how your mode handles <strong>file templates</strong>. Templates are the building blocks that generate actual files in your projects. This section is optional, but it is a core part of flexible scaffolding.</p>
+<p>Templates allow you to define:</p>
+<ul>
+<li><strong>Default template behavior</strong> (file names, paths, extensions, placeholders)</li>
+<li><strong>Per-template overrides</strong></li>
+<li><strong>Template engine usage</strong> (e.g., Mustache, Twig, Blade)</li>
+<li><strong>Placeholders</strong>, including metadata placeholders</li>
+<li><strong>Multiple file paths for a single template</strong>, enabling one template to generate multiple files</li>
+</ul>
 <blockquote>
-<p>⚠️ Currently supported template engines: <strong>Mustache</strong>, <strong>Twig</strong>, and <strong>Blade</strong>.
-⚠️ Units rely on directories being created. If <code>directories_enabled</code> is <code>false</code>, units will be skipped during scaffolding.</p>
+<p>⚠️ Supported template engines: <strong>Mustache</strong>, <strong>Twig</strong>, <strong>Blade</strong></p>
+<p>⚠️ Templates rely on directories being created. If <code>directories_enabled</code> is <code>false</code>, templates may be skipped.</p>
 </blockquote>
 <hr />
-<h2 id="keys">Keys</h2>
+<h2 id="templates-environment-keys">Templates Environment Keys</h2>
 <pre><code class="language-yaml">templates_path:          # Relative path to the Templates folder in your mode
 templates_enabled:       # true/false to enable template processing
 templates_require_existing_dirs:  # If true, only generate templates for directories that exist
@@ -1252,33 +1404,118 @@ template_engine_extensions: []    # Array of file extensions to treat as templat
 </code></pre>
 <h3 id="defaults"><code>defaults</code></h3>
 <ul>
-<li>Sets default properties for all templates in your mode.</li>
-<li>Example:</li>
+<li>Applies default metadata and placeholders to all templates in the mode.</li>
+<li>Can include:</li>
 </ul>
-<pre><code class="language-yaml">templates:
-  defaults:
-    file_name: defaultFileName
-    file_extension: php
-    placeholders:
-      component_name: *component_name_mutator
-</code></pre>
-<p><em>Placeholders</em> can reference mutators or static values.</p>
+<p><code>yaml
+  templates:
+    defaults:
+      file_name: defaultFileName
+      file_extension: php
+      file_paths: ["Models"]
+      placeholders:
+        component_name: *component_name_mutator</code></p>
 <h3 id="overrides"><code>overrides</code></h3>
 <ul>
-<li>Allows you to override defaults for specific templates.</li>
+<li>Allows specific templates to deviate from defaults.</li>
+<li>Each override must reference the full template filename.</li>
 <li>Example:</li>
 </ul>
 <pre><code class="language-yaml">templates:
   overrides:
-    Template.mustache:
-      file_extension: js
-      file_name: CustomTemplateName.js
+    model.mustache:
+      file_name: CustomModel
+      file_extension: php
+      file_paths:
+        - &quot;Models&quot;
+        - &quot;Repositories&quot;
       placeholders:
-        customPlaceholder: overrideCustomPlaceholderValue
+        domain_name: ExampleDomain
 </code></pre>
-<p><em>Overrides</em> are useful when you need specific templates to differ from the defaults while keeping your main configuration clean.</p>
+<p><em>Overrides replace the defaults for the specified fields. If a field is not overridden, the defaults are used.</em></p>
 <hr />
-<p>This section is optional, but it gives you powerful control over <strong>how templates are generated and customized per mode</strong>.</p>
+<h2 id="template-yaml-metadata">Template YAML Metadata</h2>
+<p>Each template file can include a <strong>YAML front matter section</strong> at the top. This serves as the template's <strong>file metadata</strong> and allows defining <strong>additional placeholders</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml">---
+file_name: &quot;MyFile_{{placeholder}}.php&quot;
+file_paths: [&quot;Services&quot;, &quot;Repositories&quot;]
+file_extension: php
+---
+</code></pre>
+<h3 id="key-fields">Key fields</h3>
+<ul>
+<li><strong><code>file_name</code></strong> – The name of the file to generate. Can reference placeholders.</li>
+<li><strong><code>file_paths</code></strong> – Array of paths where this template will be generated. Paths are relative to the component or mode. You can define multiple paths to generate the same template in different locations.</li>
+<li><strong><code>file_extension</code></strong> – The file extension to use.</li>
+</ul>
+<blockquote>
+<p>A file <strong>must have a file name, a file extension and at least one file path</strong> for ForgeFoundary to generate it. This can be defined either in the template file itself or in the mode configuration.</p>
+</blockquote>
+<h3 id="hierarchy-of-value-resolution">Hierarchy of value resolution:</h3>
+<p>When ForgeFoundary generates a template, it determines values in this order:</p>
+<p>Mode configuration overrides (templates.overrides.template_name) → highest priority</p>
+<p>Template YAML section → overrides defaults from the mode configuration</p>
+<p>Mode configuration defaults (templates.defaults) → lowest priority</p>
+<p>⚠️ This hierarchy applies to both placeholders and metadata (like file_name, file_extension). For example, if file_name exists in the mode override, it will replace any file_name defined in the template YAML.</p>
+<hr />
+<h2 id="placeholders">Placeholders</h2>
+<p><strong>Placeholders</strong> are variables that you reference inside templates. Their format depends on the template engine (e.g., <code>{{placeholder}}</code> for Mustache).</p>
+<p><em>Placeholders exist in three places:</em></p>
+<ol>
+<li><strong>Template metadata YAML</strong>
+   You can both define placeholders or use them in your template's YAML section Example:</li>
+</ol>
+<pre><code class="language-yaml">---
+file_name: &quot;{{MyFileNamePlaceholder}}&quot;
+custom_placeholder: &quot;Hello&quot;
+---
+</code></pre>
+<ol>
+<li><strong>Template body</strong>
+   You can reference placeholders in the template content. Example (Mustache):</li>
+</ol>
+<pre><code class="language-mustache">class {{file_name}} {
+    echo {{custom_placeholder}};
+}
+</code></pre>
+<ol>
+<li><strong>Global or YAML-defined placeholders</strong>
+   These are defined in your mode configuration (<code>templates.defaults.placeholders</code>) or as overrides (<code>templates.overrides.template_name.placeholders</code>). Example:</li>
+</ol>
+<pre><code class="language-yaml">templates:
+  defaults:
+    placeholders:
+      MyFileNamePlaceholder: MyFileName
+</code></pre>
+<blockquote>
+<p>⚠️ Note: File paths, unlike the other file metadata like file_extension and file_name, cannot be used as placeholders.</p>
+<p>⚠️ Hierarchy reminder: Mode overrides &gt; Template YAML &gt; Mode defaults.</p>
+</blockquote>
+<hr />
+<h2 id="multiple-file-paths">Multiple File Paths</h2>
+<p>A single template can generate files in multiple directories. Example:</p>
+<pre><code class="language-yaml">file_paths:
+  - &quot;Services&quot;
+  - &quot;Repositories&quot;
+</code></pre>
+<ul>
+<li>This will generate one file name in each path.</li>
+<li>Useful for templates that need to exist in multiple locations (e.g., DTOs, Repositories, or Service classes).</li>
+</ul>
+<blockquote>
+<p>The <strong>file name remains the same</strong> for all generated paths unless overridden with placeholders.</p>
+</blockquote>
+<hr />
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Templates are <strong>metadata-driven</strong> through YAML front matter.</li>
+<li>They support <strong>placeholders</strong> in both metadata and template content.</li>
+<li>Defaults and overrides allow centralized configuration or fine-grained per-template control.</li>
+<li>Templates can generate <strong>multiple files at different paths</strong> but with a single base name.</li>
+<li>Supported engines: <strong>Mustache, Twig, Blade</strong>.</li>
+</ul>
+<p>This approach provides <strong>maximum flexibility</strong> while keeping template definitions <strong>clear, modular, and reusable</strong>.</p>
 
 
 
