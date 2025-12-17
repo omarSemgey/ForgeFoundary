@@ -1,0 +1,1470 @@
+# ForgeFoundary Installation Guide
+
+This document explains how to install ForgeFoundary on your system, including the requirements and the provided installation scripts.
+
+---
+
+## Requirements
+
+Before installing ForgeFoundary, make sure you have the following installed:
+
+- **PHP** (version 8.2 or higher)  
+  [Download PHP](https://www.php.net/downloads)
+- **Composer** (PHP dependency manager)  
+  [Download Composer](https://getcomposer.org/download/)
+
+> ForgeFoundary depends on PHP and Composer to run and manage dependencies.
+
+---
+
+## Installation Scripts
+
+ForgeFoundary provides two scripts to install the tool, depending on your operating system.
+
+### 1. Unix / Linux / macOS
+
+Script: `install.sh`
+
+**How to run:**
+
+```bash
+chmod +x install.sh
+./install.sh
+```
+
+The script will:
+
+1. Ask for the installation directory (default: `~/ForgeFoundary`).
+2. Clone the ForgeFoundary repository to the specified folder.
+3. Install PHP dependencies using Composer.
+4. Attempt to make the `ForgeFoundary` command available globally (requires write access to `/usr/local/bin`).
+
+If the script cannot link globally, you can manually add the install directory to your `PATH`.
+
+---
+
+### 2. Windows
+
+Script: `install.ps1`
+
+**How to run:**
+
+Open PowerShell with administrative rights and execute:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+.\install.ps1
+```
+
+The script will:
+
+1. Ask for the installation directory (default: `$HOME\ForgeFoundary`).
+2. Clone the ForgeFoundary repository to the specified folder.
+3. Install PHP dependencies using Composer.
+4. Optionally, guide you to make `ForgeFoundary` accessible globally.
+
+---
+
+## Next Steps
+
+After installation, you can run the tool using:
+
+```bash
+ForgeFoundary dry-run
+```# Documentation Map
+
+This file serves as a central map for all documentation in the `Docs/` folder.  
+
+## Getting Started
+
+- [Installation Instructions](Installation.md) – Describes requirements (PHP & Composer) and provides installation scripts for Unix and Windows.
+- [Getting Started](Getting_Started.md) – Overview of ForgeFoundary, first steps, and initial setup.
+- [Creating Modes](Modes/Creating_Modes.md) – Guide for creating custom scaffolding modes.
+- [Commands Reference](Commands/Commands.md) – Overview of available commands and their purposes.
+
+---
+
+## Commands Documentation
+
+- [Scaffold Command](Commands/Scaffold.md) – Main scaffolding command to generate project structure.
+- [Create Mode Command](Commands/Create_Mode.md) – Command to create a new mode scaffold.
+- [Dry Run Command](Commands/Dry_Run.md) – Simulate scaffolding without changing real files.
+- [Dumb Mode Command](Commands/Dumb_Mode.md) – Dump configuration values for a single mode.
+- [Dumb Modes Command](Commands/Dumb_Modes.md) – List all available modes and their metadata.
+
+---
+
+## Mode Sections
+
+Each mode in ForgeFoundary can include optional and required sections to define its behavior. These sections are documented individually:
+
+- [Mode Metadata](Modes/ModeSections/Mode_Metadata.md) – Basic metadata for a mode (name, version, author, description, language).
+- [Mutators](Modes/ModeSections/Mutators.md) – Define reusable anchors for values and link them to CLI flags.
+- [CLI Flags](Modes/ModeSections/CLI_Flags.md) – Optional feature to modify values via terminal using mutators.
+- [Component](Modes/ModeSections/Component.md) – Core section defining the component path and name. **Required**.
+- [Directories](Modes/ModeSections/Directories.md) – Optional folder structure definitions.
+- [Commands](Modes/ModeSections/Commands.md) – Optional pre/post scaffolding commands.
+- [Templates](Modes/ModeSections/Templates.md) – Optional templates section with defaults, overrides, and supported engines.
+- [Units](Modes/ModeSections/Units.md) – Optional units system for advanced scaffolding logic.
+- [Naming Conventions](Modes/ModeSections/Naming_Conventions.md) – Optional section to enforce naming styles and apply exceptions.
+- [Enabling or Disabling Sections](Modes/ModeSections/Enabling_or_Disabling_Sections.md) – Control which sections are processed during scaffolding.
+
+---
+
+> This map will continue to grow as more documentation is added, providing a single reference point for all ForgeFoundary features.
+# Getting Started with ForgeFoundary
+
+## What is ForgeFoundary?
+
+ForgeFoundary is a general-purpose programming scaffolder designed to help developers quickly set up project structures, templates, and reusable components. Unlike framework-specific tools, ForgeFoundary is **mode-based**, meaning you can create custom scaffolding "modes" for any programming language, framework, or project type.
+
+It’s for developers who want **flexible, repeatable project scaffolding** without being tied to a specific ecosystem.
+
+---
+
+## Who is this for?
+
+* Developers interested in **defining their own project structures** and automating repetitive setups.
+* Anyone curious about creating **custom modes** for any programming workflow.
+
+> ⚠️ You will need **PHP 8.2+** and **Composer** installed before using ForgeFoundary.
+
+---
+
+## After Installation
+
+Once you’ve followed the instructions in [Installation Instructions](Installation.md) and successfully installed ForgeFoundary:
+
+1. Verify the installation:
+
+```bash
+   ForgeFoundary list
+```
+
+   This will display available commands and options.
+
+2. Test a scaffold run using the dry-run command:
+
+```bash
+   ForgeFoundary dry-run
+```
+
+   This simulates scaffolding without creating files, letting you preview your setup.
+
+---
+
+## Creating Custom Modes
+
+### How to create a mode:
+
+1. Generate a new mode skeleton:
+
+```bash
+   ForgeFoundary create-mode MyCustomMode
+```
+
+   This creates a folder in `Modes/` with all necessary files ready for configuration.
+
+2. Edit your mode configuration YAML:
+
+   * Define directories, templates, units, and naming conventions.
+   * Optionally add CLI flags or pre/post commands.
+
+3. Run your mode:
+
+```bash
+   ForgeFoundary scaffold --mode=MyCustomMode
+```
+
+   This will scaffold the structure based on your configuration.# Dry Run Command
+
+## Overview
+
+The `dry-run` command allows you to **simulate a full ForgeFoundary scaffolding** without creating or modifying any real files. It’s perfect for **previewing your mode configuration** and seeing the generated project structure safely.
+
+Think of it as a “practice run” before committing your scaffolding to disk.
+
+---
+
+## Usage
+
+```bash
+ForgeFoundary dry-run --mode=ModeName [options]
+```
+
+### Options
+
+* `--mode=` – Specify which mode to simulate.
+* `--modes-path=` – Optionally set a custom path to your modes folder.
+* `--config-name=` – Select a specific main configuration file name.
+* `--config-path=` – Set a custom path to the main configuration YAML.
+* `--custom=*` – Pass additional custom CLI flags declared in the mode.
+* `--cli-log` – Enable logging output directly in the terminal.
+* `--file-log` – Save logs to a file.
+
+---
+
+## How it works
+
+When executed, `dry-run`:
+
+1. Loads your **tool and mode configuration**.
+
+2. Creates a **temporary folder** to simulate all scaffolding operations.
+
+3. Overrides paths (like components) to ensure nothing is written to your actual project.
+
+4. Runs all systems in order:
+
+   * Components
+   * Directories
+   * Units
+   * Templates
+   * Commands
+
+5. Renders a **tree view** of the generated structure.
+
+6. Cleans up by **deleting the temporary folder** after the run.
+
+> The command gives a safe, real-time preview of your project scaffolding without affecting your actual files.
+
+---
+
+## Example
+
+```bash
+# Simulate scaffolding for the default mode
+ForgeFoundary dry-run
+
+# Simulate a custom mode with CLI logging
+ForgeFoundary dry-run --mode=MyCustomMode --cli-log
+
+# Simulate using additional custom flags
+ForgeFoundary dry-run --mode=WebApp --custom=component_path=/tmp/temp_components
+```
+
+---
+
+## Next Steps
+
+After reviewing a dry run:
+
+1. Update your mode’s YAML configuration or templates as needed.
+2. Once satisfied, run the **real scaffolding** with:
+
+```bash
+ForgeFoundary scaffold --mode=MyCustomMode
+```# Scaffold Command
+
+## Overview
+
+The `scaffold` command is the **main command** in ForgeFoundary. It generates the project structure according to a selected **mode**, creating directories, templates, units, and components automatically. This is the command you will use most often to apply the scaffolding defined in your modes.
+
+## Usage
+
+```bash
+ForgeFoundary scaffold --mode=ModeName [options]
+```
+
+### Options
+
+* `--mode=` – Specify which mode to run.
+* `--modes-path=` – Optionally set a custom path to your modes folder.
+* `--tree-view` – Render a visual tree of the generated project structure.
+* `--config-name=` – Select a specific configuration file name for the mode(Main config not mode).
+* `--config-path=` – Set a custom path to the mode’s configuration YAML(Main config not mode).
+* `--custom=*` – Pass additional custom cli flags declared in the mode.
+* `--cli-log` – Enable logging output directly in the terminal.
+* `--file-log` – Save logs to a file.
+
+---
+
+## How it works
+
+When executed, `scaffold`:
+
+1. Loads your **tool and mode configuration**.
+2. Boots all necessary systems for scaffolding.
+3. Runs the following **in order**:
+
+   * Pre-Scaffold Commands
+   * Components
+   * Directories
+   * Units
+   * Templates
+   * Post-Scaffold Commands
+4. Outputs logs and reports.
+5. Optionally, displays a **tree view** of the generated structure if `--tree-view` is enabled.
+
+> Think of this command as the central engine that applies all the rules and templates you’ve defined in your mode.
+
+---
+
+## Example
+
+```bash
+# Run the default mode defined in the main config file
+ForgeFoundary scaffold
+
+# Run a custom mode and render tree view
+ForgeFoundary scaffold --mode=MyCustomMode --tree-view
+```# Commands in ForgeFoundary
+
+ForgeFoundary exposes a set of **commands** that allow you to interact with the tool, run scaffolding tasks, and manage modes. Commands are modular and extensible, and each has its own dedicated documentation in `Docs/Commands/`.
+
+---
+
+## Available Commands
+
+* **ScaffoldCommand** – Executes the scaffolding process for a specified mode, generating directories, templates, and units.
+
+  **Docs:** [ScaffoldCommand](Scaffold.md)
+
+* **Create Mode Command** – Generates a new mode skeleton for you to configure.
+
+  **Docs:** [Create Mode Command](Create_Mode.md)
+
+* **Dry Run Command** – Simulates scaffolding without creating files, so you can preview your setup.
+
+  **Docs:** [Dry Run Command](Dry_Run.md)
+
+* **Dumb Modes Command** – Lists all available modes in a simple, readable format.
+
+  **Docs:** [Dumb Modes Command](Dumb_Modes.md)
+
+* **Dumb Mode Command** – Shows details for a single mode, including directories, templates, and units.
+
+  **Docs:** [Dumb Mode Command](Dumb_Mode.md)
+
+---
+
+For detailed usage and examples, see the individual command docs inside `Docs/Commands/`.
+# Create Mode Command
+
+## Overview
+
+The `create-mode` command allows you to **quickly generate a new mode skeleton** in ForgeFoundary. A mode defines how your project should be scaffolded, including directories, templates, units, components, commands, CLI flags, and naming conventions.
+
+With the latest update, you can now **choose from four mode types** that provide different levels of detail for your new mode:
+
+* **Minimal** – Only mode metadata, component path & name, empty directories array, and basic template paths.
+* **Moderate** – Metadata, component, templates, units sections included, but without nested keys.
+* **Extended** – Includes metadata, component, templates, units, commands, CLI flags, and naming conventions with mutators.
+* **Full** – All keys, including nested keys and mutators; the most complete starting template.
+
+This command is the **starting point** for building custom scaffolding logic that suits your workflow.
+
+---
+
+## Usage
+
+```bash
+ForgeFoundary create-mode --mode-name=MyCustomMode --mode-type=[minimal|moderate|extended|full] [options]
+```
+
+### Options
+
+* `--mode-name=` – **Required.** The name of the new mode you want to create.
+* `--mode-type=` – **Optional.** The type of mode template to use (`minimal`, `moderate`, `extended`, `full`). Defaults to `full` if not specified.
+* `--cli-log` – Enable logging output directly in the terminal while generating the mode.
+* `--file-log` – Save logs to a file while generating the mode.
+
+---
+
+## How it works
+
+When executed, `create-mode`:
+
+1. Loads your **tool configuration** and CLI context.
+2. Resolves paths for the new mode folder and its YAML configuration.
+3. Determines which **mode template** to use (`minimal`, `moderate`, `extended`, or `full`).
+4. Creates the **mode directory** and a **Templates folder** inside it.
+5. Copies the selected **YAML template** into the new mode folder, ready to be edited.
+6. Logs messages confirming the creation of the mode.
+
+> Think of this command as the scaffolding for your scaffolding—everything else you define in the mode will be based on this initial setup.
+
+---
+
+## Examples
+
+```bash
+# Create a new minimal mode
+ForgeFoundary create-mode --mode-name=SimpleMode --mode-type=minimal
+
+# Create a full-featured mode with CLI logging enabled
+ForgeFoundary create-mode --mode-name=AdvancedMode --mode-type=full --cli-log
+
+# Create a moderate mode
+ForgeFoundary create-mode --mode-name=ModerateMode
+```
+
+---
+
+## Next Steps
+
+After creating a mode:
+
+1. Navigate to your new mode folder:
+
+```bash
+cd Modes/MyCustomMode
+```
+
+2. Edit the YAML file to define your **directories, templates, units, components, commands, CLI flags, and naming conventions** according to your workflow.
+
+3. Add or customize templates in the `Templates/` folder.
+
+4. Run the mode using:
+
+```bash
+ForgeFoundary scaffold --mode=MyCustomMode
+```# Dumb Modes Command
+
+## Overview
+
+The `dumb-modes` command lists all **modes available** in ForgeFoundary. It scans your configured modes folder, retrieves metadata from each mode, and displays a structured view in the terminal. This is useful for quickly checking which modes you have installed and their basic configuration info.
+
+Think of it as a **mode inventory command**.
+
+---
+
+## Usage
+
+```bash
+ForgeFoundary dumb-modes [options]
+```
+
+### Options
+
+* `--config-name=` – Specify a main configuration file name.
+* `--config-path=` – Set a custom path to the main configuration YAML.
+* `--custom=*` – Pass additional custom CLI flags.
+* `--cli-log` – Enable logging output in the terminal.
+* `--file-log` – Save logs to a file.
+
+---
+
+## How it works
+
+When executed, `dumb-modes`:
+
+1. Loads your **main configuration** to locate the modes folder.
+2. Scans each subdirectory in the modes folder for YAML mode files.
+3. Parses each mode’s metadata (like name, description, or author) from the YAML file.
+4. Displays all modes in a **tree-like structure**, including metadata if available.
+
+> The command only reads and displays metadata — it **does not modify** any files or run scaffolding.
+
+---
+
+## Example
+
+```bash
+# List all available modes
+ForgeFoundary dumb-modes
+```
+
+---
+
+## Next Steps
+
+After reviewing your modes:
+
+1. Run the **dry-run** command to preview scaffolding for a specific mode:
+
+```bash
+ForgeFoundary dry-run --mode=MyCustomMode
+```
+
+2. Run the **scaffold** command to apply a mode and generate project files:
+
+```bash
+ForgeFoundary scaffold --mode=MyCustomMode
+```# Dumb Mode Command
+
+## Overview
+
+The `dumb-mode` command allows you to **inspect the configuration values** of a single ForgeFoundary mode. It outputs the mode’s settings in a clear, structured format so you can understand its directories, templates, units, naming conventions, commands, and CLI flags without editing the files directly.
+
+You can view the mode either as a **tree view** or as **raw YAML**.
+
+---
+
+## Usage
+
+```bash
+ForgeFoundary dumb-mode --mode=ModeName [options]
+```
+
+### Options
+
+* `--mode=` – Specify which mode to inspect.
+* `--modes-path=` – Optionally set a custom path to your modes folder.
+* `--raw-yaml` – Output the configuration as raw YAML instead of a tree view.
+* `--config-name=` – Specify a main configuration file name.
+* `--config-path=` – Set a custom path to the main configuration YAML.
+* `--custom=*` – Pass additional CLI flags.
+* `--cli-log` – Enable logging output in the terminal.
+* `--file-log` – Save logs to a file.
+
+---
+
+## How it works
+
+When executed, `dumb-mode`:
+
+1. Loads your **tool configuration** and **CLI input context**.
+2. Locates the specified mode’s YAML configuration file.
+3. Reads the mode’s configuration into memory.
+4. Outputs the configuration either as:
+
+   * **Tree view** – nested directories, templates, and units displayed hierarchically.
+   * **Raw YAML** – full YAML content, useful for copying or editing.
+5. Adds headers and footers for readability in the terminal.
+
+> This command does **not modify any files** or run scaffolding — it only displays the mode’s configuration.
+
+---
+
+## Example
+
+```bash
+# Display a mode in tree view
+ForgeFoundary dumb-mode --mode=MyCustomMode
+
+# Display a mode as raw YAML
+ForgeFoundary dumb-mode --mode=MyCustomMode --raw-yaml
+
+# Using a custom modes folder
+ForgeFoundary dumb-mode --mode=MyCustomMode --modes-path=/path/to/modes
+```
+
+---
+
+## Next Steps
+
+After reviewing a mode with `dumb-mode`:
+
+* Use `dry-run` to simulate scaffolding with this mode.
+* Use `scaffold` to apply the mode and generate project files.## Enabling or Disabling Sections
+
+Each optional section in a mode can be **enabled or disabled** using the `*_enabled` boolean key. By default, most sections are enabled (`true`), but you can turn off any section if you don’t want it processed during scaffolding.
+
+### Example
+
+```yaml
+cli_flags_enabled: true         # Set to false to disable CLI flags entirely
+commands_enabled: true          # Set to false to skip running pre/post commands
+directories_enabled: true       # Set to false to skip creating directories
+units_enabled: true             # Set to false to skip creating units
+templates_enabled: true         # Set to false to skip creating templates
+naming_conventions_enabled: true # Set to false to skip applying naming conventions
+```
+
+### Notes
+
+* Setting a section to `false` completely **skips that system** during the scaffolding process.
+* Even if the section is defined, ForgeFoundary will ignore it if the corresponding `*_enabled` flag is `false`.
+* Disabling **directories** has a cascading effect:
+
+  * `units` and `templates` will **not run** if `directories_enabled` is `false`, since they rely on the folder structure to exist.
+* This gives you control to **reuse modes without running certain systems**, or to **temporarily disable parts** of a mode for testing.
+
+> For example, if `cli_flags_enabled` is `false`, the CLI flags section will be ignored, even if you have mutators and flags defined.# Mode Metadata
+
+## Overview
+
+The **Mode Metadata** section defines basic information about your mode. It helps you organize your modes and is used by the `dumb-mode` and `dumb-modes` commands to display mode details in the terminal.
+
+This section is optional but highly recommended for clarity and maintainability.
+
+---
+
+## Metadata Keys
+
+```yaml
+mode_metadata:
+  name: 
+  version: 
+  description: >
+    
+  language: 
+  author: 
+```
+
+### Key Details
+
+* **name** – The human-readable name of the mode.
+* **version** – The current version of your mode (e.g., `1.0.0`).
+* **description** – A short description of what the mode does. Use the `>` YAML syntax to allow multi-line descriptions.
+* **language** – The primary programming language or framework this mode targets.
+* **author** – Your name or the person who created the mode.
+
+---
+
+## Usage
+
+* The metadata is **automatically displayed** when running:
+
+```bash
+ForgeFoundary dumb-modes
+ForgeFoundary dumb-mode --mode=YourModeName
+```
+
+* It helps **organize multiple modes** in large projects, making it easier to understand what each mode does at a glance.
+
+---
+
+## Notes
+
+* Keep metadata concise but informative.
+* You can omit keys if they are not relevant, but `name` is recommended.
+* You can even add more metadata keys if you want to.# CLI Flags
+
+## Overview
+
+CLI flags let you **modify configuration values without touching the YAML** by linking them to **mutators** (YAML anchors). This is an optional feature that gives you more flexibility during scaffolding runs.
+
+---
+
+## Example
+
+```yaml
+component_name: *component_name_mutator YourComponentName # assign a mutator
+
+cli_flags: 
+  component_name: *component_name_mutator # assign a CLI flag linked to the mutator
+
+component_name: *component_name_mutator # reference the mutator as the key value
+```
+
+### Usage in the terminal
+
+```bash
+# Set a single value using the custom CLI flag
+ForgeFoundary scaffold --custom=component_name=CustomComponentName
+
+# Multiple flags in one command
+ForgeFoundary scaffold --custom=flag1=value1 --custom=flag2=value2
+
+# Or using comma-separated format
+ForgeFoundary scaffold --custom=flag1=value1,flag2=value2
+```
+
+---
+
+## Notes
+
+* You **don’t need to stick with the key name** in the YAML when declaring CLI flags; you can name flags anything:
+
+```yaml
+CustomCLIFlag: *customMutator
+```
+
+* Currently, **normal CLI flag syntax** (e.g., `--component_name=value`) is **not supported** due to technical limitations. You must use `--custom=`.
+* For more on mutators and how they work, see [Mutators](Mutators.md).# Units
+
+## Overview
+
+The **Units** section is an optional but powerful part of your mode. Think of **units as modular boxes** that organize your project structure in ways that simple directories cannot. Units can represent common scaffolding patterns like `Crud`, `Auth`, or custom logic blocks.
+
+Units are often used in combination with the **Units Map** section, which links units to specific directories, allowing you to control exactly where each unit is applied.
+
+> ⚠️ Units rely on directories being created. If `directories_enabled` is `false`, units will be skipped during scaffolding.
+
+---
+
+## Keys
+
+```yaml
+units_enabled: true
+units:
+  - Crud
+  - Auth
+  - Logic
+```
+
+### Explanation
+
+* `units_enabled` – Boolean flag to enable or disable unit processing.
+* `units` – A list of unit names available in this mode. These are the scaffolding building blocks you can assign to directories using `units_map`.
+
+---
+
+## Units Map
+
+The **Units Map** section defines **how units are linked to directories**. There are two modes:
+
+* `mode: directories` – Map each directory to the units it should receive.
+* `mode: units` – Map each unit to the directories it should affect.
+
+```yaml
+units_map:
+  mode: directories   # or 'units'
+```
+
+---
+
+### Directories Mode
+
+```yaml
+units_map:
+  mode: directories
+
+  directories:
+    units_created_by_default: true
+    overrides: {}
+```
+
+**Keys:**
+
+* `units_created_by_default` – Determines if every directory should automatically receive all units listed in `units`.
+* `overrides` – Specify unit assignments per directory. Use an array of unit names or `"*"` to assign all units.
+
+**Examples:**
+
+```yaml
+units:
+  - Crud
+  - Auth
+  - Logic
+units_map:
+  mode: directories
+
+  directories:
+    units_created_by_default: true
+    overrides: 
+      Models: []
+      Policies: 
+        - Crud
+        - Logic
+```
+
+* Every directory gets all units by default.
+* `Models` receives no units.
+* `Policies` receives only `Crud` and `Logic`.
+
+```yaml
+units:
+  - Crud
+  - Auth
+  - Logic
+units_map:
+  mode: directories
+
+  directories:
+    units_created_by_default: false
+    overrides: 
+      Models: [Crud]
+      Policies: ["*"]
+```
+
+* No directory receives units by default.
+* `Models` gets only `Crud`.
+* `Policies` gets all units.
+
+---
+
+### Units Mode
+
+```yaml
+units_map:
+  mode: units
+
+  units: 
+    units_created_by_default: true
+    overrides: 
+      Crud: [Controllers]
+      Logic: []
+```
+
+**Keys:**
+
+* `units_created_by_default` – Determines if all directories receive this unit automatically.
+* `overrides` – Assigns specific directories to individual units. Use `"*"` to assign the unit to every directory.
+
+**Examples:**
+
+```yaml
+units:
+  - Crud
+  - Auth
+  - Logic
+units_map:
+  mode: units
+
+  units: 
+    units_created_by_default: false
+    overrides: 
+      Crud: [Controllers]
+      Logic: ["*"]
+```
+
+* Every directory receives `Logic`.
+* `Controllers` additionally gets `Crud`.
+* No directory receives `Auth`.
+
+---
+
+### Notes
+
+* Units can be reused across multiple directories or customized per directory using the **overrides**.
+* Units help maintain modularity and reduce repetitive configuration, especially in large projects.# Directories Section
+
+## Overview
+
+The **Directories** section allows you to define all the folders you want ForgeFoundary to create during scaffolding. This section is **optional**, but useful for ensuring your project has the exact folder structure you need.
+
+---
+
+## Keys
+
+```yaml
+directories: []
+```
+
+## Explanation
+
+* `directories` – An array of folder paths relative to your scaffolding root. ForgeFoundary will create each directory listed here automatically.
+
+## Example:
+
+```yaml
+directories:
+  - src/Controllers
+  - src/Models
+  - tests
+  - public/assets
+```
+
+
+> The names of directories can also follow a **naming convention** defined in the [Naming Convention section](Naming_Conventions.md) to keep your project structure consistent.
+# Templates
+
+## Overview
+
+The **Templates** section defines how your mode handles **file templates**. Templates are the building blocks that generate actual files in your projects. This section is optional, but it is a core part of flexible scaffolding.
+
+Templates allow you to define:
+
+* **Default template behavior** (file names, paths, extensions, placeholders)
+* **Per-template overrides**
+* **Template engine usage** (e.g., Mustache, Twig, Blade)
+* **Placeholders**, including metadata placeholders
+* **Multiple file paths for a single template**, enabling one template to generate multiple files
+
+> ⚠️ Supported template engines: **Mustache**, **Twig**, **Blade**
+
+> ⚠️ Templates rely on directories being created. If `directories_enabled` is `false`, templates may be skipped.
+
+---
+
+## Templates Environment Keys
+
+```yaml
+templates_path:          # Relative path to the Templates folder in your mode
+templates_enabled:       # true/false to enable template processing
+templates_require_existing_dirs:  # If true, only generate templates for directories that exist
+template_engine_extensions: []    # Array of file extensions to treat as templates
+```
+
+### `templates_path`
+
+* Path to your templates folder, relative to the scaffolder’s App/Src folder.
+* Example: `Modes/MyMode/Templates/`
+
+### `templates_enabled`
+
+* Boolean flag to enable template processing.
+* Example: `true`
+
+### `templates_require_existing_dirs`
+
+* Boolean flag; if `true`, templates will only generate files for directories that already exist.
+
+### `template_engine_extensions`
+
+* List the file extensions to be processed as templates.
+* Example:
+
+```yaml
+template_engine_extensions:
+  - mustache
+  - twig
+  - blade.php
+```
+
+---
+
+## Templates Configuration
+
+Templates can be defined with **defaults** and **overrides**:
+
+```yaml
+templates:
+  defaults: {}
+  overrides: {}
+```
+
+### `defaults`
+
+* Applies default metadata and placeholders to all templates in the mode.
+* Can include:
+
+  ```yaml
+  templates:
+    defaults:
+      file_name: defaultFileName
+      file_extension: php
+      file_paths: ["Models"]
+      placeholders:
+        component_name: *component_name_mutator
+  ```
+
+### `overrides`
+
+* Allows specific templates to deviate from defaults.
+* Each override must reference the full template filename.
+* Example:
+
+```yaml
+templates:
+  overrides:
+    model.mustache:
+      file_name: CustomModel
+      file_extension: php
+      file_paths:
+        - "Models"
+        - "Repositories"
+      placeholders:
+        domain_name: ExampleDomain
+```
+
+*Overrides replace the defaults for the specified fields. If a field is not overridden, the defaults are used.*
+
+---
+
+## Template YAML Metadata
+
+Each template file can include a **YAML front matter section** at the top. This serves as the template's **file metadata** and allows defining **additional placeholders**.
+
+Example:
+
+```yaml
+---
+file_name: "MyFile_{{placeholder}}.php"
+file_paths: ["Services", "Repositories"]
+file_extension: php
+---
+```
+
+### Key fields
+
+* **`file_name`** – The name of the file to generate. Can reference placeholders.
+* **`file_paths`** – Array of paths where this template will be generated. Paths are relative to the component or mode. You can define multiple paths to generate the same template in different locations.
+* **`file_extension`** – The file extension to use.
+
+> A file **must have a file name, a file extension and at least one file path** for ForgeFoundary to generate it. This can be defined either in the template file itself or in the mode configuration.
+
+### Hierarchy of value resolution:
+When ForgeFoundary generates a template, it determines values in this order:
+
+Mode configuration overrides (templates.overrides.template_name) → highest priority
+
+Template YAML section → overrides defaults from the mode configuration
+
+Mode configuration defaults (templates.defaults) → lowest priority
+
+⚠️ This hierarchy applies to both placeholders and metadata (like file_name, file_extension). For example, if file_name exists in the mode override, it will replace any file_name defined in the template YAML.
+
+---
+
+## Placeholders
+
+**Placeholders** are variables that you reference inside templates. Their format depends on the template engine (e.g., `{{placeholder}}` for Mustache).
+
+*Placeholders exist in three places:*
+
+1. **Template metadata YAML**
+   You can both define placeholders or use them in your template's YAML section Example:
+
+```yaml
+---
+file_name: "{{MyFileNamePlaceholder}}"
+custom_placeholder: "Hello"
+---
+```
+
+2. **Template body**
+   You can reference placeholders in the template content. Example (Mustache):
+
+```mustache
+class {{file_name}} {
+    echo {{custom_placeholder}};
+}
+```
+
+3. **Global or YAML-defined placeholders**
+   These are defined in your mode configuration (`templates.defaults.placeholders`) or as overrides (`templates.overrides.template_name.placeholders`). Example:
+
+```yaml
+templates:
+  defaults:
+    placeholders:
+      MyFileNamePlaceholder: MyFileName
+```
+> ⚠️ Note: File paths, unlike the other file metadata like file_extension and file_name, cannot be used as placeholders.
+
+> ⚠️ Hierarchy reminder: Mode overrides > Template YAML > Mode defaults.
+
+---
+
+## Multiple File Paths
+
+A single template can generate files in multiple directories. Example:
+
+```yaml
+file_paths:
+  - "Services"
+  - "Repositories"
+```
+
+* This will generate one file name in each path.
+* Useful for templates that need to exist in multiple locations (e.g., DTOs, Repositories, or Service classes).
+
+> The **file name remains the same** for all generated paths unless overridden with placeholders.
+
+---
+
+## Summary
+
+* Templates are **metadata-driven** through YAML front matter.
+* They support **placeholders** in both metadata and template content.
+* Defaults and overrides allow centralized configuration or fine-grained per-template control.
+* Templates can generate **multiple files at different paths** but with a single base name.
+* Supported engines: **Mustache, Twig, Blade**.
+
+This approach provides **maximum flexibility** while keeping template definitions **clear, modular, and reusable**.# Commands
+
+## Overview
+
+The **Commands** section lets you run custom commands **before or after scaffolding**. This is optional but useful for automating tasks like installing dependencies, generating autoloads, or running scripts right after scaffolding completes.
+
+---
+
+## Example
+
+```yaml
+commands: 
+  # Pre-scaffold hooks
+  before: []   
+
+  # Post-scaffold hooks
+  after:
+    - composer dump-autoload
+```
+
+### How it works
+
+* `before` – List of commands to run **before scaffolding** starts.
+* `after` – List of commands to run **after scaffolding** finishes.
+
+> Each command runs in the terminal context, so you can use any shell command that works on your system.# Mutators
+
+## Overview
+
+The **Mutators** section allows you to create reusable values in your mode configuration and link them to CLI flags. This provides a **clean way to change configuration values via the command line** without editing the YAML directly.
+
+Mutators use **YAML anchors and references**, which also makes your config DRY (Don’t Repeat Yourself) and easy to maintain.
+
+---
+
+## Example
+
+```yaml
+component_name: *component_name_mutator YourComponentName # assign a mutant
+
+cli_flags: 
+  component_name: *component_name_mutator # assign a CLI flag linked to the mutator
+
+component_name: *component_name_mutator # reference the mutator as a key value
+```
+
+### How it works
+
+1. Define a **mutator** using `*mutator_name` syntax.
+2. Optionally assign a **CLI flag** in `cli_flags` and link it to the mutator.
+3. Reference the mutator anywhere in the mode to reuse its value.
+
+---
+
+## Guidelines
+
+* Naming convention: it’s recommended to name mutators like `keyName_mutator` for clarity, though any valid YAML name works.
+* Mutators are **optional** but highly useful for keeping large configs clean.
+* You can use mutators **like regular YAML anchors**, not only for CLI flags, to avoid repeating values.
+
+---
+
+## Usage
+
+* When a CLI flag linked to a mutator is used, ForgeFoundary **overrides the value** in the configuration dynamically.
+* This makes it easy to **customize a scaffolding run** without touching your YAML file.# Component
+
+## Overview
+
+The **Component** section is the **only required section** in a mode. It defines the core folder that contains all of your scaffolding logic and templates. Every mode must have a component defined, as it is the foundation for all other sections.
+
+---
+
+## Keys
+
+```yaml
+component_path: path/to/component
+component_name: MyComponentName
+```
+
+### `component_path`
+
+* Absolute value or Relative to where you run the tool.
+* Typically points to the folder where your templates, directories, and units reside.
+* Can use a mutator to make it flexible for CLI overrides.
+
+### `component_name`
+
+* The name of your component.
+* Can follow a **naming convention** (see [Naming Conventions](Naming_Conventions.md)) for consistency across modes.
+* Can also use a mutator for CLI overrides or reusable configuration.
+
+---
+
+This section is the foundation of your mode, so all other mode sections will rely on this component as their base folder.
+# Naming Conventions
+
+ForgeFoundary supports **automatic naming transformations** for components, directories, templates, and placeholders. Naming conventions are applied in **the order they are listed**.
+
+## Structure
+
+Each section of the naming conventions configuration has the following structure:
+
+```yaml
+section_name:
+  defaults: [array of naming conventions]
+  overrides:
+    key_to_override: [array of naming conventions]
+```
+
+* **defaults** – the naming conventions applied to all items in this section by default.
+* **overrides** – specific keys (like a template filename or a placeholder name) that use custom naming conventions instead of the defaults. The defaults **do not apply** to overridden items.
+
+> Naming conventions are applied sequentially, from left to right in the array.
+
+### Example Sections
+
+```yaml
+component:
+  defaults: [pascal_case]
+
+directories:
+  defaults: [pascal_case]
+
+templates:
+  defaults: [singular, pascal_case]
+  overrides:
+    model.mustache: [singular, pascal_case]
+    routes.mustache: [kebab_case]
+
+templates_placeholders:
+  overrides:
+    domain_name: [snake_case]
+```
+
+* `component` – transforms component names.
+* `directories` – transforms directory names.
+* `templates` – transforms the generated file names based on templates.
+* `templates_placeholders` – transforms placeholder values used inside templates.
+
+---
+
+## How It Works
+
+1. When generating a value (component, directory, template, or placeholder), ForgeFoundary checks for an **override** first.
+2. If an override exists, only the override’s naming conventions are applied.
+3. If no override exists, the **defaults** are applied in order.
+4. Naming conventions are applied **sequentially**; for example: `[singular, snake_case]` will first singularize, then convert to `snake_case`.
+
+---
+
+## Available Naming Conventions
+
+| Key                    | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `plural`               | Converts value to plural form.            |
+| `singular`             | Converts value to singular form.          |
+| `camel_case`           | Converts value to `camelCase`.            |
+| `pascal_case`          | Converts value to `PascalCase`.           |
+| `snake_case`           | Converts value to `snake_case`.           |
+| `kebab_case`           | Converts value to `kebab-case`.           |
+| `upper_snake_case`     | Converts value to `UPPER_SNAKE_CASE`.     |
+| `dot_case`             | Converts value to `dot.case`.             |
+| `studly_case`          | Converts value to `StudlyCase`.           |
+| `title_case`           | Converts value to `Title Case`.           |
+| `sentence_case`        | Converts value to `Sentence case`.        |
+| `screaming_kebab_case` | Converts value to `SCREAMING-KEBAB-CASE`. |
+| `slash_case`           | Converts value to `slash/case`.           |
+| `backslash_case`       | Converts value to `backslash\case`.       |
+| `dot_kebab_case`       | Converts value to `dot-kebab-case`.       |
+| `flat_case`            | Converts value to `flatcase`.             |
+| `train_case`           | Converts value to `Train-Case`.           |
+# Laravel DDD Mode – Documentation
+
+## Overview
+
+The **Laravel DDD Mode** for ForgeFoundary scaffolds domain-driven Laravel projects.
+It automatically generates:
+
+* Domain directories
+* Class templates (Controllers, Models, Services, etc.)
+* Naming conventions for files, directories, and templates
+
+This mode is designed for a **clean Laravel DDD architecture**, keeping entities, services, requests, and routes separated and standardized.
+
+---
+
+## Directories
+
+The following directories are generated for each domain:
+
+| Directory       | Purpose                                          | Example                                       |
+| --------------- | ------------------------------------------------ | --------------------------------------------- |
+| `Controllers`   | Handles HTTP requests and endpoints              | `CommentController.php`                       |
+| `DTOs`          | Data transfer objects for structured data        | `CommentDTO.php`                              |
+| `Factories`     | Model factories for generating fake data         | `CommentFactory.php`                          |
+| `Migrations`    | Database table definitions                       | `2025_12_12_000000_create_comments_table.php` |
+| `Models`        | Eloquent models representing entities            | `Comment.php`                                 |
+| `Policies`      | Authorization logic                              | `CommentPolicy.php`                           |
+| `Providers`     | Domain-specific service providers                | `CommentServiceProvider.php`                  |
+| `Repositories`  | Data access layer                                | `CommentRepository.php`                       |
+| `Requests`      | Form request validation classes                  | `CommentStoreRequest.php`                     |
+| `Routes/Api`    | API route definitions                            | `Routes/Api.php`                              |
+| `Seeders`       | Seeders for generating fake data in the database | `CommentSeeder.php`                           |
+| `Services`      | Domain-specific business logic                   | `CommentService.php`                          |
+| `Tests/Feature` | Feature tests                                    | `Feature/...`                                 |
+| `Tests/Unit`    | Unit tests                                       | `Unit/...`                                    |
+
+---
+
+## Templates
+
+Templates are stored in:
+
+```
+App/Src/Modes/laravel-ddd/Templates/
+```
+
+Here’s the table without the Singular/Plural column:
+
+| Template                   | Output Example                                | Notes                                |
+| -------------------------- | --------------------------------------------- | ------------------------------------ |
+| `controller.mustache`      | `CommentController.php`                       | One controller per entity            |
+| `dto.mustache`             | `CommentDTO.php`                              | DTO for single entity                |
+| `model.mustache`           | `Comment.php`                                 | Represents a table row               |
+| `policy.mustache`          | `CommentPolicy.php`                           | Authorization logic for entity       |
+| `service.mustache`         | `CommentService.php`                          | Domain business logic                |
+| `serviceprovider.mustache` | `CommentServiceProvider.php`                  | Registers services                   |
+| `repository.mustache`      | `CommentRepository.php`                       | Data access layer                    |
+| `storerequest.mustache`    | `CommentStoreRequest.php`                     | Validates create requests            |
+| `updaterequest.mustache`   | `CommentUpdateRequest.php`                    | Validates update requests            |
+| `factories.mustache`       | `CommentFactory.php`                          | Generates fake model data            |
+| `seeders.mustache`         | `CommentSeeder.php`                           | Seeds multiple database rows         |
+| `routes.mustache`          | `Api.php`                                     | Holds API routes for the domain      |
+
+---
+
+## Usage
+
+### Dry-run (preview)
+
+```bash
+ForgeFoundary dry-run --mode=laravel-ddd
+```
+
+* Shows what files and directories would be generated.
+* Applies all naming conventions.
+* Does not write to disk.
+
+### Scaffold domain
+
+```bash
+ForgeFoundary scaffold DomainName --mode=laravel-ddd
+```
+
+* Creates the full domain folder structure.
+* Generates templates with correct names and conventions.
+* Creates directories, seeders, migrations, requests, routes, etc.
+
+### CLI Overrides
+
+You can override defaults per command:
+
+```bash
+ForgeFoundary scaffold DomainName \
+  --custom=--component-path="app/Domains" \
+  --custom=--component-name="Comment"
+```# Creating Modes with ForgeFoundary
+
+ForgeFoundary is a **mode-based scaffolder**, meaning that every project structure, template set, and workflow is defined inside a **mode**. Modes are fully customizable and allow you to scaffold projects in any programming language, framework, or workflow.
+
+---
+
+## How Modes Work
+
+Each mode is a self-contained folder inside the `Modes/` directory. A mode defines:
+
+* **Directories** to create
+* **Templates** to generate
+* **Units** of functionality
+* **CLI flags and commands**
+* **Naming conventions**
+
+This modular design lets you define multiple modes for different project types, all coexisting inside the same ForgeFoundary installation.
+
+---
+
+## Creating a New Mode
+
+To create a new mode skeleton:
+
+```bash
+ForgeFoundary create-mode MyNewMode
+```
+
+This generates a folder in `Modes/MyNewMode` with a ready-to-configure structure. From here, you can define every aspect of your scaffolding logic.
+
+---
+
+## Mode Structure Overview
+
+Each mode is split into multiple sections. Every section has its own dedicated documentation inside `Docs/ModeSections/`.
+
+### 1. Mode Metadata
+
+Holds general information about the mode: name, version, description, language, and author.
+
+**Docs:** [Mode Metadata](ModeSections/Mode_Metadata.md)
+
+### 2. Mutators
+
+Define reusable data snippets to share values across multiple configuration keys.
+
+**Docs:** [Mutators](ModeSections/Mutators.md)
+
+### 3. Component
+
+Defines the main folder for your generated architecture and the name of the component.
+
+**Docs:** [Component](ModeSections/Component.md)
+
+### 4. Templates
+
+Contains template definitions, default file behavior, and placeholder management.
+
+**Docs:** [Templates](ModeSections/Templates.md)
+
+### 5. Directories
+
+Lists directories to generate within the component. Can include subdirectories and units mapping.
+
+**Docs:** [Directories](ModeSections/Directories.md)
+
+### 6. Units
+
+Fundamental units of scaffolding (e.g., CRUD, Auth, Logic). Each unit can link to specific directories and templates.
+
+**Docs:** [Units](ModeSections/Units.md)
+
+### 7. Naming Conventions
+
+Defines rules for file, directory, component, and unit naming. Supports defaults and overrides.
+
+**Docs:** [Naming Conventions](ModeSections/Naming_Conventions.md)
+
+### 8. Commands
+
+Pre- and post-scaffold hooks for custom logic or automation.
+
+**Docs:** [Commands](ModeSections/Commands.md)
+
+### 9. CLI Flags
+
+Maps mode configuration to command-line options, allowing flexible runtime overrides.
+
+**Docs:** [CLI Flags](ModeSections/CLI_Flags.md)
+
+---
+
+## Config Defaults (`App/Src/ForgeFoundary.yaml`)
+
+ForgeFoundary reads a default configuration from `App/Src/ForgeFoundary.yaml`. This file lets you set:
+
+```yaml
+modes_path: path/to/modes   # Absolute path or relative to the tool
+mode: MyGoToMode            # Default mode to use when no mode is specified
+```
+
+* `modes_path` – Specifies where your modes are stored. Can be an absolute path or relative to the tool’s base directory.
+* `mode` – Sets the default mode that ForgeFoundary will use if you don’t specify a mode on the CLI.
+
+> Both values can be **overridden via CLI** on any command, giving you flexibility while still having convenient defaults.
+
+---
+
+> Each section is fully configurable via YAML, letting you create a mode that exactly fits your workflow.
+
+For a complete guide on building modes, see the section-specific docs in `Docs/ModeSections/`.
+# ForgeFoundary
+
+ForgeFoundary is a general-purpose scaffolding tool designed to help developers generate project structures, boilerplate code, and architectural patterns for any programming language or framework.
+
+---
+
+## Key Features
+
+- **Multi-language support:** Scaffold projects in any language by defining your own modes.
+- **Customizable modes:** Define directory structures, templates, naming conventions, and scaffolding rules.
+- **CLI-driven workflow:** Easily scaffold components, directories, and units from the command line.
+- **Template engine support:** Mustache, Twig, or Blade-style templates.
+- **Pre- and post-scaffold hooks:** Run custom commands automatically before or after scaffolding.
+- **Portable & framework-agnostic:** Not tied to any specific language or framework.
+
+---
+
+## Quick Start
+
+```bash
+# Scaffold a new project
+ForgeFoundary scaffold --mode=laravel-ddd
+```
+
+---
+
+## How It Works
+
+ForgeFoundary reads YAML mode files to define:
+
+* Component paths and names
+* Directory structures and units
+* Template files, placeholders, and extensions
+* Naming conventions (PascalCase, camelCase, etc.)
+* CLI flags and overrides for flexible scaffolding
+
+---
+
+## Philosophy
+
+ForgeFoundary is designed for developers who value **automation, consistency, and flexibility** in project setup. Modes separate scaffolding logic from code, ensuring **repeatable and predictable project structures**.
+
+---
+
+[Explore Documentation →](Manual.md)
