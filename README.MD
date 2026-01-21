@@ -27,4 +27,4 @@ ForgeFoundary is designed for developers who value automation, consistency, and 
 
 ## Further Instructions
 
-For detailed instructions, examples, and a map of available documentation, refer to the [Docs/manual](https://omarsemgey.github.io/ForgeFoundary/Manual/). it provides an organized overview of all other documentation files included with ForgeFoundary.
+For detailed instructions, examples, and a map of available documentation, refer to the [Docs](https://omarsemgey.github.io/ForgeFoundary/Manual/). it provides an organized overview of all other documentation files included with ForgeFoundary.
