@@ -27,15 +27,26 @@ git clone https://github.com/omarsemgey/ForgeFoundary.git "$INSTALL_DIR"
 cd "$INSTALL_DIR" || { echo "Failed to enter directory!"; exit 1; }
 
 echo "Running composer install..."
-composer install
+composer install || { echo "Composer install failed! Exiting."; exit 1; }
 
-# Make executable globally if possible
+SCRIPT_PATH="$INSTALL_DIR/ForgeFoundary"
+
+if [ ! -f "$SCRIPT_PATH" ]; then
+    echo "Error: CLI script $SCRIPT_PATH not found!"
+    exit 1
+fi
+
+# Prefer /usr/local/bin if writable
 if [ -w /usr/local/bin ]; then
-    ln -sf "$INSTALL_DIR/ForgeFoundary" /usr/local/bin/ForgeFoundary
+    ln -sf "$SCRIPT_PATH" /usr/local/bin/ForgeFoundary
     echo "ForgeFoundary symlinked to /usr/local/bin/ForgeFoundary"
 else
-    echo "Cannot write to /usr/local/bin."
-    echo "Add $INSTALL_DIR to your PATH manually or run with full path."
+    # fallback to user bin
+    mkdir -p "$HOME/.local/bin"
+    ln -sf "$SCRIPT_PATH" "$HOME/.local/bin/ForgeFoundary"
+    echo "ForgeFoundary symlinked to $HOME/.local/bin/ForgeFoundary"
+    echo "Make sure $HOME/.local/bin is in your PATH to run it globally:"
+    echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
 fi
 
 echo "Installation complete! You can now run 'ForgeFoundary' from anywhere if PATH is set."
