@@ -43,6 +43,7 @@ Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourname/ForgeFoundary
 ## Quick Start
 ```bash
 ForgeFoundary dry-run
+```
 
 ## Further Instructions
 
