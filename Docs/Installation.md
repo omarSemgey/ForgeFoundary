@@ -81,11 +81,6 @@ After installation, ensure ~/.composer/vendor/bin (Linux/macOS) or %USERPROFILE%
 yay -S forgefoundary
 ```
 
-#### APT / Debian-based Linux
-```bash
-sudo apt install ./forgefoundary.deb
-```
-
 ---
 
 ## Next Steps

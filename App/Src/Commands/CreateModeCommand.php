@@ -32,7 +32,7 @@ class CreateModeCommand extends Command
     // signature: command name and CLI options
     // description: short summary displayed in artisan list
     // ===============================================
-    protected $signature = 'create-mode {--mode-name=} {--mode-type} {--cli-log} {--file-log}';
+    protected $signature = 'create-mode {--mode-name=} {--modes-path=} {--mode-type} {--cli-log} {--file-log}';
     protected $description = 'Create a new mode for the ForgeFoundary command';
 
     public function __construct(

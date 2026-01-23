@@ -64,3 +64,4 @@ To change which mode is used by default:
 * You can define `modes_path` as an **absolute path** if you want to store modes elsewhere.
 * All edits to modes and templates are **user-local** and will not be overwritten during updates.
 * This separation ensures you can update ForgeFoundary without losing your custom modes.
+* You need to run the tool at least once for forgefoundary.yaml and Modes directroy to be created

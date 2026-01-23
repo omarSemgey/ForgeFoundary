@@ -136,7 +136,7 @@ class ConfigResolver
         }
 
         $path = self::DEFAULT_MAIN_CONFIG_VALUES['path'];
-        $this->mainConfigPath = $this->pathManager->getAbsolutePath($path, true);
+        $this->mainConfigPath = $this->pathManager->getAbsoluteUserDirectoryPath($path);
 
         Debugger()->warning("No custom config path provided. Using default: {$this->mainConfigPath}" );
     }
@@ -190,7 +190,7 @@ class ConfigResolver
         }
     
         $path = Config()->get("main_config." . self::CONFIG_CONFIG_KEYS['modes_path']);
-        $this->modesConfigPath = $this->pathManager->getAbsolutePath($path, true);
+        $this->modesConfigPath = $this->pathManager->getAbsoluteUserDirectoryPath($path);
         Debugger()->info("Modes path: '{$this->modesConfigPath}'");
     }
 

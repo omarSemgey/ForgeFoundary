@@ -53,6 +53,19 @@ class PathManager
         return rtrim($this->normalizeSlashes($full), '/');
     }
 
+    public function getAbsoluteUserDirectoryPath(string $path): string
+    {
+        if ($this->isAbsolutePath($path)) {
+            return rtrim($this->normalizeSlashes($path), '/');
+        }
+
+        $base = USER_DIR;
+
+        $full = $base . '/' . $path;
+
+        return rtrim($this->normalizeSlashes($full), '/');
+    }
+
     // ===============================================
     // Function: isAbsolutePath
     // Inputs: string $path

@@ -26,7 +26,7 @@ class DumbModesCommand extends Command
 {
     use HandlesUserErrors;
     // Command signature and description
-    protected $signature = 'dumb-modes {--config-name=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
+    protected $signature = 'dumb-modes {--config-name=} {--modes-path=} {--config-path=} {--custom=*} {--cli-log} {--file-log}';
     protected $description = 'Dump all the modes available for the ForgeFoundry command';
 
     // Config context loaded from ContextBus
