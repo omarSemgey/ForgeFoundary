@@ -28,7 +28,11 @@ git clone https://github.com/omarsemgey/ForgeFoundary.git $installDir
 Set-Location $installDir
 
 Write-Host "Running composer install..."
-composer install
+$composerResult = composer install
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Composer install failed! Please check the errors above."
+    exit 1
+}
 
 $binPath = "$installDir"
 $currentUserPath = [Environment]::GetEnvironmentVariable("Path", "User")
