@@ -16,6 +16,8 @@ Each mode is a self-contained folder inside the `Modes/` directory. A mode defin
 
 This modular design lets you define multiple modes for different project types, all coexisting inside the same ForgeFoundary installation.
 
+>For more information about `Modes/` directory check [Modes Directory](../forgefoundary.md#modes-directory)
+
 ---
 
 ## Creating a New Mode

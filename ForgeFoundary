@@ -2,6 +2,14 @@
 <?php
 
 use Illuminate\Console\Application as ArtisanApplication;
+use ForgeFoundary\Core\Helpers\UserResourcesManager;
+
+$installDir = __DIR__;
+$userManager = new UserResourcesManager($installDir);
+
+$userManager->handleUserResources();
+$userDir = $userManager->getUserDir();
+define('USER_DIR', $userDir);
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -21,6 +29,7 @@ foreach (glob($commandPath . '/*.php') as $file) {
         $artisan->add($app->make($class));
     }
 }
+
 
 // Run CLI
 $artisan->run();

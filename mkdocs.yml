@@ -3,6 +3,7 @@ docs_dir: Docs
 site_url: https://omarSemgey.github.io/ForgeFoundary/
 theme:
   name: material
+  favicon: images/favicon.png
   palette:
     - scheme: default
       primary: indigo
@@ -39,4 +40,7 @@ nav:
       - Commands: Modes/ModeSections/Commands.md
       - Templates: Modes/ModeSections/Templates.md
       - Units: Modes/ModeSections/Units.md
+      - Enabling & Disabling Sections: Modes/ModeSections/Enabling_or_Disabling_Sections.md
       - Naming Conventions: Modes/ModeSections/Naming_Conventions.md
+  - Premade Modes:
+    - Laravel DDD Template: Modes/PreMadeModes/laravel-ddd.md

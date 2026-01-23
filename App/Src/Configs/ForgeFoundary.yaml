@@ -2,5 +2,5 @@
 # Forge Foundary Configuration (v1.0)
 # ==============================================
 
-modes_path: Modes # Absolute path OR Relative to the tool
+modes_path: Modes # Absolute path OR Relative to the user config directory
 mode: laravel-ddd

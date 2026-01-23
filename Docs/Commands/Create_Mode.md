@@ -37,11 +37,12 @@ When executed, `create-mode`:
 1. Loads your **tool configuration** and CLI context.
 2. Resolves paths for the new mode folder and its YAML configuration.
 3. Determines which **mode template** to use (`minimal`, `moderate`, `extended`, or `full`).
-4. Creates the **mode directory** and a **Templates folder** inside it.
+4. Creates the **mode directory** and a **Templates folder** inside **Modes** directory.
 5. Copies the selected **YAML template** into the new mode folder, ready to be edited.
 6. Logs messages confirming the creation of the mode.
 
 > Think of this command as the scaffolding for your scaffolding—everything else you define in the mode will be based on this initial setup.
+>**Modes** directory location can be set inside [ForgeFoundary Main Config file](../forgefoundary.yaml)
 
 ---
 

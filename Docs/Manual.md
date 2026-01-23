@@ -38,4 +38,12 @@ Each mode in ForgeFoundary can include optional and required sections to define 
 
 ---
 
+## Premade Modes
+
+ForgeFoundary ships with a set of premade modes.
+
+- [Laravel DDD Template](Modes/PreMadeModes/laravel-ddd.md) - Basic laravel DDD archeticture template.
+
+---
+
 > This map will continue to grow as more documentation is added, providing a single reference point for all ForgeFoundary features.

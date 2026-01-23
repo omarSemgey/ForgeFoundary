@@ -17,51 +17,74 @@ Before installing ForgeFoundary, make sure you have the following installed:
 
 ---
 
-## Installation Scripts
+## Installation Options
+### Manual Installation (Directly from the installation script)
 
-ForgeFoundary provides two scripts to install the tool, depending on your operating system.
+You can fetch the installation script directly from the repository and run it. This works on Unix/Linux/macOS and Windows.
 
-### 1. Unix / Linux / macOS
-
-Script: `install.sh`
-
-**How to run:**
+#### Unix / Linux / macOS
 
 ```bash
+curl -o install.sh https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.sh
 chmod +x install.sh
 ./install.sh
 ```
 
 The script will:
 
-1. Ask for the installation directory (default: `~/ForgeFoundary`).
-2. Clone the ForgeFoundary repository to the specified folder.
-3. Install PHP dependencies using Composer.
-4. Attempt to make the `ForgeFoundary` command available globally (requires write access to `/usr/local/bin`).
+1. Ask for the installation directory (default: ~/ForgeFoundary).
 
-If the script cannot link globally, you can manually add the install directory to your `PATH`.
+2. Clone the ForgeFoundary repository to the specified folder.
+
+3. Install PHP dependencies using Composer.
+
+4. Attempt to make the ForgeFoundary command available globally (requires write access to /usr/local/bin).
+
+5. If the script cannot link globally, you can manually add the install directory to your PATH.
 
 ---
 
-### 2. Windows
-
-Script: `install.ps1`
-
-**How to run:**
-
-Open PowerShell with administrative rights and execute:
+#### Windows
 
 ```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.ps1" -OutFile "install.ps1"
 Set-ExecutionPolicy Bypass -Scope Process -Force
 .\install.ps1
 ```
 
 The script will:
 
-1. Ask for the installation directory (default: `$HOME\ForgeFoundary`).
+1. Ask for the installation directory (default: $HOME\ForgeFoundary).
+
 2. Clone the ForgeFoundary repository to the specified folder.
+
 3. Install PHP dependencies using Composer.
-4. Optionally, guide you to make `ForgeFoundary` accessible globally.
+
+4. Optionally guide you to make ForgeFoundary accessible globally.
+
+---
+
+### Automatic Installation via Package Managers
+
+ForgeFoundary can also be installed using the following package managers. Note: Package managers currently install ForgeFoundary to the default path, and it may not prompt for a custom installation directory.
+
+#### Composer (Global)
+
+composer global require omarsemgey/forgefoundary
+
+
+After installation, ensure ~/.composer/vendor/bin (Linux/macOS) or %USERPROFILE%\AppData\Roaming\Composer\vendor\bin (Windows) is in your PATH.
+
+#### AUR / yay (Arch Linux)
+
+```bash
+yay -S forgefoundary
+```
+
+#### APT / Debian-based Linux
+```bash
+sudo apt install ./forgefoundary.deb
+```
 
 ---
 
