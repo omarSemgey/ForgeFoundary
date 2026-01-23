@@ -1,6 +1,6 @@
 # ForgeFoundary
 
-ForgeFoundary is a general-purpose scaffolding tool designed to help developers generate project structures, boilerplate code, and architectural patterns for any programming language or framework. Built with portability and flexibility in mind, it allows users to define custom "modes" that specify how projects should be scaffolded.
+A flexible, framework-agnostic scaffolding tool for any programming language or architecture.
 
 ## Key Features
 
@@ -24,6 +24,25 @@ ForgeFoundary is a general-purpose scaffolding tool designed to help developers 
 ## Philosophy
 
 ForgeFoundary is designed for developers who value automation, consistency, and flexibility in project setup. By separating scaffolding logic into configurable modes, it ensures repeatable and predictable project structures, no matter the language, framework, or team.
+
+## Installation
+### Manual Installation
+#### Unix / Linux / macOS
+```bash
+curl -o install.sh https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.sh
+chmod +x install.sh
+./install.sh
+```
+
+#### Windows
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourname/ForgeFoundary/main/InstallationScripts/install.ps1" -OutFile "install.ps1"
+.\install.ps1
+```
+
+## Quick Start
+```bash
+ForgeFoundary dry-run
 
 ## Further Instructions
 
