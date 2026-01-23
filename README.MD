@@ -25,8 +25,11 @@ A flexible, framework-agnostic scaffolding tool for any programming language or 
 
 ForgeFoundary is designed for developers who value automation, consistency, and flexibility in project setup. By separating scaffolding logic into configurable modes, it ensures repeatable and predictable project structures, no matter the language, framework, or team.
 
-## Installation
-### Manual Installation
+## Installation Options
+### Manual Installation (Directly from the installation script)
+
+You can fetch the installation script directly from the repository and run it. This works on Unix/Linux/macOS and Windows.
+
 #### Unix / Linux / macOS
 ```bash
 curl -o install.sh https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.sh
@@ -34,10 +37,57 @@ chmod +x install.sh
 ./install.sh
 ```
 
+The script will:
+
+Ask for the installation directory (default: ~/ForgeFoundary).
+
+Clone the ForgeFoundary repository to the specified folder.
+
+Install PHP dependencies using Composer.
+
+Attempt to make the ForgeFoundary command available globally (requires write access to /usr/local/bin).
+
+If the script cannot link globally, you can manually add the install directory to your PATH.
+
+---
+
 #### Windows
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/yourname/ForgeFoundary/main/InstallationScripts/install.ps1" -OutFile "install.ps1"
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.ps1" -OutFile "install.ps1"
+Set-ExecutionPolicy Bypass -Scope Process -Force
 .\install.ps1
+```
+
+The script will:
+
+Ask for the installation directory (default: $HOME\ForgeFoundary).
+
+Clone the ForgeFoundary repository to the specified folder.
+
+Install PHP dependencies using Composer.
+
+Optionally guide you to make ForgeFoundary accessible globally.
+
+### Automatic Installation via Package Managers
+
+ForgeFoundary can also be installed using the following package managers. Note: Package managers currently install ForgeFoundary to the default path, and it may not prompt for a custom installation directory.
+
+#### Composer (Global)
+
+composer global require omarsemgey/forgefoundary
+
+
+After installation, ensure ~/.composer/vendor/bin (Linux/macOS) or %USERPROFILE%\AppData\Roaming\Composer\vendor\bin (Windows) is in your PATH.
+
+#### AUR / yay (Arch Linux)
+
+```bash
+yay -S forgefoundary
+````
+
+#### APT / Debian-based Linux
+```bash
+sudo apt install ./forgefoundary.deb
 ```
 
 ## Quick Start
