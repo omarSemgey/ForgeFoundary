@@ -42,8 +42,8 @@ class UnitGenerationManager
         string $unit, 
         string $mode, 
         array $overrides, 
+        array $allDirectories,
         bool $defaults = false, 
-        array $allDirectories
     ): array {
         $directories = [];
         if ($mode === 'units') {

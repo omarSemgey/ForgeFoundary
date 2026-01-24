@@ -83,10 +83,7 @@ commands:
   # Pre-scaffold hooks
   before: []   
   # Post-scaffold hooks
-  after: 
-    - composer dump-autoload
-    - php artisan migrate
-    - php artisan route:clear
+  after: []
 
 # ----------------------------------------------
 # Component
