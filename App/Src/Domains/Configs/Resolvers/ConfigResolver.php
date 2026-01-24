@@ -167,6 +167,7 @@ class ConfigResolver
             Debugger()->info("Loaded YAML config file: '{$ymlPath}'");
         }
         else{
+            Debugger()->error("No main config file found at either '{$yamlPath}' or '{$ymlPath}");
             throw new RuntimeException("No main config file found");
         }
         $this->configManager::loadConfig('main_config', $this->mainConfigValue);

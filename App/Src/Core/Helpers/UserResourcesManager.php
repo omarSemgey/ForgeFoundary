@@ -56,15 +56,18 @@ class UserResourcesManager
     private function handlePaths(): void
     {
         $modesPath = $this->userDir . '/Modes';
-        $configPath = $this->userDir . '/forgefoundary.yaml';
+        $configPath = $this->userDir . '/Configs/ForgeFoundary.yaml';
+        $configDir = dirname($configPath);
 
         if (!is_dir($modesPath)) {
             mkdir($modesPath, 0755, true);
-            $this->copyDirectory($this->installDir . '/App/Modes', $modesPath);
+            $this->copyDirectory($this->installDir . '/App/Src/Modes', $modesPath);
         }
 
         if (!file_exists($configPath)) {
-            copy($this->installDir . '/App/Configs/ForgeFoundary.yaml', $configPath);
+            echo $configPath;
+            mkdir($configDir, 0755, true);
+            copy($this->installDir . '/App/Src/Configs/ForgeFoundary.yaml', $configPath);
         }
     }
 
