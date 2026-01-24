@@ -1,6 +1,6 @@
 <?php
 
-namespace ForgeFoundary\Core\Helpers;
+namespace App\Src\Core\Helpers;
 
 class UserResourcesManager
 {

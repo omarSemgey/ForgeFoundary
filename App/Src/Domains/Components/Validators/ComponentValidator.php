@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\Traits\Validates;
+namespace App\Src\Domains\Components\Validators;
 
 // ===============================================
 // Trait: ComponentValidator
