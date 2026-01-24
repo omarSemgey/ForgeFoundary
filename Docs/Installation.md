@@ -68,13 +68,6 @@ The script will:
 
 ForgeFoundary can also be installed using the following package managers. Note: Package managers currently install ForgeFoundary to the default path, and it may not prompt for a custom installation directory.
 
-#### Composer (Global)
-
-composer global require omarsemgey/forgefoundary
-
-
-After installation, ensure ~/.composer/vendor/bin (Linux/macOS) or %USERPROFILE%\AppData\Roaming\Composer\vendor\bin (Windows) is in your PATH.
-
 #### AUR / yay (Arch Linux)
 
 ```bash
