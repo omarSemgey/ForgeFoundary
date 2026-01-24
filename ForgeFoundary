@@ -2,7 +2,7 @@
 <?php
 
 use Illuminate\Console\Application as ArtisanApplication;
-use ForgeFoundary\Core\Helpers\UserResourcesManager;
+use App\Src\Core\Helpers\UserResourcesManager;
 
 $installDir = __DIR__;
 $userManager = new UserResourcesManager($installDir);
