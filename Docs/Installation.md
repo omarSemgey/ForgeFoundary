@@ -64,9 +64,9 @@ The script will:
 
 ---
 
-### Automatic Installation via Package Managers
+### Automatic Installation 
 
-ForgeFoundary can also be installed using the following package managers. Note: Package managers currently install ForgeFoundary to the default path, and it may not prompt for a custom installation directory.
+ForgeFoundary can also be installed using the following ways:
 
 #### **Docker Installation**
 The fastest way to run ForgeFoundary without installing PHP, Composer, or dependencies on your host machine.
