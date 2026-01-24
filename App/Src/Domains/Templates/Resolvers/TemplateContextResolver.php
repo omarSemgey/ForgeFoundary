@@ -93,10 +93,7 @@ class TemplateContextResolver
     // ==========================================================
     private function resolveTemplatesPath(): void
     {
-        $this->templatesPath = $this->pathManager->getAbsolutePath(
-            Config()->get("mode_config." . self::TEMPLATE_CONFIG_KEYS["path"]), 
-            true
-        ); 
+        $this->templatesPath = $this->pathManager->getAbsoluteUserDirectoryPath(Config()->get("mode_config." . self::TEMPLATE_CONFIG_KEYS["path"]),); 
         Debugger()->info("Templates path: '{$this->templatesPath}'");
     }
 

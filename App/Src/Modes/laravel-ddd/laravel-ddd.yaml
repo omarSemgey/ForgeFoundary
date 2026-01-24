@@ -121,7 +121,7 @@ directories:
 # NOTE: the code currenlty only supports mustache and twig templating engines
 # See docs at: https://omarsemgey.github.io/ForgeFoundary/Modes/ModeSections/Templates/
 # ----------------------------------------------
-templates_path: *templates_path_mutator # Absolute value or relative to the tool App/Src folder
+templates_path: *templates_path_mutator # Absolute value OR Relative to the user config directory
 templates_enabled: *templates_enabled_mutator
 templates_require_existing_dirs: *templates_require_existing_dirs_mutator # If true, only templates for existing directories will be processed.
 template_engine_extensions: 

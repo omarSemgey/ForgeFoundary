@@ -91,9 +91,8 @@ The script will:
 ForgeFoundary can also be installed using the following ways:
 
 #### **Docker Installation**
-The fastest way to run ForgeFoundary without installing PHP, Composer, or dependencies on your host machine.
 
->When running via Docker, post-process hooks that require host-machine binaries (like npm or local composer) are not supported unless they are available within the container
+The fastest way to run ForgeFoundary without installing PHP, Composer, or dependencies on your host machine.
 
 1. Pull the Image
 ```Bash
@@ -117,6 +116,15 @@ To run it just by typing ForgeFoundary, add an alias to your shell profile:
 **Windows (PowerShell $PROFILE):** 
 
 ``function ForgeFoundary { docker run --rm -it -v "${PWD}:/app" -w /app omarsemgey/forgefoundary $args }``
+
+#### **Docker Environment Constraints**
+Because Docker runs in a secure, isolated "sandbox," there are specific behaviors you need to be aware of:
+
+- Host Dependency Limitation: Post-process hooks (like npm install or local system scripts) will fail because the container cannot "see" your host's installed binaries. Only tools included in the image (PHP, Composer, Git) will function.
+
+- Path Isolation: The container only has access to the directory you "mount" into it. Absolute paths from your host machine will not work. You must use relative paths (e.g., ./output) to ensure files are written to your project folder.
+
+- Permissions (Linux Users): Files created via Docker may be owned by root. Use the -u flag (detailed below) to avoid permission issues.
 
 #### **AUR / yay (Arch Linux)**
 
