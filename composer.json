@@ -12,6 +12,8 @@
     "require": {
         "php": "^8.2",
         "illuminate/support": "^12.0",
+        "illuminate/console": "^12.0",
+        "illuminate/container": "^12.0",
         "symfony/yaml": "^6.0",
         "mustache/mustache": "^3.0",
         "twig/twig": "^3.22",
