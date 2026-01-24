@@ -25,12 +25,15 @@ A flexible, framework-agnostic scaffolding tool for any programming language or 
 
 ForgeFoundary is designed for developers who value automation, consistency, and flexibility in project setup. By separating scaffolding logic into configurable modes, it ensures repeatable and predictable project structures, no matter the language, framework, or team.
 
+---
+
 ## Installation Options
 ### Manual Installation (Directly from the installation script)
 
 You can fetch the installation script directly from the repository and run it. This works on Unix/Linux/macOS and Windows.
 
-#### Unix / Linux / macOS
+#### **Unix / Linux / macOS**
+
 ```bash
 curl -o install.sh https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.sh
 chmod +x install.sh
@@ -39,19 +42,20 @@ chmod +x install.sh
 
 The script will:
 
-Ask for the installation directory (default: ~/ForgeFoundary).
+1. Ask for the installation directory (default: ~/ForgeFoundary).
 
-Clone the ForgeFoundary repository to the specified folder.
+2. Clone the ForgeFoundary repository to the specified folder.
 
-Install PHP dependencies using Composer.
+3. Install PHP dependencies using Composer.
 
-Attempt to make the ForgeFoundary command available globally (requires write access to /usr/local/bin).
+4. Attempt to make the ForgeFoundary command available globally (requires write access to /usr/local/bin).
 
-If the script cannot link globally, you can manually add the install directory to your PATH.
+5. If the script cannot link globally, you can manually add the install directory to your PATH.
 
 ---
 
-#### Windows
+#### **Windows**
+
 ```powershell
 Invoke-WebRequest -Uri "https://raw.githubusercontent.com/omarSemgey/ForgeFoundary/main/InstallationScripts/install.ps1" -OutFile "install.ps1"
 Set-ExecutionPolicy Bypass -Scope Process -Force
@@ -60,23 +64,51 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 The script will:
 
-Ask for the installation directory (default: $HOME\ForgeFoundary).
+1. Ask for the installation directory (default: $HOME\ForgeFoundary).
 
-Clone the ForgeFoundary repository to the specified folder.
+2. Clone the ForgeFoundary repository to the specified folder.
 
-Install PHP dependencies using Composer.
+3. Install PHP dependencies using Composer.
 
-Optionally guide you to make ForgeFoundary accessible globally.
+4. Optionally guide you to make ForgeFoundary accessible globally.
+
+---
 
 ### Automatic Installation via Package Managers
 
 ForgeFoundary can also be installed using the following package managers. Note: Package managers currently install ForgeFoundary to the default path, and it may not prompt for a custom installation directory.
 
-#### AUR / yay (Arch Linux)
+#### **Docker Installation**
+The fastest way to run ForgeFoundary without installing PHP, Composer, or dependencies on your host machine.
+
+1. Pull the Image
+```Bash
+docker pull omarsemgey/forgefoundary
+```
+
+2. Run Anywhere
+Since Docker runs in a container, you must mount your current directory so the tool can see your project files:
+
+```Bash
+docker run --rm -it -v "$(pwd):/app" -w /app omarsemgey/forgefoundary [command]
+```
+
+3. (Optional) Set an Alias
+To run it just by typing ForgeFoundary, add an alias to your shell profile:
+
+**Linux/macOS (.bashrc or .zshrc):**
+
+``alias ForgeFoundary='docker run --rm -it -v "$(pwd):/app" -w /app omarsemgey/forgefoundary'``
+
+**Windows (PowerShell $PROFILE):** 
+
+``function ForgeFoundary { docker run --rm -it -v "${PWD}:/app" -w /app omarsemgey/forgefoundary $args }``
+
+#### **AUR / yay (Arch Linux)**
 
 ```bash
 yay -S forgefoundary
-````
+```
 
 ---
 
