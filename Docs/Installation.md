@@ -8,7 +8,7 @@ This document explains how to install ForgeFoundary on your system, including th
 
 Before installing ForgeFoundary, make sure you have the following installed:
 
-- **PHP** (version 8.2 or higher)  
+- **PHP** (version 8.5 or higher)  
   [Download PHP](https://www.php.net/downloads)
 - **Composer** (PHP dependency manager)  
   [Download Composer](https://getcomposer.org/download/)

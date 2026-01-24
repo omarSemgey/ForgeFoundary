@@ -28,6 +28,18 @@ ForgeFoundary is designed for developers who value automation, consistency, and 
 ---
 
 ## Installation Options
+
+### Requirements
+
+Before installing ForgeFoundary, make sure you have the following installed:
+
+- **PHP** (version 8.5 or higher)
+  [Download PHP](https://www.php.net/downloads)
+- **Composer** (PHP dependency manager)
+  [Download Composer](https://getcomposer.org/download/)
+
+> ForgeFoundary depends on PHP and Composer to run and manage dependencies.
+
 ### Manual Installation (Directly from the installation script)
 
 You can fetch the installation script directly from the repository and run it. This works on Unix/Linux/macOS and Windows.
