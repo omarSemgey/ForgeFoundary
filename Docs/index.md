@@ -1,17 +1,17 @@
 # ForgeFoundary
 
-ForgeFoundary is a general-purpose scaffolding tool designed to help developers generate project structures, boilerplate code, and architectural patterns for any programming language or framework.
+ForgeFoundary is a flexible, framework-agnostic scaffolding tool for any programming language or architecture.
 
 ---
 
 ## Key Features
 
-- **Multi-language support:** Scaffold projects in any language by defining your own modes.
-- **Customizable modes:** Define directory structures, templates, naming conventions, and scaffolding rules.
+- **Multi-language support:** Scaffold projects in any language by defining your own modes instead of relying on built-in presets.
+- **Customizable modes:** Control directory structures, templates, naming conventions, and scaffolding rules from simple configuration files.
 - **CLI-driven workflow:** Easily scaffold components, directories, and units from the command line.
-- **Template engine support:** Mustache, Twig, or Blade-style templates.
+- **Template engine support:** Use Mustache, Twig, or Blade-style templates depending on your workflow.
 - **Pre- and post-scaffold hooks:** Run custom commands automatically before or after scaffolding.
-- **Portable & framework-agnostic:** Not tied to any specific language or framework.
+- **Portable & framework-agnostic:** ForgeFoundary does not assume any framework and can be used across different projects.
 
 ---
 

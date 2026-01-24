@@ -1,7 +1,14 @@
 {
     "name": "omarsemgey/forgefoundary",
     "description": "A general programming scaffolder with pluggable modes.",
-    "type": "project",
+    "type": "library",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "8.2.0"
+        }
+    },
     "require": {
         "php": "^8.2",
         "illuminate/support": "^12.0",

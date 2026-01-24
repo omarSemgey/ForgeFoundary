@@ -74,10 +74,11 @@ ForgeFoundary can also be installed using the following package managers. Note: 
 
 #### Composer (Global)
 
+```bash
 composer global require omarsemgey/forgefoundary
+```
 
-
-After installation, ensure ~/.composer/vendor/bin (Linux/macOS) or %USERPROFILE%\AppData\Roaming\Composer\vendor\bin (Windows) is in your PATH.
+After installation, ensure ``~/.composer/vendor/bin`` (Linux/macOS) or ``%USERPROFILE%\AppData\Roaming\Composer\vendor\bin`` (Windows) is in your PATH.
 
 #### AUR / yay (Arch Linux)
 
