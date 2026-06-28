@@ -1,6 +1,71 @@
 # ForgeFoundary
 
-A flexible, framework-agnostic scaffolding tool for any programming language or architecture.
+ForgeFoundary is a CLI scaffolding tool that generates complete project structures (files, folders, and boilerplate code) from configurable YAML templates.
+
+Instead of manually creating directories, files, and boilerplate code, ForgeFoundary generates them from reusable YAML-based templates and configurable modes, helping teams maintain consistent project structures while reducing repetitive work.
+
+---
+
+## Why ForgeFoundary?
+
+Creating new features often involves repeating the same boilerplate:
+
+* Creating directories
+* Adding multiple related files
+* Following naming conventions
+* Copying template code
+* Remembering project structure
+
+ForgeFoundary automates these repetitive tasks through configurable modes, allowing projects to generate consistent scaffolding with a single command.
+
+---
+
+## Quick Example
+
+Instead of manually creating:
+
+```text
+Controllers/
+└── UserController.php
+
+Services/
+└── UserService.php
+
+Repositories/
+└── UserRepository.php
+
+Tests/
+└── UserServiceTest.php
+```
+
+Generate everything with a single command:
+
+```bash
+ForgeFoundary make service User
+```
+
+The generated files, templates, naming conventions, and directory structure are entirely defined by your selected YAML mode, allowing the same command to work across different languages, frameworks, and project architectures.
+
+---
+
+## Quick Start
+```bash
+ForgeFoundary dry-run
+```
+---
+
+## Problem It Solves
+
+Developers repeatedly rebuild the same project structure when starting new features or projects:
+
+- Controllers, services, repositories, tests
+- Naming conventions
+- Boilerplate setup
+- Repeated file creation
+
+ForgeFoundary removes this repetition by generating consistent, reusable project structures from configuration instead of manual setup.
+
+---
 
 ## Key Features
 
@@ -10,6 +75,8 @@ A flexible, framework-agnostic scaffolding tool for any programming language or 
 - Template engine support: Use Mustache, Twig, or Blade-style templates.
 - Pre- and post-scaffold hooks: Run custom commands automatically before or after scaffolding.
 - Portable and framework-agnostic: Not tied to any specific framework or programming style.
+
+---
 
 ## How It Works
 
@@ -21,9 +88,31 @@ A flexible, framework-agnostic scaffolding tool for any programming language or 
 - Naming conventions (PascalCase, camelCase, etc.)
 - CLI flags and overrides for flexible scaffolding
 
+---
+
+## Architecture
+
+ForgeFoundary is built around a modular architecture:
+
+- CLI command parser
+- YAML mode loader
+- Template rendering engine
+- Placeholder resolver
+- File generation engine
+- Hook execution system
+- Naming convention engine
+
+---
+
 ## Philosophy
 
 ForgeFoundary is designed for developers who value automation, consistency, and flexibility in project setup. By separating scaffolding logic into configurable modes, it ensures repeatable and predictable project structures, no matter the language, framework, or team.
+
+---
+
+## Why PHP?
+
+ForgeFoundary is implemented in PHP because of its strong ecosystem, Composer integration, and cross-platform compatibility, allowing the tool to be distributed easily while remaining language-agnostic.
 
 ---
 
@@ -134,11 +223,20 @@ yay -S forgefoundary
 
 ---
 
-## Quick Start
-```bash
-ForgeFoundary dry-run
-```
+## Documentation
 
-## Further Instructions
+ForgeFoundary includes a full documentation system that explains every feature in depth, including CLI commands, YAML configuration, template behavior, and scaffolding logic.
 
-For detailed instructions, examples, and a map of available documentation, refer to the [Docs](https://omarsemgey.github.io/ForgeFoundary/Manual/). it provides an organized overview of all other documentation files included with ForgeFoundary.
+ [Docs](https://omarsemgey.github.io/ForgeFoundary/Manual/).
+
+The documentation is designed as a complete reference guide. It walks through ForgeFoundary step-by-step, from basic usage to advanced configuration, including:
+
+- Every CLI command and option
+- Full YAML mode structure (file-by-file breakdown)
+- Template engine behavior and placeholder system
+- Hook system (pre/post execution flow)
+- Naming conventions and resolution rules
+- Edge cases and known limitations
+- Real usage examples and expected outputs
+
+It is structured so you can follow it sequentially, starting from a simple scaffold and progressing toward building complex, production-ready project structures using reusable configurations.
